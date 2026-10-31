@@ -3,23 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carte Bouquet • Yaye Boy ♡ (31 Octobre)</title>
+  <title>Carte Bouquet • Yaye Boy ♡ (Prête à imprimer)</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
   <style>
     :root {
-      --color-bordeaux: #441419;
-      --color-bordeaux-btn: #671E27;
-      --color-wine-text: #BF515B;
-      --color-cream-bg: #EFECE6;
-      --color-text-dark: #1E1918;
-      --color-text-muted: #6B625E;
-      --tape-color: rgba(244, 237, 224, 0.85);
+      --color-bordeaux: #380711;
+      --color-wine-text: #B8324F;
+      --color-rose-poudre: #FCE6EB;
+      --color-card-bg: #FAF7F2;
+      --color-text-dark: #221518;
+      --color-text-muted: #6B5B60;
+      --tape-color: rgba(252, 230, 236, 0.95);
     }
 
     * {
@@ -29,280 +27,349 @@
     }
 
     body {
-      background: #110D0E;
+      background: #140D0F;
       color: #FFF;
       font-family: 'Plus Jakarta Sans', sans-serif;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 15px;
+      padding: 30px 15px 50px;
     }
 
-    .control-panel {
-      background: #1C1618;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 24px 30px;
-      max-width: 580px;
-      width: 100%;
-      margin-bottom: 35px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    }
-
-    .control-panel h1 {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      color: #FFF;
-      margin-bottom: 4px;
-    }
-
-    .control-panel p {
-      color: #B3A8A3;
-      font-size: 0.92rem;
-      margin-bottom: 20px;
-    }
-
-    .url-input-group {
+    .top-actions {
       display: flex;
-      gap: 10px;
-      margin-bottom: 18px;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+      text-align: center;
     }
 
-    .url-input {
-      flex: 1;
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: 1px solid #3D2D31;
-      background: #110D0E;
-      color: #FFF;
-      font-size: 0.95rem;
-      font-family: inherit;
+    .top-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2rem;
+      color: #FFD4DC;
     }
 
-    .url-input:focus {
-      outline: none;
-      border-color: var(--color-wine-text);
-    }
-
-    .btn-update {
-      background: var(--color-bordeaux-btn);
+    .btn-print-now {
+      background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
       color: #FFF;
       border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .btn-print {
-      background: #FFF;
-      color: #110D0E;
-      border: none;
-      padding: 12px 28px;
+      padding: 13px 32px;
       border-radius: 50px;
+      font-size: 1rem;
       font-weight: 700;
-      font-size: 0.95rem;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    /* CARTE BOUQUET À IMPRIMER */
+    .btn-print-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(230, 57, 86, 0.55);
+    }
+
+    .btn-print-now:active {
+      transform: scale(0.97);
+    }
+
+    .print-tip {
+      font-size: 0.85rem;
+      color: #B5A4A7;
+    }
+
+    /* ========================================================
+       CARTE PHYSIQUE (FORMAT 10x15 CM PROPORTIONNEL)
+       ======================================================== */
+    .card-outer-wrap {
+      perspective: 1000px;
+    }
+
     .physical-card {
-      width: 380px;
-      height: 540px;
-      background: #FAF8F5;
+      width: 360px;
+      min-height: 520px;
+      background: var(--color-card-bg);
       color: var(--color-text-dark);
-      border: 1px solid #E2D9CC;
-      border-radius: 6px;
-      padding: 38px 28px;
+      border: 1.5px solid #EADBCE;
+      border-radius: 12px;
+      padding: 34px 26px 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       text-align: center;
       position: relative;
-      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.55),
+        0 2px 6px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
     }
 
-    .tape-card-top {
+    /* Cadre intérieur discret style papeterie de luxe */
+    .physical-card::before {
+      content: '';
+      position: absolute;
+      inset: 10px;
+      border: 1px solid rgba(184, 50, 79, 0.18);
+      border-radius: 8px;
+      pointer-events: none;
+    }
+
+    /* Ruban de scotch Washi en haut */
+    .washi-tape {
       position: absolute;
       top: -10px;
       left: 50%;
-      transform: translateX(-50%) rotate(-1deg);
-      width: 90px;
-      height: 20px;
+      transform: translateX(-50%) rotate(-0.5deg);
+      width: 95px;
+      height: 22px;
       background: var(--tape-color);
-      border-left: 1.5px dashed rgba(160, 140, 110, 0.4);
-      border-right: 1.5px dashed rgba(160, 140, 110, 0.4);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      border-left: 2px dashed rgba(184, 50, 79, 0.3);
+      border-right: 2px dashed rgba(184, 50, 79, 0.3);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+      z-index: 5;
+    }
+
+    /* En-tête */
+    .card-top {
+      position: relative;
+      z-index: 2;
     }
 
     .card-kicker {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      color: var(--color-text-muted);
-      margin-bottom: 6px;
+      color: var(--color-wine-text);
+      margin-bottom: 4px;
     }
 
-    .card-title {
-      font-family: 'Caveat', cursive;
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.1;
+    .card-joyeux {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
       color: var(--color-text-dark);
+      line-height: 1.1;
     }
 
     .card-name {
-      font-family: var(--font-hand);
-      font-size: 3rem;
+      font-family: 'Caveat', cursive;
+      font-size: 3.2rem;
       font-weight: 700;
       color: var(--color-wine-text);
-      line-height: 1.1;
-      margin-bottom: 8px;
+      line-height: 1;
+      margin: 2px 0 10px;
+      text-shadow: 0 1px 2px rgba(184, 50, 79, 0.15);
     }
 
-    .card-subtitle {
-      font-size: 0.9rem;
+    .card-rose-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .card-rose-line .line {
+      width: 35px;
+      height: 1px;
+      background: #E0C8CF;
+    }
+
+    .card-rose-line .heart {
+      color: #E63956;
+      font-size: 0.85rem;
+    }
+
+    .card-mot {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.08rem;
+      line-height: 1.45;
       color: var(--color-text-muted);
-      max-width: 280px;
-      line-height: 1.5;
+      max-width: 285px;
       margin: 0 auto;
     }
 
-    .qr-container {
-      background: #FFFFFF;
-      padding: 14px;
-      border-radius: 4px;
-      border: 1px solid #E5E0D8;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-      display: inline-block;
-      margin-top: 10px;
+    /* Bloc QR Code */
+    .card-middle {
+      position: relative;
+      z-index: 2;
+      margin: 16px 0;
     }
 
-    .scan-note {
+    .qr-frame {
+      background: #FFFFFF;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #E8DFD3;
+      box-shadow: 0 6px 18px rgba(56, 7, 17, 0.08);
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .qr-image {
+      width: 155px;
+      height: 155px;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .scan-invitation {
       font-family: 'Caveat', cursive;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--color-text-dark);
       margin-top: 10px;
+      letter-spacing: 0.5px;
     }
 
-    .card-footer-memo {
-      border-top: 1px dashed #E2D9CC;
-      padding-top: 12px;
+    .scan-invitation span {
+      color: var(--color-wine-text);
+    }
+
+    .link-direct {
+      font-size: 0.72rem;
+      color: #9E8E93;
+      margin-top: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Pied de carte */
+    .card-bottom {
       width: 100%;
+      border-top: 1px dashed #E2D3D8;
+      padding-top: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
-      color: var(--color-text-muted);
+      position: relative;
+      z-index: 2;
     }
 
-    .footer-highlight {
+    .bottom-date {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      font-style: italic;
+    }
+
+    .bottom-sign {
       font-family: 'Caveat', cursive;
-      font-size: 1.25rem;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--color-wine-text);
     }
 
+    /* ========================================================
+       STYLES D'IMPRESSION (CTRL + P / CMD + P)
+       ======================================================== */
     @media print {
       body {
-        background: #FFF !important;
+        background: #FFFFFF !important;
         padding: 0 !important;
       }
-      .control-panel, .hint-text {
+
+      .top-actions, .bouque-tip-box {
         display: none !important;
       }
+
+      .card-outer-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
       .physical-card {
         box-shadow: none !important;
-        margin: 20px auto;
-        page-break-inside: avoid;
+        border: 1.5px solid #D5C4B5 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
       }
     }
 
-    .hint-text {
-      font-size: 0.85rem;
-      color: #B3A8A3;
+    .bouque-tip-box {
+      margin-top: 35px;
+      max-width: 480px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px 20px;
       text-align: center;
-      margin-top: 25px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #D6C2C7;
+    }
+
+    .bouque-tip-box strong {
+      color: #FFB3C2;
     }
   </style>
 </head>
 <body>
 
-  <div class="control-panel">
-    <h1>Carte Bouquet • Yaye Boy ♡</h1>
-    <p>Cette carte est prête à être imprimée et déposée dans le bouquet 💐</p>
-    
-    <div class="url-input-group">
-      <input type="text" id="targetUrl" class="url-input" value="https://yayeboy-anniversaire.netlify.app" placeholder="Colle l'URL finale de ton site">
-      <button class="btn-update" onclick="updateQRCode()">Mettre à jour</button>
-    </div>
-
-    <button class="btn-print" onclick="window.print()">
-      <span>🖨️ Imprimer la Carte</span>
+  <!-- BARRE DU HAUT : ACTION IMPRIMER -->
+  <div class="top-actions">
+    <div class="top-title">Carte Bouquet prête pour Yaye Boy ♡</div>
+    <button class="btn-print-now" onclick="window.print()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <path d="M6 14h12v8H6z"/>
+      </svg>
+      <span>Imprimer la Carte</span>
     </button>
+    <div class="print-tip">Format recommandé : papier cartonné / photo (10 × 15 cm)</div>
   </div>
 
-  <div class="physical-card" id="printableCard">
-    <div class="tape-card-top"></div>
+  <!-- LA CARTE PHYSIQUE À GLISSER DANS LES FLEURS -->
+  <div class="card-outer-wrap">
+    <div class="physical-card">
+      <div class="washi-tape"></div>
 
-    <div class="card-top-content">
-      <div class="card-kicker">ÉDITION SPÉCIALE ♡</div>
-      <div class="card-title">Joyeux anniversaire</div>
-      <div class="card-name">Yaye Boy ♡</div>
-      <p class="card-subtitle">
-        Parce que les plus belles attentions valent la peine d'être attendues... Prends ton téléphone et laisse-toi guider.
-      </p>
-    </div>
+      <!-- En-tête -->
+      <div class="card-top">
+        <div class="card-kicker">ÉDITION SPÉCIALE ♡</div>
+        <div class="card-joyeux">Joyeux anniversaire</div>
+        <div class="card-name">Yaye Boy ♡</div>
 
-    <div class="card-middle-content">
-      <div class="qr-container">
-        <div id="qrcode"></div>
+        <div class="card-rose-line">
+          <span class="line"></span>
+          <span class="heart">♥</span>
+          <span class="line"></span>
+        </div>
+
+        <p class="card-mot">
+          Parce que ton anniversaire se prolonge... <br>
+          Prends ton téléphone et laisse-toi guider.
+        </p>
       </div>
-      <div class="scan-note">✦ Scanne avec ton appareil photo ✦</div>
-    </div>
 
-    <div class="card-footer-memo">
-      <span>Pour toi, avec le cœur</span>
-      <span class="footer-highlight">- Mactar ♡</span>
+      <!-- QR Code direct vers le site -->
+      <div class="card-middle">
+        <div class="qr-frame">
+          <img src="assets/images/qr_yayeboy.png" alt="QR Code Yaye Boy" class="qr-image">
+        </div>
+        <div class="scan-invitation">
+          ✦ <span>Scanne avec ton appareil photo</span> ✦
+        </div>
+        <div class="link-direct">https://yaye-boy.vercel.app/</div>
+      </div>
+
+      <!-- Bas de carte -->
+      <div class="card-bottom">
+        <div class="bottom-date">Avec tout mon cœur 🌸</div>
+        <div class="bottom-sign">— Mactar ♡</div>
+      </div>
     </div>
   </div>
 
-  <p class="hint-text">
-    🌹 <strong>Idée bouquet :</strong> Un somptueux mélange de <em>roses rouges</em> et de <em>roses poudrées</em> (ses couleurs préférées !) avec cette carte imprimée au centre. Imprime sur papier cartonné et glisse au cœur des fleurs !
-  </p>
+  <!-- Conseil Bouquet -->
+  <div class="bouque-tip-box">
+    💐 <strong>Idée bouquet :</strong> Un somptueux mélange de <em>roses rouges</em> et de <em>roses poudrées</em> avec cette carte imprimée piquée au centre. Quand elle scannera le QR Code avec son appareil photo, son carnet virtuel s'ouvrira immédiatement avec la musique de Daniel Caesar !
+  </div>
 
-  <script>
-    let qrcodeInstance = null;
-
-    function generateQR(text) {
-      const qrContainer = document.getElementById("qrcode");
-      qrContainer.innerHTML = "";
-      qrcodeInstance = new QRCode(qrContainer, {
-        text: text,
-        width: 155,
-        height: 155,
-        colorDark: "#110D0E",
-        colorLight: "#FFFFFF",
-        correctLevel: QRCode.CorrectLevel.H
-      });
-    }
-
-    function updateQRCode() {
-      const url = document.getElementById("targetUrl").value.trim();
-      if (!url) return;
-      generateQR(url);
-    }
-
-    window.addEventListener("DOMContentLoaded", () => {
-      generateQR(document.getElementById("targetUrl").value);
-    });
-  </script>
 </body>
 </html>
