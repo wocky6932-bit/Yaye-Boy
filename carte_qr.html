@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carte Bouquet • Yaye Boy ♡ (31 Octobre)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    :root {
+      --color-bordeaux: #441419;
+      --color-bordeaux-btn: #671E27;
+      --color-wine-text: #BF515B;
+      --color-cream-bg: #EFECE6;
+      --color-text-dark: #1E1918;
+      --color-text-muted: #6B625E;
+      --tape-color: rgba(244, 237, 224, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #110D0E;
+      color: #FFF;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 15px;
+    }
+
+    .control-panel {
+      background: #1C1618;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px 30px;
+      max-width: 580px;
+      width: 100%;
+      margin-bottom: 35px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .control-panel h1 {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      color: #FFF;
+      margin-bottom: 4px;
+    }
+
+    .control-panel p {
+      color: #B3A8A3;
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    .url-input-group {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .url-input {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #3D2D31;
+      background: #110D0E;
+      color: #FFF;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+
+    .url-input:focus {
+      outline: none;
+      border-color: var(--color-wine-text);
+    }
+
+    .btn-update {
+      background: var(--color-bordeaux-btn);
+      color: #FFF;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-print {
+      background: #FFF;
+      color: #110D0E;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* CARTE BOUQUET À IMPRIMER */
+    .physical-card {
+      width: 380px;
+      height: 540px;
+      background: #FAF8F5;
+      color: var(--color-text-dark);
+      border: 1px solid #E2D9CC;
+      border-radius: 6px;
+      padding: 38px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    .tape-card-top {
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 90px;
+      height: 20px;
+      background: var(--tape-color);
+      border-left: 1.5px dashed rgba(160, 140, 110, 0.4);
+      border-right: 1.5px dashed rgba(160, 140, 110, 0.4);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    }
+
+    .card-kicker {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Caveat', cursive;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--color-text-dark);
+    }
+
+    .card-name {
+      font-family: var(--font-hand);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--color-wine-text);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      max-width: 280px;
+      line-height: 1.5;
+      margin: 0 auto;
+    }
+
+    .qr-container {
+      background: #FFFFFF;
+      padding: 14px;
+      border-radius: 4px;
+      border: 1px solid #E5E0D8;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    .scan-note {
+      font-family: 'Caveat', cursive;
+      font-size: 1.4rem;
+      color: var(--color-text-dark);
+      margin-top: 10px;
+    }
+
+    .card-footer-memo {
+      border-top: 1px dashed #E2D9CC;
+      padding-top: 12px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    .footer-highlight {
+      font-family: 'Caveat', cursive;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-wine-text);
+    }
+
+    @media print {
+      body {
+        background: #FFF !important;
+        padding: 0 !important;
+      }
+      .control-panel, .hint-text {
+        display: none !important;
+      }
+      .physical-card {
+        box-shadow: none !important;
+        margin: 20px auto;
+        page-break-inside: avoid;
+      }
+    }
+
+    .hint-text {
+      font-size: 0.85rem;
+      color: #B3A8A3;
+      text-align: center;
+      margin-top: 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="control-panel">
+    <h1>Carte Bouquet • Yaye Boy ♡</h1>
+    <p>Cette carte est prête à être imprimée et déposée dans le bouquet 💐</p>
+    
+    <div class="url-input-group">
+      <input type="text" id="targetUrl" class="url-input" value="https://yayeboy-anniversaire.netlify.app" placeholder="Colle l'URL finale de ton site">
+      <button class="btn-update" onclick="updateQRCode()">Mettre à jour</button>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">
+      <span>🖨️ Imprimer la Carte</span>
+    </button>
+  </div>
+
+  <div class="physical-card" id="printableCard">
+    <div class="tape-card-top"></div>
+
+    <div class="card-top-content">
+      <div class="card-kicker">ÉDITION SPÉCIALE ♡</div>
+      <div class="card-title">Joyeux anniversaire</div>
+      <div class="card-name">Yaye Boy ♡</div>
+      <p class="card-subtitle">
+        Parce que les plus belles attentions valent la peine d'être attendues... Prends ton téléphone et laisse-toi guider.
+      </p>
+    </div>
+
+    <div class="card-middle-content">
+      <div class="qr-container">
+        <div id="qrcode"></div>
+      </div>
+      <div class="scan-note">✦ Scanne avec ton appareil photo ✦</div>
+    </div>
+
+    <div class="card-footer-memo">
+      <span>Pour toi, avec le cœur</span>
+      <span class="footer-highlight">- Mactar ♡</span>
+    </div>
+  </div>
+
+  <p class="hint-text">
+    🌹 <strong>Idée bouquet :</strong> Un somptueux mélange de <em>roses rouges</em> et de <em>roses poudrées</em> (ses couleurs préférées !) avec cette carte imprimée au centre. Imprime sur papier cartonné et glisse au cœur des fleurs !
+  </p>
+
+  <script>
+    let qrcodeInstance = null;
+
+    function generateQR(text) {
+      const qrContainer = document.getElementById("qrcode");
+      qrContainer.innerHTML = "";
+      qrcodeInstance = new QRCode(qrContainer, {
+        text: text,
+        width: 155,
+        height: 155,
+        colorDark: "#110D0E",
+        colorLight: "#FFFFFF",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function updateQRCode() {
+      const url = document.getElementById("targetUrl").value.trim();
+      if (!url) return;
+      generateQR(url);
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      generateQR(document.getElementById("targetUrl").value);
+    });
+  </script>
+</body>
+</html>

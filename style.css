@@ -1,0 +1,1415 @@
+/* ========================================================
+   FEUILLE DE STYLE STORY MOBILE-FIRST FIDÈLE AUX 12 ÉCRANS
+   Pour Yaye Boy ♡ • 31 Octobre
+   ======================================================== */
+
+:root {
+  --color-dark-bg: #140C0E;
+  --color-bordeaux: #3E0F17;
+  --color-bordeaux-card: #561622;
+  --color-bordeaux-btn: #B8253B;
+  --color-bordeaux-btn-hover: #D4314D;
+  --color-wine-text: #E6455E;
+
+  --color-rose-soft: #FDEEF1;
+  --color-rose-blush: #F4A4B4;
+  --color-rose-accent: #E86A82;
+  --color-red-deep: #A71D31;
+  --color-red-bright: #E63956;
+
+  --color-cream-bg: #F8F1F3;
+  --color-parchment: #FCF6F7;
+  --color-paper-card: #FFFFFF;
+
+  --color-text-dark: #1E1918;
+  --color-text-muted: #7A6569;
+  --color-text-light: #FDF4F6;
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-hand: 'Caveat', cursive;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  --tape-color: rgba(252, 230, 235, 0.88);
+  --shadow-pola: 0 4px 15px rgba(60, 15, 25, 0.12);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #25060C;
+  color: var(--color-text-dark);
+  font-family: var(--font-sans);
+}
+
+/* ========================================================
+   BARRE SUPÉRIEURE STORY APP
+   ======================================================== */
+.story-top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  background: rgba(38, 7, 13, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(244, 164, 180, 0.2);
+  padding-top: env(safe-area-inset-top, 0);
+}
+
+.story-back-btn {
+  background: none;
+  border: none;
+  color: #FFF;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.story-back-btn:active {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.story-title-center {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+.story-top-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.story-counter {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #B3A8A3;
+}
+
+.story-audio-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.story-audio-btn.playing {
+  border-color: var(--color-wine-text);
+  color: var(--color-wine-text);
+}
+
+.heart-pulse {
+  display: inline-block;
+  line-height: 1;
+}
+
+.story-audio-btn.playing .heart-pulse {
+  animation: heartBeat 1.2s infinite ease-in-out;
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* ========================================================
+   CONTENEUR DU SLIDER / STORY
+   ======================================================== */
+.story-wrapper {
+  display: flex;
+  width: 1200%;
+  height: 100%;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  touch-action: pan-y;
+}
+
+.slide-screen {
+  width: 100vw;
+  height: 100%;
+  flex-shrink: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 60px 16px 85px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  scrollbar-width: none; /* Firefox */
+}
+
+.slide-screen::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, iOS */
+}
+
+.slide-inner {
+  width: 100%;
+  max-width: 440px;
+  min-height: calc(100vh - 145px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 25px;
+}
+
+/* MASKING TAPE */
+.tape-strip {
+  position: absolute;
+  height: 18px;
+  background: var(--tape-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  pointer-events: none;
+  z-index: 10;
+  border-left: 1.5px dashed rgba(160, 140, 110, 0.4);
+  border-right: 1.5px dashed rgba(160, 140, 110, 0.4);
+}
+
+.tape-top-center {
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%) rotate(0.5deg);
+  width: 75px;
+}
+
+.tape-pola-top {
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-1deg);
+  width: 60px;
+}
+
+/* ========================================================
+   SLIDE 1 : ACCUEIL (FIDÈLE À LA MAQUETTE EXACTE)
+   ======================================================== */
+.slide-1 {
+  background: 
+    radial-gradient(ellipse at 85% 15%, rgba(196, 40, 70, 0.45) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 85%, rgba(170, 25, 55, 0.4) 0%, transparent 60%),
+    linear-gradient(170deg, #380711 0%, #1a0206 50%, #100104 100%);
+  color: #FFF;
+  padding: 60px 20px 80px;
+}
+
+.hero-exact-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: auto;
+}
+
+.s1-portrait-box {
+  width: 100%;
+  aspect-ratio: 16 / 8.5;
+  height: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(230, 57, 86, 0.2);
+  border: 1px solid rgba(255, 140, 160, 0.25);
+  margin-top: 6px;
+  margin-bottom: 24px;
+  background: #181113;
+  cursor: pointer;
+  position: relative;
+}
+
+.s1-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.s1-text-card {
+  text-align: left;
+  width: 100%;
+}
+
+.s1-titles-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.title-joyeux {
+  font-family: var(--font-sans);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.title-anniversaire {
+  font-family: var(--font-sans);
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.title-name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.s1-highlight {
+  font-family: var(--font-hand);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #F87B95;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+.s1-hollow-heart {
+  font-size: 2.4rem;
+  color: #F87B95;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(-2px);
+}
+
+/* SÉPARATEUR CŒUR ROSE */
+.pink-heart-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 22px;
+  width: 100%;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(248, 123, 149, 0.6), rgba(248, 123, 149, 0.1));
+}
+
+.pink-heart-divider .divider-line:first-child {
+  background: linear-gradient(90deg, rgba(248, 123, 149, 0.1), rgba(248, 123, 149, 0.6));
+}
+
+.divider-heart {
+  color: #F87B95;
+  font-size: 0.85rem;
+}
+
+/* PARAGRAPHES HERO */
+.s1-message-block {
+  color: #E2CFD3;
+  font-size: 0.96rem;
+  line-height: 1.6;
+  margin-bottom: 26px;
+}
+
+.s1-lead-line {
+  color: #FFFFFF;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.inline-heart {
+  font-size: 0.95rem;
+  margin-left: 2px;
+}
+
+.s1-message-block p {
+  margin-bottom: 6px;
+}
+
+/* BOUTON ROSE ÉDITORIAL */
+.btn-pink-curved {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FBB4C4;
+  color: #1A0409;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 700;
+  padding: 14px 34px;
+  border-radius: 50px;
+  box-shadow: 0 8px 24px rgba(251, 180, 196, 0.35);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  margin: 10px 0 16px;
+  width: auto;
+  align-self: flex-start;
+}
+
+.btn-pink-curved:active {
+  transform: scale(0.97);
+  background-color: #F89EB3;
+}
+
+.s1-bottom-heart {
+  font-size: 1.4rem;
+  color: #F87B95;
+  opacity: 0.7;
+  margin-top: 8px;
+}
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
+  transition: transform 0.2s;
+}
+
+.btn-pill-primary:active {
+  transform: scale(0.97);
+}
+
+.s1-bottom-heart {
+  font-size: 1.3rem;
+  margin-top: 18px;
+  color: #B3A8A3;
+}
+
+/* ========================================================
+   SLIDE 2 : MA LETTRE
+   ======================================================== */
+.parchment-bg {
+  background: #FFF5F7;
+  color: #24080D;
+  border: 1px solid #F3CFD6;
+  border-radius: 8px;
+  padding: 35px 22px;
+  box-shadow: 0 10px 30px rgba(45, 6, 12, 0.4);
+}
+
+.dried-flower-corner {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 1.5rem;
+}
+
+.letter-content-box {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.hand-salutation {
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-red-deep);
+  margin-bottom: 14px;
+}
+
+.letter-content-box p {
+  margin-bottom: 14px;
+}
+
+.letter-sign-mactar {
+  font-family: var(--font-hand);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-red-bright);
+  margin-top: 18px;
+}
+
+.letter-bottom-red-heart {
+  font-size: 1.6rem;
+  color: #E63956;
+  text-align: right;
+  margin-top: -10px;
+}
+
+/* ========================================================
+   SLIDE 3 : NOS SOUVENIRS (3 POLAROÏDS)
+   ======================================================== */
+.dark-wood-bg {
+  background: radial-gradient(circle at center, #4A0E1A 0%, #220409 100%);
+  color: #FFF;
+}
+
+.section-badge-title h2 {
+  font-family: var(--font-hand);
+  font-size: 1.85rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.15;
+  margin-bottom: 12px;
+  color: #FFF;
+}
+
+.pola-stack-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.story-pola {
+  background: #FFF;
+  color: var(--color-text-dark);
+  padding: 6px 6px 8px;
+  border-radius: 3px;
+  box-shadow: var(--shadow-pola);
+  width: 100%;
+  max-width: 240px;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.story-pola:active {
+  transform: scale(0.98);
+}
+
+.pola-tilt-1 { transform: rotate(-1.5deg); }
+.pola-tilt-2 { transform: rotate(1deg); }
+.pola-tilt-3 { transform: rotate(-1deg); }
+
+.pola-img-wrap {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 2px;
+  position: relative;
+  background: #FAF8F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pola-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.pola-handwrite {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  text-align: center;
+  margin-top: 4px;
+  line-height: 1.1;
+}
+
+.play-badge-icon {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #FFF;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.pola-handwrite {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.15;
+}
+
+/* ========================================================
+   SLIDE 4 : CE QUE J'AIME CHEZ TOI (PAPIERS SCRAPBOOK CHAUDS)
+   ======================================================== */
+.scrap-reasons-layout {
+  background: 
+    radial-gradient(ellipse at 85% 20%, rgba(214, 52, 85, 0.35) 0%, transparent 60%),
+    linear-gradient(175deg, #380712 0%, #1c0207 60%, #120104 100%);
+  color: #FFF;
+  border-radius: 16px;
+  padding: 10px 4px;
+}
+
+.reasons-heading {
+  font-family: var(--font-hand);
+  font-size: 2.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: #FFF;
+  line-height: 1.1;
+  margin-bottom: 22px;
+}
+
+.scrap-paper-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 4px;
+}
+
+.scrap-note-item {
+  background: #FFFDF9;
+  color: #1E1918;
+  border-radius: 6px;
+  padding: 14px 16px 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #EDE5D8;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.2s ease;
+}
+
+.note-tilt-1 { transform: rotate(-1.2deg); }
+.note-tilt-2 { transform: rotate(1deg); }
+.note-tilt-3 { transform: rotate(-0.5deg); }
+
+.scrap-note-item:hover {
+  transform: scale(1.02) rotate(0deg);
+}
+
+.tape-note-top {
+  top: -8px;
+  left: 20px;
+  width: 55px;
+  height: 16px;
+  background: rgba(250, 235, 238, 0.88);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-left: 1px dashed rgba(190, 140, 150, 0.4);
+  border-right: 1px dashed rgba(190, 140, 150, 0.4);
+}
+
+.note-num-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  flex-shrink: 0;
+  border-right: 1px dashed #E2D5C5;
+  padding-right: 10px;
+}
+
+.note-digit {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-red-deep);
+  line-height: 1;
+}
+
+.note-emoji {
+  font-size: 1.1rem;
+  margin-top: 4px;
+}
+
+.note-text-body {
+  flex: 1;
+}
+
+.note-heading {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1A0408;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.note-text-body p {
+  font-size: 0.85rem;
+  color: #5C524F;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.reasons-hand-footer {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  color: #F8B4C2;
+  text-align: right;
+  margin-top: 18px;
+  margin-right: 12px;
+}
+
+/* ========================================================
+   SLIDE 5 : TES VIDÉOS
+   ======================================================== */
+.dark-bg {
+  background: radial-gradient(circle at center, #440C16 0%, #1F0307 100%);
+  color: #FFF;
+}
+
+.sub-lead {
+  font-size: 0.88rem;
+  color: #B3A8A3;
+  line-height: 1.5;
+  text-align: center;
+  margin-top: -12px;
+  margin-bottom: 20px;
+}
+
+.videos-stack-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  align-items: center;
+}
+
+.story-video-card {
+  background: #FFF;
+  color: var(--color-text-dark);
+  padding: 8px 8px 12px;
+  border-radius: 4px;
+  box-shadow: var(--shadow-pola);
+  width: 100%;
+  max-width: 300px;
+}
+
+.video-box-media {
+  width: 100%;
+  height: auto;
+  background: #000;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-box-media video {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+  display: block;
+}
+
+.video-caption-hand {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ========================================================
+   SLIDE 6 : NOS MOMENTS
+   ======================================================== */
+.scrap-collage-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.collage-item {
+  background: #FFF;
+  color: var(--color-text-dark);
+  padding: 7px 7px 12px;
+  border-radius: 3px;
+  box-shadow: var(--shadow-pola);
+  width: 240px;
+  position: relative;
+  cursor: pointer;
+}
+
+.collage-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: contain;
+  display: block;
+  border-radius: 2px;
+  background: #FAF8F5;
+}
+
+.col-note {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  text-align: center;
+  margin-top: 6px;
+}
+
+.col-left { transform: rotate(-2deg); align-self: flex-start; }
+.col-right { transform: rotate(2deg); align-self: flex-end; }
+
+.collage-memo-box {
+  background: #FAF6ED;
+  color: var(--color-text-dark);
+  padding: 12px 18px;
+  border-radius: 4px;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  max-width: 260px;
+  text-align: center;
+  transform: rotate(1deg);
+}
+
+.collage-flowers {
+  font-size: 1.4rem;
+  margin-top: 8px;
+}
+
+/* ========================================================
+   SLIDE 7 : MA LETTRE (SUITE)
+   ======================================================== */
+.parchment-bg-2 {
+  background: #FFF5F7;
+  color: #24080D;
+  border: 1px solid #F3CFD6;
+  border-radius: 8px;
+  padding: 35px 22px;
+  box-shadow: 0 10px 30px rgba(45, 6, 12, 0.4);
+}
+
+.letter-sheet-card {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  line-height: 1.7;
+}
+
+.letter-sheet-card p {
+  margin-bottom: 14px;
+}
+
+.suite-valediction {
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  margin-top: 20px;
+}
+
+.suite-valediction strong {
+  display: block;
+  color: var(--color-red-bright);
+  font-size: 2.1rem;
+}
+
+.signature-mactar-line {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-red-deep);
+  margin-top: 8px;
+}
+
+.letter-bottom-bouquet {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 1.4rem;
+}
+
+/* ========================================================
+   SLIDE 8 : MES VŒUX (PAPIERS D'INTENTION SCRAPBOOK ROMANTIQUE)
+   ======================================================== */
+.scrap-wishes-layout {
+  background: 
+    radial-gradient(ellipse at 85% 15%, rgba(220, 50, 85, 0.3) 0%, transparent 60%),
+    linear-gradient(175deg, #350711 0%, #1b0207 60%, #100104 100%);
+  color: #FFF;
+  border-radius: 18px;
+  padding: 18px 8px 24px;
+}
+
+.wishes-heading {
+  font-family: var(--font-hand);
+  font-size: 2.7rem;
+  font-weight: 700;
+  text-align: center;
+  color: #FFF;
+  line-height: 1.1;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+.wishes-scrap-notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  padding: 0 4px;
+}
+
+.wish-scrap-card {
+  background: #FFFDF9;
+  color: #1E1918;
+  border-radius: 8px;
+  padding: 13px 15px;
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #EDE4D8;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  transition: transform 0.2s ease;
+}
+
+.wish-tilt-1 { transform: rotate(-1deg); }
+.wish-tilt-2 { transform: rotate(0.9deg); }
+.wish-tilt-3 { transform: rotate(-0.6deg); }
+
+.wish-scrap-card:hover {
+  transform: scale(1.015) rotate(0deg);
+}
+
+.tape-wish-top {
+  top: -8px;
+  left: 22px;
+  width: 52px;
+  height: 15px;
+  background: rgba(253, 232, 238, 0.92);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  border-left: 1px dashed rgba(190, 140, 150, 0.45);
+  border-right: 1px dashed rgba(190, 140, 150, 0.45);
+}
+
+.wish-symbol-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #FFF0F4;
+  border: 1px solid #F5CCD6;
+  flex-shrink: 0;
+}
+
+.wish-badge-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.wish-detail-col {
+  flex: 1;
+}
+
+.wish-title-text {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #8C1D35;
+  margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.wish-sub-text {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  color: #524749;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.wishes-hand-signature {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  color: #F8B4C2;
+  text-align: right;
+  margin-top: 18px;
+  margin-right: 12px;
+  letter-spacing: 0.5px;
+}
+
+/* ========================================================
+   SLIDE 9 : UN PETIT MOT POUR TOI
+   ======================================================== */
+.craft-paper-bg {
+  background: radial-gradient(circle at center, #4A0E1A 0%, #200408 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.taped-parchment-sheet {
+  background: #FFF5F7;
+  color: #24080D;
+  border: 1px solid #F3CFD6;
+  border-radius: 6px;
+  padding: 30px 22px;
+  box-shadow: 0 8px 24px rgba(40, 5, 11, 0.4);
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+.big-handwrite-text {
+  font-family: var(--font-hand);
+  font-size: 1.85rem;
+  line-height: 1.35;
+  margin-bottom: 14px;
+}
+
+.merci-toi-script {
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-wine-text);
+}
+
+.sketch-heart-smile {
+  font-size: 1.4rem;
+  margin-top: 8px;
+}
+
+.bottom-pola {
+  width: 240px;
+}
+
+.bottom-pola .pola-img-wrap {
+  height: 160px;
+}
+
+/* ========================================================
+   SLIDE 10 : DERNIÈRE SURPRISE
+   ======================================================== */
+.bordeaux-night-bg {
+  background: radial-gradient(ellipse at center, #78192B 0%, #26050B 85%);
+  color: #FFF;
+  text-align: center;
+}
+
+.s10-center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.s10-heart {
+  font-size: 2.2rem;
+  color: var(--color-rose-blush);
+  margin-bottom: 14px;
+}
+
+.s10-title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.s10-heart-small {
+  font-size: 1.3rem;
+  color: var(--color-rose-blush);
+  margin-bottom: 14px;
+}
+
+.s10-p {
+  font-size: 0.95rem;
+  color: #F8D5DC;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.btn-wine-anniv {
+  background-color: var(--color-bordeaux-btn);
+  color: #FFF;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 15px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(184, 37, 59, 0.45);
+  transition: transform 0.2s;
+}
+
+.btn-wine-anniv:active {
+  transform: scale(0.96);
+}
+
+/* ========================================================
+   SLIDE 11 : MERCI
+   ======================================================== */
+.warm-sheet-bg {
+  background: #FFF3F5;
+  color: #24080D;
+  border: 1px solid #F3CFD6;
+  border-radius: 8px;
+  padding: 30px 20px;
+  box-shadow: 0 10px 30px rgba(40, 5, 11, 0.35);
+}
+
+.merci-sheet-box {
+  text-align: center;
+}
+
+.merci-top-text {
+  font-family: var(--font-hand);
+  font-size: 1.7rem;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.merci-special-text {
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-red-bright);
+}
+
+.merci-heart {
+  font-size: 1.5rem;
+  color: var(--color-red-bright);
+  margin: 6px 0;
+}
+
+.merci-sign {
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.merci-polaroid-bottom {
+  width: 220px;
+  margin: 0 auto;
+  background: #FFF;
+  padding: 6px 6px 12px;
+  border-radius: 3px;
+  box-shadow: var(--shadow-pola);
+  transform: rotate(1deg);
+  cursor: pointer;
+}
+
+.merci-polaroid-bottom img {
+  width: 100%;
+  height: 240px;
+  object-fit: contain;
+  display: block;
+  background: #FAF8F5;
+}
+
+.daisy-flower-deco {
+  font-size: 1.4rem;
+  margin-top: 14px;
+}
+
+/* ========================================================
+   SLIDE 12 : FINALE MINIMALISTE & SIGNATURE
+   ======================================================== */
+.deep-black-bg {
+  background: radial-gradient(ellipse at bottom, #420B15 0%, #160205 90%);
+  color: #FFF;
+  text-align: center;
+}
+
+.s12-center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.s12-heart-top, .s12-heart-mid {
+  font-size: 1.8rem;
+  color: #FFF;
+  opacity: 0.8;
+  margin-bottom: 15px;
+}
+
+.s12-main-text {
+  font-family: var(--font-serif);
+  font-size: 2.3rem;
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+
+.s12-name {
+  color: var(--color-red-bright);
+  background: linear-gradient(135deg, #FF758C 0%, #E63956 60%, #B8253B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  display: inline-block;
+}
+
+.s12-wish-sub {
+  font-size: 0.95rem;
+  color: #B3A8A3;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-bottom: 25px;
+}
+
+.mactar-autograph {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.mactar-script {
+  font-family: var(--font-hand);
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: #FFF;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.mactar-stroke {
+  margin-top: -12px;
+}
+
+/* ========================================================
+   BARRE DE PROGRESSION & CONTRÔLE BAS
+   ======================================================== */
+.story-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  background: rgba(18, 14, 14, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 16px env(safe-area-inset-bottom, 8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.progress-track {
+  width: 100%;
+  height: 2.5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.progress-bar-fill {
+  width: 8.33%;
+  height: 100%;
+  background: var(--color-wine-text);
+  transition: width 0.35s ease;
+}
+
+.story-nav-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-bottom: 2px;
+}
+
+.nav-arrow-btn {
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 1.8rem;
+  font-weight: 300;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.nav-arrow-btn:active {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tap-hint-text {
+  font-size: 0.75rem;
+  color: #8C827E;
+  font-weight: 500;
+}
+
+/* ========================================================
+   LIGHTBOX PLEIN ÉCRAN
+   ======================================================== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 8, 8, 0.94);
+  backdrop-filter: blur(12px);
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-modal {
+  position: relative;
+  max-width: 92vw;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #FFF;
+  padding: 8px 8px 14px;
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+}
+
+.lightbox-modal img {
+  max-width: 100%;
+  max-height: 68vh;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.lightbox-caption {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: var(--color-text-dark);
+  margin-top: 8px;
+  text-align: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -38px;
+  right: 0;
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* ========================================================
+   MODAL DE CÉLÉBRATION FINALE (PLUIE DE CŒURS & OR)
+   ======================================================== */
+.celebration-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 10, 11, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 10010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.celebration-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.celebration-card {
+  background: #FAF7F0;
+  color: var(--color-text-dark);
+  border: 1px solid #E5DFD4;
+  border-radius: 12px;
+  padding: 38px 26px 28px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(196, 85, 97, 0.2);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.celebration-modal.active .celebration-card {
+  transform: scale(1);
+}
+
+.celebration-sparkles {
+  font-size: 1.6rem;
+  color: var(--color-wine-text);
+  margin-bottom: 12px;
+}
+
+.celebration-title {
+  font-family: var(--font-hand);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.celebration-title .highlight-name {
+  color: var(--color-wine-text);
+  font-size: 2.4rem;
+}
+
+.celebration-body {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: #5C524E;
+  margin-bottom: 18px;
+  line-height: 1.4;
+}
+
+.celebration-signature {
+  font-family: var(--font-hand);
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--color-wine-text);
+  margin-bottom: 24px;
+}
+
+.btn-close-celebration {
+  background-color: var(--color-bordeaux-btn);
+  color: #FFF;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn-close-celebration:active {
+  transform: scale(0.96);
+}
