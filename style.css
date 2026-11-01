@@ -988,65 +988,158 @@ html, body {
 }
 
 /* ========================================================
-   SLIDE 10 : DERNIÈRE SURPRISE
+   SLIDE 10 : DERNIÈRE SURPRISE (CARTE SCRAPBOOK & CÉLÉBRATION)
    ======================================================== */
 .bordeaux-night-bg {
-  background: radial-gradient(ellipse at center, #78192B 0%, #26050B 85%);
-  color: #FFF;
-  text-align: center;
+  background: 
+    radial-gradient(ellipse at 50% 15%, rgba(214, 52, 85, 0.35) 0%, transparent 65%),
+    linear-gradient(175deg, #380712 0%, #1c0207 60%, #120104 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px;
 }
 
-.s10-center-content {
+.s10-scrap-card {
+  background: #FFFDF9;
+  color: #1E1918;
+  border: 1px solid #EDE4D8;
+  border-radius: 14px;
+  padding: 28px 18px 22px;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex: 1;
 }
 
-.s10-heart {
-  font-size: 2.2rem;
-  color: var(--color-rose-blush);
-  margin-bottom: 14px;
+.s10-celebrate-sparkle {
+  font-size: 1.35rem;
+  color: #B8324F;
+  margin-bottom: 6px;
+  letter-spacing: 2px;
 }
 
 .s10-title {
   font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 600;
+  font-size: 1.55rem;
+  font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 12px;
-}
-
-.s10-heart-small {
-  font-size: 1.3rem;
-  color: var(--color-rose-blush);
+  color: #8C1D35;
   margin-bottom: 14px;
 }
 
+/* Polaroïd au sein de la carte */
+.s10-mini-pola {
+  background: #FFF;
+  padding: 6px 6px 10px;
+  border-radius: 4px;
+  box-shadow: 0 6px 18px rgba(45, 6, 12, 0.18);
+  border: 1px solid #F0E6D8;
+  width: 190px;
+  margin-bottom: 14px;
+  cursor: pointer;
+  transform: rotate(-1.5deg);
+  transition: transform 0.25s ease;
+}
+
+.s10-mini-pola:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+.s10-mini-pola .pola-img-wrap {
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: #F5EFEB;
+}
+
+.s10-mini-pola .pola-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+}
+
+.s10-pola-caption {
+  font-family: var(--font-hand);
+  font-size: 1.15rem;
+  color: #2D0811;
+  margin-top: 5px;
+  line-height: 1.1;
+}
+
+.s10-heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.s10-heart-divider .line {
+  width: 35px;
+  height: 1px;
+  background: #E8D5DC;
+}
+
+.s10-heart-divider .heart {
+  color: #E63956;
+  font-size: 0.85rem;
+}
+
 .s10-p {
-  font-size: 0.95rem;
-  color: #F8D5DC;
-  line-height: 1.6;
-  margin-bottom: 28px;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: #4D3F43;
+  line-height: 1.45;
+  margin-bottom: 18px;
 }
 
 .btn-wine-anniv {
-  background-color: var(--color-bordeaux-btn);
+  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
   color: #FFF;
   border: none;
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: 0.92rem;
   font-weight: 700;
-  padding: 15px 32px;
+  padding: 13px 24px;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 6px 20px rgba(184, 37, 59, 0.45);
-  transition: transform 0.2s;
+  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.45);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulseButton 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseButton {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 8px 24px rgba(230, 57, 86, 0.45);
+  }
+  50% {
+    transform: scale(1.04);
+    box-shadow: 0 12px 28px rgba(230, 57, 86, 0.65);
+  }
 }
 
 .btn-wine-anniv:active {
   transform: scale(0.96);
+}
+
+.btn-sparkle-icon {
+  font-size: 1.1rem;
 }
 
 /* ========================================================

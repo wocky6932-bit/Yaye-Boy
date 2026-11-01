@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=12">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
 
@@ -454,30 +454,43 @@
       </div>
     </section>
 
-    <!-- SLIDE 10 : DERNIÈRE SURPRISE -->
+    <!-- SLIDE 10 : DERNIÈRE SURPRISE (CARTE SCRAPBOOK AVEC POLAROÏD & CÉLÉBRATION) -->
     <section class="slide-screen slide-10" data-title="Dernière surprise">
       <div class="slide-inner bordeaux-night-bg">
-        <div class="s10-center-content">
-          <div class="s10-heart">♡</div>
+        <div class="s10-scrap-card">
+          <div class="tape-strip tape-top-center"></div>
+
+          <div class="s10-celebrate-sparkle">✨ 🎂 ✨</div>
           
           <h2 class="s10-title">
             Une nouvelle année remplie de bonheur t'attend !
           </h2>
-          
-          <div class="s10-heart-small">♡</div>
+
+          <!-- Mini Polaroïd souvenir joyeux -->
+          <div class="s10-mini-pola" onclick="openLightbox('assets/images/photo10_or_pose.jpg', 'Rayonnante & pleine de vie ♡')">
+            <div class="pola-img-wrap">
+              <img src="assets/images/photo10_or_pose.jpg" alt="Yaye Boy fête">
+            </div>
+            <p class="s10-pola-caption">Rayonnante & pleine de vie ♡</p>
+          </div>
+
+          <div class="s10-heart-divider">
+            <span class="line"></span>
+            <span class="heart">♥</span>
+            <span class="line"></span>
+          </div>
 
           <p class="s10-p">
             Profite de chaque instant, <br>
             vis, rêve, souris... <br>
-            Tu mérites tout le meilleur.
+            Tu mérites tout le meilleur de cette vie.
           </p>
 
           <button class="btn-wine-anniv" id="btnCelebration">
-            <span>Tu le mérites ♡</span>
+            <span class="btn-sparkle-icon">✨</span>
+            <span>Touche ici pour ta surprise ♡</span>
           </button>
         </div>
-        
-        <div class="city-skyline-silhouette"></div>
       </div>
     </section>
 
