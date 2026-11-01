@@ -1,55 +1,51 @@
 /* ========================================================
-   SCRIPT SCRAPBOOK TIKTOK FLUIDE • YAYE BOY ♡
+   LOGIQUE INTERACTIVE INSPIRÉE DU CODE REACT
+   Pour Yaye Boy ♡ • Mactar
    ======================================================== */
 
 let isOpened = false;
 
-function openLetterExperience() {
+function openLetter() {
   if (isOpened) return;
   isOpened = true;
 
-  const envelopeBox = document.getElementById('envelopeBox');
-  const envelopeScreen = document.getElementById('envelopeScreen');
-  const mainExperience = document.getElementById('mainExperience');
+  const envelope = document.getElementById('envelopeInteractive');
+  const siteContent = document.getElementById('siteContent');
 
-  if (envelopeBox) {
-    envelopeBox.classList.add('is-opening');
+  if (envelope) {
+    envelope.parentElement.classList.add('is-opening');
   }
 
-  // Animation d'ouverture douce du rabat puis transition vers le flux continu
+  // Animation d'ouverture et défilement fluide vers le héro
+  document.body.classList.add('letter-opened');
+  
   setTimeout(() => {
-    if (envelopeScreen) {
-      envelopeScreen.classList.add('opened-dismiss');
+    if (siteContent) {
+      siteContent.classList.add('visible');
     }
-    if (mainExperience) {
-      mainExperience.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    const birthdaySection = document.getElementById('birthday');
+    if (birthdaySection) {
+      birthdaySection.scrollIntoView({ behavior: 'smooth' });
     }
   }, 750);
 }
 
-// --- Pluie de Cœurs & Confettis Dorés + Carte Finale ---
-const btnCelebration = document.getElementById('btnCelebration');
-const celebrationModal = document.getElementById('celebrationModal');
+function triggerKiss() {
+  const kissReveal = document.getElementById('kissReveal');
+  const kissButton = document.getElementById('kissButton');
 
-if (btnCelebration) {
-  btnCelebration.addEventListener('click', () => {
-    launchGoldenHeartsRain();
-    setTimeout(() => {
-      if (celebrationModal) {
-        celebrationModal.classList.add('active');
-      }
-    }, 600);
-  });
-}
-
-function closeCelebrationModal(e) {
-  if (e.target === celebrationModal || e.target.classList.contains('btn-close-celebration')) {
-    celebrationModal.classList.remove('active');
+  if (kissReveal) {
+    kissReveal.style.display = 'block';
   }
+  if (kissButton) {
+    kissButton.style.display = 'none';
+  }
+
+  // Lancement de la pluie de cœurs festive
+  launchHeartsExplosion();
 }
 
-function launchGoldenHeartsRain() {
+function launchHeartsExplosion() {
   const canvas = document.createElement('canvas');
   canvas.style.position = 'fixed';
   canvas.style.inset = '0';
@@ -64,32 +60,34 @@ function launchGoldenHeartsRain() {
   canvas.height = window.innerHeight;
 
   const particles = [];
-  const colors = ['#E63956', '#FFB3C2', '#FFD700', '#B8223E', '#FFFFFF'];
+  const colors = ['#C93B52', '#E63956', '#FFB3C2', '#FFD700', '#FFFFFF'];
 
   for (let i = 0; i < 90; i++) {
     particles.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * -canvas.height * 0.8,
-      size: Math.random() * 16 + 12,
+      x: canvas.width / 2 + (Math.random() * 80 - 40),
+      y: canvas.height * 0.7,
+      size: Math.random() * 18 + 14,
       w: Math.random() * 10 + 6,
       h: Math.random() * 8 + 4,
-      speedY: Math.random() * 3 + 2.5,
-      speedX: Math.random() * 2 - 1,
+      speedY: -(Math.random() * 10 + 6),
+      speedX: Math.random() * 8 - 4,
+      gravity: 0.28,
       rotation: Math.random() * 360,
-      rotSpeed: Math.random() * 4 - 2,
+      rotSpeed: Math.random() * 6 - 3,
       color: colors[Math.floor(Math.random() * colors.length)],
-      isHeart: Math.random() > 0.45,
-      opacity: Math.random() * 0.4 + 0.6
+      isHeart: Math.random() > 0.35,
+      opacity: 1
     });
   }
 
   const startTime = Date.now();
 
-  function renderRain() {
+  function renderExplosion() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     let active = 0;
 
     particles.forEach(p => {
+      p.speedY += p.gravity;
       p.y += p.speedY;
       p.x += p.speedX;
       p.rotation += p.rotSpeed;
@@ -104,7 +102,7 @@ function launchGoldenHeartsRain() {
 
         if (p.isHeart) {
           ctx.font = `${p.size}px 'Caveat', serif`;
-          ctx.fillText('♡', -p.size / 2, p.size / 2);
+          ctx.fillText('♥', -p.size / 2, p.size / 2);
         } else {
           ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
         }
@@ -113,16 +111,16 @@ function launchGoldenHeartsRain() {
       }
     });
 
-    if (active > 0 && Date.now() - startTime < 4800) {
-      requestAnimationFrame(renderRain);
+    if (active > 0 && Date.now() - startTime < 4200) {
+      requestAnimationFrame(renderExplosion);
     } else {
       canvas.remove();
     }
   }
-  renderRain();
+  renderExplosion();
 }
 
-// --- Lightbox Plein Écran pour les Photos ---
+// Lightbox
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightboxImg');
 const lightboxCaption = document.getElementById('lightboxCaption');

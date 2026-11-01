@@ -1,21 +1,18 @@
 /* ========================================================
-   FEUILLE DE STYLE SCRAPBOOK TIKTOK FLUIDE • YAYE BOY ♡
-   Esthétique ivoire, papier vergé, rose poudré et rouge bordeaux
+   DESIGN INSPIRÉ DU CODE : ESTHÉTIQUE PAPIER, CŒURS FLOTTANTS & POLAROÏDS
+   Pour Yaye Boy ♡ • Mactar
    ======================================================== */
 
 :root {
-  --color-page-bg: #F9F3EC;
-  --color-card-bg: #FFFDF9;
-  --color-border-card: #EDE4D8;
-  --color-text-main: #2A181C;
-  --color-text-muted: #6B555B;
-  --color-bordeaux: #380711;
-  --color-red-cherry: #B8253B;
-  --color-red-bright: #E63956;
-  --color-rose-poudre: #FCE8ED;
-  --color-tape: rgba(253, 232, 238, 0.94);
-  --shadow-soft: 0 14px 38px rgba(56, 7, 17, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
-  --shadow-pola: 0 8px 24px rgba(45, 10, 18, 0.12);
+  --color-bg: #FAF6F0;
+  --color-card: #FFFFFF;
+  --color-primary: #C93B52;
+  --color-primary-dark: #8C1D35;
+  --color-accent-pink: #FDE8ED;
+  --color-text-dark: #2A1F21;
+  --color-text-muted: #7E6B70;
+  --color-border: #EADBCE;
+  --color-tape: rgba(253, 235, 240, 0.95);
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-hand: 'Caveat', cursive;
@@ -29,47 +26,25 @@
   -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
-  width: 100%;
-  min-height: 100%;
-  background: var(--color-page-bg);
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
   background-image: 
-    radial-gradient(ellipse at 85% 10%, rgba(230, 57, 86, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 15% 50%, rgba(244, 164, 180, 0.12) 0%, transparent 60%),
-    radial-gradient(ellipse at 85% 90%, rgba(184, 37, 59, 0.06) 0%, transparent 60%);
-  color: var(--color-text-main);
+    radial-gradient(circle at 10% 20%, rgba(201, 59, 82, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 70%, rgba(244, 164, 180, 0.08) 0%, transparent 45%);
+  color: var(--color-text-dark);
   font-family: var(--font-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ========================================================
-   1. ÉCRAN 1 : L'ENVELOPPE INTERACTIVE INITIALE
+   CŒURS FLOTTANTS (FLOATING HEARTS)
    ======================================================== */
-.envelope-screen-hero {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  background: radial-gradient(circle at 50% 25%, #FFFDF9 0%, #F5ECE3 65%, #EBDDCF 100%);
-  z-index: 10000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s;
-}
-
-.envelope-screen-hero.opened-dismiss {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Pétales flottants */
-.floating-petals {
+.hearts-container {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -77,293 +52,221 @@ html, body {
   z-index: 1;
 }
 
-.floating-petals span {
+.hearts-container span {
   position: absolute;
-  display: block;
-  font-size: 1.4rem;
-  opacity: 0.45;
-  animation: floatPetal 11s infinite linear;
+  color: rgba(201, 59, 82, 0.28);
+  font-size: calc(14px + (var(--i) * 2px));
+  animation: floatUp 8s infinite ease-in-out;
+  animation-delay: calc(var(--i) * 0.9s);
+  left: calc(10% + (var(--i) * 11%));
+  bottom: -20px;
 }
 
-.floating-petals span:nth-child(1) { top: -20px; left: 12%; animation-duration: 9s; font-size: 1.6rem; }
-.floating-petals span:nth-child(2) { top: -20px; left: 32%; animation-duration: 12s; animation-delay: 2s; }
-.floating-petals span:nth-child(3) { top: -20px; left: 68%; animation-duration: 10s; animation-delay: 1s; }
-.floating-petals span:nth-child(4) { top: -20px; left: 88%; animation-duration: 13s; animation-delay: 3s; font-size: 1.5rem; }
-.floating-petals span:nth-child(5) { top: -20px; left: 50%; animation-duration: 11s; animation-delay: 4s; }
-
-@keyframes floatPetal {
-  0% { transform: translateY(-30px) rotate(0deg); opacity: 0; }
-  20% { opacity: 0.65; }
-  80% { opacity: 0.65; }
-  100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.7; }
+  80% { opacity: 0.7; }
+  100% { transform: translateY(-110vh) scale(1.2) rotate(45deg); opacity: 0; }
 }
 
-.envelope-box-container {
+/* ========================================================
+   SECTION 1 : INTRODUCTION ENVELOPPE
+   ======================================================== */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--color-bg);
+  background: radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F5ECE3 65%, #EBDDCF 100%);
+  z-index: 10000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  position: relative;
-  z-index: 5;
-}
-
-.intro-heading {
+  padding: 24px;
   text-align: center;
-  margin-bottom: 26px;
-  animation: slideDownIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s;
 }
 
-.sub-greeting {
+body.letter-opened .intro-screen {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-copy {
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
   font-family: var(--font-hand);
-  font-size: 1.5rem;
-  color: var(--color-red-cherry);
+  font-size: 1.45rem;
+  color: var(--color-primary);
   display: block;
   margin-bottom: 2px;
+  letter-spacing: 0.5px;
 }
 
-.main-mail-title {
+.intro-copy h1 {
   font-family: var(--font-serif);
   font-size: 2.8rem;
   font-weight: 600;
   font-style: italic;
-  color: #2E181D;
+  color: var(--color-primary-dark);
   line-height: 1.1;
+  margin-bottom: 8px;
 }
 
-@keyframes slideDownIn {
-  0% { opacity: 0; transform: translateY(-40px); }
-  100% { opacity: 1; transform: translateY(0); }
+.intro-copy p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
 }
 
-/* L'enveloppe pastel 3D */
-.vintage-envelope-wrap {
-  width: 275px;
-  height: 185px;
-  background: #FEE8EC;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 
-    0 18px 45px rgba(184, 50, 79, 0.22),
-    0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1.5px solid #F3CFD6;
-  animation: 
-    dropEnvelope 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
-    envelopeFloat 3.8s infinite ease-in-out 1.3s;
+.envelope-button {
+  background: none;
+  border: none;
   cursor: pointer;
+  padding: 10px;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.25s ease;
 }
 
-@keyframes dropEnvelope {
-  0% { opacity: 0; transform: translateY(-130px) scale(0.85); }
-  60% { transform: translateY(14px) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+.envelope-button:hover {
+  transform: scale(1.05);
 }
 
-@keyframes envelopeFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-9px) rotate(1deg); }
+.envelope {
+  width: 130px;
+  height: 90px;
+  background: #FFF;
+  border: 1.5px solid #E5D5C8;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 14px 35px rgba(140, 29, 53, 0.14);
+  color: var(--color-primary);
 }
 
-.env-back-plate {
-  position: absolute;
-  inset: 0;
-  background: #F9DCE2;
-  border-radius: 10px;
-}
-
-.env-letter-peek {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  right: 20px;
-  height: 80px;
-  background: #FFFDF9;
-  border-radius: 6px 6px 0 0;
-  border: 1px solid #EFE4D6;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.vintage-envelope-wrap.is-opening .env-letter-peek {
-  transform: translateY(-60px);
-}
-
-.env-lavender-branch {
-  position: absolute;
-  top: -14px;
-  right: 18px;
-  font-size: 2.1rem;
-  z-index: 6;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-  transform: rotate(18deg);
-  pointer-events: none;
-}
-
-.env-front-creases {
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  pointer-events: none;
-  z-index: 4;
-  border-bottom: 92px solid #FEDBE2;
-  border-left: 137px solid #FCD2DA;
-  border-right: 137px solid #FCD2DA;
-  border-top: 92px solid transparent;
-}
-
-.env-top-flap {
+.envelope .flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 0;
   height: 0;
-  border-left: 137px solid transparent;
-  border-right: 137px solid transparent;
-  border-top: 105px solid #F5C7D0;
+  border-left: 64px solid transparent;
+  border-right: 64px solid transparent;
+  border-top: 48px solid #FDE8ED;
   transform-origin: top center;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 5;
+  transition: transform 0.5s ease;
 }
 
-.vintage-envelope-wrap.is-opening .env-top-flap {
+.envelope-button.is-opening .flap {
   transform: rotateX(180deg);
-  z-index: 2;
 }
 
-.env-heart-seal {
+.envelope .seal {
   position: absolute;
-  top: 52%;
+  top: 38px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
+  transform: translateX(-50%);
+  width: 26px;
+  height: 26px;
+  background: var(--color-primary);
+  color: #FFF;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 8;
-  box-shadow: 0 4px 12px rgba(184, 34, 62, 0.4);
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 6px rgba(201, 59, 82, 0.4);
 }
 
-.seal-heart {
+.open-cta {
+  margin-top: 28px;
+  background: var(--color-primary);
   color: #FFF;
-  font-size: 1.45rem;
-  line-height: 1;
-  animation: sealPulse 1.8s infinite ease-in-out;
-}
-
-@keyframes sealPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.22); }
-}
-
-.vintage-envelope-wrap.is-opening .env-heart-seal {
-  transform: translate(-50%, -50%) scale(1.4);
-  opacity: 0;
-}
-
-.tap-hint-wrapper {
-  margin-top: 30px;
-  display: flex;
-  flex-direction: column;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  animation: fadeInHint 1.2s ease 1s both;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(201, 59, 82, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 2;
 }
 
-.tap-finger {
-  font-size: 1.6rem;
-  animation: tapBounce 1.4s infinite ease-in-out;
+.open-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(201, 59, 82, 0.45);
 }
 
-@keyframes tapBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
+.cta-heart {
+  font-size: 1rem;
 }
 
-.tap-label {
-  font-family: var(--font-hand);
-  font-size: 1.35rem;
-  color: #7A555E;
-}
-
-@keyframes fadeInHint {
-  0% { opacity: 0; }
-  100% { opacity: 0.9; }
+.skip-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  margin-top: 14px;
+  position: relative;
+  z-index: 2;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ========================================================
-   2. ÉCRAN 2 : LE FLUX CONTINU SCRAPBOOK
+   SECTION 2 : CONTENU DU SITE (PAGE DÉFILANTE)
    ======================================================== */
-.main-scrapbook-stream {
+.site-container {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
   opacity: 0;
   transition: opacity 0.8s ease;
-  padding-bottom: 70px;
 }
 
-.main-scrapbook-stream.active {
+.site-container.visible {
   opacity: 1;
 }
 
-/* Ruban Washi Tape adhésif */
-.washi-tape {
-  position: absolute;
-  height: 20px;
-  background: var(--color-tape);
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  pointer-events: none;
-  z-index: 10;
-  border-left: 2px dashed rgba(184, 50, 79, 0.35);
-  border-right: 2px dashed rgba(184, 50, 79, 0.35);
-}
-
-.tape-center {
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-0.5deg);
-  width: 85px;
-}
-
-/* Conteneur principal */
-.stream-content-wrapper {
-  width: 100%;
-  max-width: 480px;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-/* Cartes Scrapbook */
-.scrap-card {
-  background: var(--color-card-bg);
-  border: 1px solid var(--color-border-card);
-  border-radius: 16px;
-  padding: 28px 20px 24px;
-  box-shadow: var(--shadow-soft);
+.section-rule {
+  padding: 48px 0;
+  border-bottom: 1px dashed var(--color-border);
   position: relative;
-  width: 100%;
 }
 
-.card-section-title {
+.section-heading {
   text-align: center;
-  margin-bottom: 22px;
+  margin-bottom: 28px;
 }
 
-.card-section-title h2 {
+.section-heading h2 {
   font-family: var(--font-serif);
-  font-size: 2rem;
+  font-size: 2.3rem;
   font-weight: 700;
-  color: var(--color-bordeaux);
-  line-height: 1.2;
+  color: var(--color-primary-dark);
+  line-height: 1.15;
 }
 
-.card-section-title .subtitle-hand {
+.section-heading p {
   font-family: var(--font-hand);
   font-size: 1.35rem;
   color: var(--color-text-muted);
@@ -371,283 +274,159 @@ html, body {
 }
 
 /* --------------------------------------------------------
-   A. Header Cinématique avec photo de Yaye Boy & Titres volants
+   HERO SECTION
    -------------------------------------------------------- */
-.tiktok-hero-section {
-  width: 100%;
-  max-width: 480px;
-  padding: 20px 16px 0;
-  margin-bottom: 12px;
+.hero {
+  text-align: center;
+  padding-top: 35px;
 }
 
-.hero-photo-frame {
-  width: 100%;
-  height: 245px;
-  border-radius: 18px;
+.hero-kicker {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 24px;
+  line-height: 1;
+}
+
+.hero-title .slide-left {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--color-text-dark);
+}
+
+.hero-title .outline {
+  font-family: var(--font-serif);
+  font-size: 2.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-primary-dark);
+}
+
+.hero-title .script {
+  font-family: var(--font-hand);
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: -6px;
+}
+
+.hero-portrait {
+  width: 250px;
+  margin: 0 auto 24px;
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 18px 42px rgba(56, 7, 17, 0.28);
-  border: 2px solid rgba(255, 255, 255, 0.95);
+  cursor: pointer;
 }
 
-.hero-photo {
+.portrait-frame {
+  width: 100%;
+  height: 290px;
+  background: #FFF;
+  padding: 10px 10px 24px;
+  border-radius: 6px;
+  box-shadow: 0 14px 38px rgba(45, 10, 18, 0.15);
+  border: 1px solid #EADBCE;
+}
+
+.portrait-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 25%;
-  display: block;
-  transform: scale(1.03);
-  animation: zoomSubtle 12s infinite alternate ease-in-out;
-}
-
-@keyframes zoomSubtle {
-  0% { transform: scale(1.03); }
-  100% { transform: scale(1.1); }
-}
-
-.hero-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(30, 8, 14, 0.2) 0%, rgba(20, 4, 8, 0.72) 100%);
-  pointer-events: none;
-}
-
-.flying-text-group {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 15px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.fly-text {
-  color: #FFF;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 57, 86, 0.6);
-  line-height: 1.1;
-  opacity: 0;
-}
-
-.line-1 {
-  font-family: var(--font-serif);
-  font-size: 2.1rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  animation: flyInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
-}
-
-.line-2 {
-  font-family: var(--font-hand);
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #FFB3C2;
-  margin-top: -2px;
-  animation: flyInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
-}
-
-.line-3 {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-style: italic;
-  letter-spacing: 3px;
-  color: #FFF;
-  animation: popInBounce 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s both;
-}
-
-@keyframes flyInLeft {
-  0% { opacity: 0; transform: translateX(-80px) rotate(-4deg); }
-  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
-}
-
-@keyframes flyInRight {
-  0% { opacity: 0; transform: translateX(80px) rotate(4deg); }
-  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
-}
-
-@keyframes popInBounce {
-  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* --------------------------------------------------------
-   B. Love Letter Card avec photomaton 4 photos
-   -------------------------------------------------------- */
-.letter-header-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  border-bottom: 1.5px solid #F0E3D8;
-  padding-bottom: 10px;
-  margin-bottom: 18px;
-}
-
-.letter-main-title {
-  font-family: var(--font-serif);
-  font-size: 2.1rem;
-  color: var(--color-red-cherry);
-  font-weight: 700;
-  line-height: 1;
-}
-
-.for-tag {
-  font-family: var(--font-hand);
-  font-size: 1.25rem;
-  color: #8C757B;
-}
-
-.letter-content-flex {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 18px;
-}
-
-.filmstrip-column {
-  width: 95px;
-  flex-shrink: 0;
-  background: #FFF;
-  padding: 4px;
   border-radius: 4px;
-  box-shadow: 0 4px 14px rgba(45, 10, 18, 0.15);
-  border: 1px solid #E5D9CE;
-  transform: rotate(-1.5deg);
-}
-
-.photostrip-img {
-  width: 100%;
-  height: auto;
   display: block;
-  border-radius: 2px;
 }
 
-.letter-prose-column {
-  flex: 1;
+.stamp {
+  position: absolute;
+  top: -12px;
+  right: -14px;
+  background: var(--color-accent-pink);
+  border: 1.5px dashed var(--color-primary);
+  color: var(--color-primary-dark);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 4px;
+  line-height: 1.2;
+  transform: rotate(8deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.hero-note {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: var(--color-primary);
+}
+
+.note-one { margin-bottom: 4px; }
+.note-two { color: var(--color-text-muted); margin-bottom: 18px; }
+
+.hero-bottom {
   font-family: var(--font-serif);
-  font-size: 1.08rem;
-  line-height: 1.6;
-  color: #38292D;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--color-text-dark);
+  margin-bottom: 20px;
 }
 
-.salutation-name {
-  font-family: var(--font-hand);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--color-red-cherry);
-  margin-bottom: 8px;
-}
-
-.letter-prose-column p {
-  margin-bottom: 10px;
-}
-
-.letter-valediction {
-  margin-top: 14px;
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  color: #5C4349;
-  line-height: 1.25;
-}
-
-.author-sign {
-  color: var(--color-red-cherry);
-  font-size: 1.75rem;
-}
-
-/* Morpion Tic-Tac-Toe */
-.tictactoe-widget {
-  background: #FFF5F7;
-  border: 1px dashed #E8CCD4;
-  border-radius: 10px;
-  padding: 12px;
-  display: flex;
+.scroll-cue {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 18px;
-  margin-top: 8px;
+  gap: 6px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  background: rgba(201, 59, 82, 0.08);
+  padding: 8px 18px;
+  border-radius: 50px;
+  transition: transform 0.2s;
 }
 
-.ttt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 25px);
-  grid-template-rows: repeat(3, 25px);
-  gap: 4px;
-}
-
-.ttt-grid .cell {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #F0C4D0;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: #665055;
-  font-weight: 700;
-}
-
-.ttt-grid .cell.win-heart {
-  color: var(--color-red-bright);
-  font-size: 1.15rem;
-  animation: pulseWin 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseWin {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.25); }
-}
-
-.ttt-text {
-  font-family: var(--font-hand);
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: var(--color-red-cherry);
+.scroll-cue:hover {
+  transform: translateY(2px);
 }
 
 /* --------------------------------------------------------
-   C. Polaroïds Souvenirs
+   SECTION POLAROÏDS (MEMORIES)
    -------------------------------------------------------- */
-.polas-mosaic-grid {
+.memory-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 18px;
+  align-items: center;
 }
 
-.pola-snap {
+.polaroid {
   background: #FFF;
-  padding: 8px 8px 12px;
+  padding: 8px 8px 14px;
   border-radius: 4px;
-  box-shadow: var(--shadow-pola);
-  border: 1px solid #EBE2D5;
-  position: relative;
+  box-shadow: 0 8px 24px rgba(45, 10, 18, 0.1);
+  border: 1px solid #EADBCE;
+  transform: rotate(var(--rotate, 0deg));
+  transition: transform 0.25s ease, z-index 0.25s;
   cursor: pointer;
-  transition: transform 0.25s ease;
+  position: relative;
 }
 
-.pola-snap:hover {
-  transform: scale(1.03) rotate(0deg) !important;
+.polaroid:hover {
+  transform: scale(1.04) rotate(0deg) !important;
   z-index: 5;
 }
 
-.pola-tilt-left { transform: rotate(-1.5deg); }
-.pola-tilt-right { transform: rotate(1.5deg); }
-
-.pola-tape {
-  position: absolute;
-  top: -7px;
-  left: 50%;
-  transform: translateX(-50%) rotate(1deg);
-  width: 50px;
-  height: 14px;
-  background: var(--color-tape);
-  border-left: 1px dashed rgba(184, 50, 79, 0.3);
-  border-right: 1px dashed rgba(184, 50, 79, 0.3);
-}
-
-.pola-frame {
+.polaroid .photo-frame {
   width: 100%;
   height: 175px;
   overflow: hidden;
@@ -655,7 +434,7 @@ html, body {
   background: #FAF6F2;
 }
 
-.pola-frame img {
+.polaroid .photo-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -663,386 +442,301 @@ html, body {
   display: block;
 }
 
-.pola-legend {
+.polaroid figcaption {
   font-family: var(--font-hand);
   font-size: 1.25rem;
   text-align: center;
-  color: var(--color-text-main);
+  color: var(--color-text-dark);
   margin-top: 8px;
   line-height: 1.15;
 }
 
-/* --------------------------------------------------------
-   D. 5 Raisons (Notes mémo)
-   -------------------------------------------------------- */
-.memos-vertical-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-}
-
-.memo-sticky-note {
-  background: #FFF;
-  border-radius: 8px;
-  padding: 13px 15px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-  border: 1px solid #ECE2D5;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  position: relative;
-  transition: transform 0.2s ease;
-}
-
-.tilt-1 { transform: rotate(-0.8deg); }
-.tilt-2 { transform: rotate(0.8deg); }
-.tilt-3 { transform: rotate(-0.5deg); }
-
-.memo-sticky-note:hover {
-  transform: scale(1.02) rotate(0deg);
-}
-
-.mini-tape {
-  position: absolute;
-  top: -6px;
-  left: 20px;
-  width: 45px;
-  height: 12px;
-  background: var(--color-tape);
-  border-left: 1px dashed rgba(184, 50, 79, 0.3);
-  border-right: 1px dashed rgba(184, 50, 79, 0.3);
-}
-
-.memo-icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--color-rose-poudre);
-  border: 1px solid #F5CCD6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-}
-
-.memo-info h4 {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-bordeaux);
-  margin-bottom: 2px;
-  line-height: 1.2;
-}
-
-.memo-info p {
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  line-height: 1.35;
-}
-
-.reasons-bottom-note {
+.between-note {
+  grid-column: span 2;
+  text-align: center;
   font-family: var(--font-hand);
-  font-size: 1.55rem;
-  color: var(--color-red-cherry);
-  text-align: right;
-  margin-top: 14px;
-  margin-right: 8px;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  padding: 12px 0;
+  line-height: 1.25;
+}
+
+.memory-counter {
+  grid-column: span 2;
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.duration {
+  text-align: center;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--color-primary-dark);
+  margin-top: 24px;
 }
 
 /* --------------------------------------------------------
-   E. Vidéos Souvenirs
+   SECTION VIDÉOS (MOMENTS)
    -------------------------------------------------------- */
-.videos-vertical-list {
+.video-grid {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  align-items: center;
+  gap: 24px;
 }
 
-.video-polaroid {
+.video-card {
   background: #FFF;
-  padding: 8px 8px 12px;
-  border-radius: 6px;
-  box-shadow: var(--shadow-pola);
-  border: 1px solid #EBE2D5;
-  width: 100%;
+  padding: 10px 10px 14px;
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgba(45, 10, 18, 0.1);
+  border: 1px solid #EADBCE;
 }
 
-.video-media-wrap {
-  width: 100%;
-  border-radius: 4px;
-  overflow: hidden;
-  background: #000;
+.video-card.offset {
+  transform: rotate(0.8deg);
 }
 
-.video-media-wrap video {
+.video-card video {
   width: 100%;
   height: auto;
   max-height: 480px;
-  object-fit: contain;
+  border-radius: 4px;
+  background: #000;
   display: block;
 }
 
-.video-caption {
+.video-card figcaption {
   font-family: var(--font-hand);
   font-size: 1.35rem;
   text-align: center;
-  color: var(--color-text-main);
+  color: var(--color-text-dark);
+  margin-top: 10px;
+}
+
+/* --------------------------------------------------------
+   SECTION LETTRE D'AMOUR (PAPIER ÉCRIT)
+   -------------------------------------------------------- */
+.letter-paper {
+  background: #FFFDF9;
+  border: 1.5px solid #EADBCE;
+  border-radius: 12px;
+  padding: 34px 24px 28px;
+  box-shadow: 0 14px 40px rgba(56, 7, 17, 0.08);
+  position: relative;
+}
+
+.letter-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  border-bottom: 1px dashed #EADBCE;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.letter-heart {
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.letter-paper h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-primary-dark);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.letter-body {
+  font-family: var(--font-serif);
+  font-size: 1.12rem;
+  line-height: 1.65;
+  color: #38292D;
+}
+
+.letter-body p {
+  margin-bottom: 14px;
+}
+
+.signature {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--color-text-dark);
+  margin-top: 24px;
+  text-align: right;
+  line-height: 1.3;
+}
+
+.signature span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.sig-heart {
+  font-size: 1.4rem;
+}
+
+.letter-doodle {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  text-align: left;
   margin-top: 8px;
 }
 
 /* --------------------------------------------------------
-   F. Vœux pour ton année à venir
+   SECTION ANNIVERSAIRE (2 MOIS & L'INFINI)
    -------------------------------------------------------- */
-.wishes-list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.wish-item {
-  background: #FFF;
-  border-radius: 8px;
-  padding: 12px 14px;
-  border: 1px solid #ECE2D5;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.wish-icon {
-  font-size: 1.4rem;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--color-rose-poudre);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.wish-text strong {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: var(--color-bordeaux);
-  display: block;
-  margin-bottom: 2px;
-}
-
-.wish-text p {
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  line-height: 1.35;
-}
-
-.wishes-sign-row {
-  font-family: var(--font-hand);
-  font-size: 1.6rem;
-  color: var(--color-red-cherry);
-  text-align: right;
-  margin-top: 14px;
-  margin-right: 8px;
-}
-
-/* --------------------------------------------------------
-   G. Célébration Finale & Autographe Mactar
-   -------------------------------------------------------- */
-.celebration-finale-card {
+.anniversary {
   text-align: center;
 }
 
-.celebrate-sparkle {
-  font-size: 1.45rem;
-  color: var(--color-red-cherry);
-  margin-bottom: 8px;
-  letter-spacing: 3px;
-}
-
-.finale-title {
+.anniversary h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   font-family: var(--font-serif);
-  font-size: 1.85rem;
+  font-size: 2.6rem;
   font-weight: 700;
-  color: var(--color-bordeaux);
-  line-height: 1.25;
-  margin-bottom: 14px;
+  color: var(--color-primary-dark);
+  margin: 12px 0 10px;
 }
 
-.finale-prose {
+.anniversary h2 i {
+  font-family: var(--font-hand);
+  font-size: 2.4rem;
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.anniversary p {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   color: var(--color-text-muted);
-  line-height: 1.55;
-  margin-bottom: 24px;
+  line-height: 1.5;
 }
 
-.btn-celebrate-now {
+/* --------------------------------------------------------
+   FINALE & BISOU
+   -------------------------------------------------------- */
+.finale {
+  text-align: center;
+  padding: 55px 0 20px;
+  position: relative;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1.6rem;
+  color: #E63956;
+}
+
+.sparkle-one { top: 20px; left: 15%; }
+.sparkle-two { top: 35px; right: 15%; }
+
+.finale h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  line-height: 1.25;
+  margin: 10px 0 16px;
+}
+
+.finale h2 em {
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.final-love {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 26px;
+}
+
+.final-heart {
+  color: var(--color-primary);
+}
+
+.kiss-button {
   background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
   color: #FFF;
   border: none;
   font-family: var(--font-sans);
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  padding: 14px 28px;
+  padding: 14px 30px;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  animation: pulseCelebrate 2.2s infinite ease-in-out;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-@keyframes pulseCelebrate {
-  0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4); }
-  50% { transform: scale(1.04); box-shadow: 0 12px 28px rgba(230, 57, 86, 0.6); }
+.kiss-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(230, 57, 86, 0.55);
 }
 
-.btn-celebrate-now:active {
-  transform: scale(0.96);
-}
-
-.finale-signature-area {
-  border-top: 1px dashed #E2D2D7;
-  padding-top: 20px;
+.kiss-reveal {
   margin-top: 26px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background: #FFF;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 12px 35px rgba(201, 59, 82, 0.15);
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
 }
 
-.finale-subtext {
+@keyframes popIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.kiss-hearts {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+  letter-spacing: 6px;
+}
+
+.kiss-reveal strong {
+  display: block;
   font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.05rem;
-  color: #7A6F72;
-  margin-bottom: 6px;
-}
-
-.autograph-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.mactar-name {
-  font-family: var(--font-hand);
-  font-size: 3.4rem;
-  font-weight: 700;
-  color: var(--color-red-cherry);
-  line-height: 1;
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
   letter-spacing: 1px;
 }
 
-.autograph-underline {
-  margin-top: -10px;
+.kiss-reveal span {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  color: var(--color-primary);
 }
 
-.bouquet-emojis {
-  font-size: 1.4rem;
-  margin-top: 16px;
-  letter-spacing: 4px;
-}
-
-.stream-footer-note {
+footer {
   text-align: center;
   font-family: var(--font-hand);
   font-size: 1.25rem;
-  color: #9E888E;
-  margin-top: 8px;
-}
-
-/* ========================================================
-   MODAL DE CÉLÉBRATION POPUP
-   ======================================================== */
-.celebration-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(30, 15, 20, 0.75);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  z-index: 10010;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.celebration-modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.celebration-card {
-  background: #FFFDF9;
-  color: var(--color-text-main);
-  border: 1px solid #E8DFD3;
-  border-radius: 14px;
-  padding: 36px 24px 26px;
-  max-width: 340px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
-  position: relative;
-  transform: scale(0.9);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.celebration-modal.active .celebration-card {
-  transform: scale(1);
-}
-
-.celebration-sparkles {
-  font-size: 1.5rem;
-  color: var(--color-red-cherry);
-  margin-bottom: 10px;
-}
-
-.celebration-title {
-  font-family: var(--font-hand);
-  font-size: 2.3rem;
-  font-weight: 700;
-  color: var(--color-bordeaux);
-  line-height: 1.15;
-  margin-bottom: 10px;
-}
-
-.celebration-title .highlight-name {
-  color: var(--color-red-cherry);
-  font-size: 2.5rem;
-}
-
-.celebration-body {
-  font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-style: italic;
   color: var(--color-text-muted);
-  margin-bottom: 16px;
+  margin-top: 35px;
 }
 
-.celebration-signature {
-  font-family: var(--font-hand);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-red-cherry);
-  margin-bottom: 22px;
-}
-
-.btn-close-celebration {
-  background: var(--color-bordeaux);
-  color: #FFF;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 50px;
-  cursor: pointer;
+.footer-heart {
+  color: var(--color-primary);
 }
 
 /* ========================================================
@@ -1091,7 +785,7 @@ html, body {
 .lightbox-caption {
   font-family: var(--font-hand);
   font-size: 1.35rem;
-  color: var(--color-text-main);
+  color: var(--color-text-dark);
   margin-top: 8px;
   text-align: center;
 }
