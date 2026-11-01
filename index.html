@@ -3,306 +3,281 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Pour Yaye Boy ♡ Joyeux Anniversaire</title>
+  <title>Happy Birthday, My Love ♡ Yaye Boy</title>
   
   <meta name="description" content="A little love letter, made just for you.">
   <meta property="og:title" content="Happy Birthday, My Love ♡ Yaye Boy">
   <meta property="og:description" content="A little love letter, made just for you.">
   <meta property="og:image" content="assets/images/photo7_hero_centered.jpg">
-  
-  <!-- Icônes & PWA comme dans Next.js layout -->
+
   <link rel="icon" href="/icon-light-32x32.png" sizes="32x32" media="(prefers-color-scheme: light)">
   <link rel="icon" href="/icon-dark-32x32.png" sizes="32x32" media="(prefers-color-scheme: dark)">
   <link rel="apple-touch-icon" href="/apple-icon.png">
-  
-  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF6F0">
-  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#140A0E">
 
-  <!-- Polices Google : Caveat, Cormorant Garamond, Plus Jakarta Sans -->
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f8f1e8">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1c1415">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=25">
+  <link rel="stylesheet" href="style.css?v=30">
 </head>
 <body>
 
-  <!-- ============================================== -->
-  <!-- 1. SECTION INTRO : L'ENVELOPPE "TU AS DU COURRIER !" -->
-  <!-- ============================================== -->
-  <section id="introSection" class="intro-screen" aria-label="Introduction">
-    <div class="hearts-container" aria-hidden="true">
-      <span style="--i:0">♥</span>
-      <span style="--i:1">♥</span>
-      <span style="--i:2">♥</span>
-      <span style="--i:3">♥</span>
-      <span style="--i:4">♥</span>
-      <span style="--i:5">♥</span>
-      <span style="--i:6">♥</span>
-      <span style="--i:7">♥</span>
-    </div>
-
-    <div class="intro-copy">
-      <span class="eyebrow">une petite attention pour toi</span>
-      <h1>Tu as du courrier !</h1>
-      <p>Une petite surprise préparée rien que pour toi...</p>
-    </div>
-
-    <button class="envelope-button" onclick="openLetter()" aria-label="Ouvrir ma lettre">
-      <div class="envelope" id="envelopeInteractive">
-        <svg class="mail-icon" width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect width="20" height="16" x="2" y="4" rx="2"/>
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-        </svg>
-        <div class="flap"></div>
-        <span class="seal">♥</span>
-      </div>
-    </button>
-
-    <button class="open-cta" onclick="openLetter()">
-      <span>Ouvrir ma lettre</span>
-      <span class="cta-heart">♥</span>
-    </button>
-
-    <button class="skip-btn" onclick="openLetter()">
-      <span>passer l’introduction ↓</span>
-    </button>
-  </section>
-
-  <!-- ============================================== -->
-  <!-- 2. LE SITE PRINCIPAL (RÉVÉLÉ AU CLIC)          -->
-  <!-- ============================================== -->
-  <div id="siteContent" class="site-container">
-
-    <!-- HERO SECTION -->
-    <section id="birthday" class="hero section-rule">
-      <div class="hearts-container" aria-hidden="true">
-        <span style="--i:0">♥</span><span style="--i:1">♥</span><span style="--i:2">♥</span>
-        <span style="--i:3">♥</span><span style="--i:4">♥</span><span style="--i:5">♥</span>
+  <main>
+    <!-- 1. INTRODUCTION INTERACTIVE AVEC L'ENVELOPPE TOMBANTE -->
+    <section class="intro" id="introSection" aria-label="Introduction">
+      <div class="hearts" aria-hidden="true">
+        <span style="--i:0">♥</span>
+        <span style="--i:1">♥</span>
+        <span style="--i:2">♥</span>
+        <span style="--i:3">♥</span>
+        <span style="--i:4">♥</span>
+        <span style="--i:5">♥</span>
+        <span style="--i:6">♥</span>
+        <span style="--i:7">♥</span>
       </div>
 
-      <div class="hero-kicker">pour celle qui fait rayonner mes journées</div>
+      <div class="intro-copy">
+        <span class="eyebrow">une petite attention pour toi</span>
+        <h1>Tu as du courrier !</h1>
+        <p>Une petite surprise pour toi...</p>
+      </div>
 
-      <h1 class="hero-title">
-        <span class="slide-left">JOYEUX</span>
-        <span class="outline slide-right">ANNIVERSAIRE,</span>
-        <span class="script slide-up">Yaye Boy ♡</span>
-      </h1>
-
-      <div class="hero-portrait" onclick="openLightbox('assets/images/photo7_voiture.jpg', 'Yaye Boy ♡')">
-        <div class="portrait-frame">
-          <img src="assets/images/photo7_hero_centered.jpg" alt="Yaye Boy">
+      <button class="envelope-button" id="envelopeBtn" onclick="openLetter()" aria-label="Ouvrir ma lettre">
+        <div class="envelope">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect width="20" height="16" x="2" y="4" rx="2"/>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+          </svg>
+          <div class="flap"></div>
+          <span class="seal">♥</span>
         </div>
-        <span class="stamp">est. us<br><b>2 MOIS ♡</b></span>
-      </div>
-
-      <div class="hero-note note-one">
-        mon sourire préféré <span>♥</span>
-      </div>
-      <div class="hero-note note-two">
-        douceur & rayonnement
-      </div>
-
-      <p class="hero-bottom">Aujourd’hui, tout est à propos de toi.</p>
-
-      <a class="scroll-cue" href="#memories">
-        <span>découvrir notre histoire</span>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-      </a>
-    </section>
-
-    <!-- SECTION NOS SOUVENIRS (GRILLE POLAROÏDS) -->
-    <section id="memories" class="memories section-rule">
-      <div class="section-heading">
-        <span class="eyebrow">les petits détails</span>
-        <h2>Nos souvenirs</h2>
-        <p>Chaque photo raconte une histoire.</p>
-      </div>
-
-      <div class="memory-grid">
-        <!-- Photo 1 -->
-        <figure class="polaroid" style="--rotate: -3deg;" onclick="openLightbox('assets/images/photo2_doree.png', 'toujours aussi belle ♡')">
-          <div class="photo-frame">
-            <img src="assets/images/pola1_gold_portrait.png" alt="Yaye Boy dorée">
-          </div>
-          <figcaption>toujours aussi belle ♡</figcaption>
-        </figure>
-
-        <!-- Photo 2 -->
-        <figure class="polaroid" style="--rotate: 4deg;" onclick="openLightbox('assets/images/photo1_diplome.jpg', 'quelle fierté ! ♡')">
-          <div class="photo-frame">
-            <img src="assets/images/pola3_grad_portrait.jpg" alt="Yaye Boy diplôme">
-          </div>
-          <figcaption>quelle fierté ! ♡</figcaption>
-        </figure>
-
-        <!-- Photo 3 -->
-        <figure class="polaroid" style="--rotate: -2deg;" onclick="openLightbox('assets/images/photo8_rose.jpg', 'ce sourire qui fait chavirer')">
-          <div class="photo-frame">
-            <img src="assets/images/pola_rose_portrait.jpg" alt="Yaye Boy rose">
-          </div>
-          <figcaption>ce sourire qui fait chavirer ♡</figcaption>
-        </figure>
-
-        <!-- Photo 4 -->
-        <figure class="polaroid" style="--rotate: 3deg;" onclick="openLightbox('assets/images/photo5_lilas.png', 'tu es unique')">
-          <div class="photo-frame">
-            <img src="assets/images/photo5_lilas.png" alt="Yaye Boy lilas">
-          </div>
-          <figcaption>tu es unique ♡</figcaption>
-        </figure>
-
-        <!-- Photo 5 -->
-        <figure class="polaroid" style="--rotate: -4deg;" onclick="openLightbox('assets/images/photo4_casual.jpg', 'ton énergie incroyable')">
-          <div class="photo-frame">
-            <img src="assets/images/photo4_casual.jpg" alt="Yaye Boy casual">
-          </div>
-          <figcaption>ton énergie incroyable ♡</figcaption>
-        </figure>
-
-        <!-- Photo 6 -->
-        <figure class="polaroid" style="--rotate: 2deg;" onclick="openLightbox('assets/images/photo10_or_pose.jpg', 'rayonnante & pleine de vie')">
-          <div class="photo-frame">
-            <img src="assets/images/photo10_or_pose.jpg" alt="Yaye Boy or">
-          </div>
-          <figcaption>rayonnante & pleine de vie ♡</figcaption>
-        </figure>
-
-        <!-- Photo 7 -->
-        <figure class="polaroid" style="--rotate: -2deg;" onclick="openLightbox('assets/images/photo9_orange.jpg', 'lumière de mes journées')">
-          <div class="photo-frame">
-            <img src="assets/images/photo9_orange.jpg" alt="Yaye Boy orange">
-          </div>
-          <figcaption>lumière de mes journées ♡</figcaption>
-        </figure>
-
-        <!-- Photo 8 -->
-        <figure class="polaroid" style="--rotate: 4deg;" onclick="openLightbox('assets/images/photo3_bleu.jpg', 'spontanéité & douceur')">
-          <div class="photo-frame">
-            <img src="assets/images/pola2_blue_portrait.jpg" alt="Yaye Boy bleue">
-          </div>
-          <figcaption>spontanéité & douceur ♡</figcaption>
-        </figure>
-
-        <p class="between-note">Mes moments préférés<br>sont avec toi.</p>
-        <p class="memory-counter">08 / ∞</p>
-      </div>
-
-      <p class="duration">2 mois de nous, de rires et de belles discussions.</p>
-    </section>
-
-    <!-- SECTION VIDÉOS SOUVENIRS -->
-    <section class="moments section-rule">
-      <div class="section-heading">
-        <span class="eyebrow">sous les projecteurs</span>
-        <h2>Ta voix, <em>ton énergie</em> 🌸</h2>
-      </div>
-
-      <div class="video-grid">
-        <figure class="video-card">
-          <video controls playsinline preload="metadata">
-            <source src="assets/videos/video1.mp4" type="video/mp4">
-          </video>
-          <figcaption>Ton énergie & ta spontanéité ♡</figcaption>
-        </figure>
-
-        <figure class="video-card offset">
-          <video controls playsinline preload="metadata">
-            <source src="assets/videos/video2.mp4" type="video/mp4">
-          </video>
-          <figcaption>Ce sourire qui rend tout plus beau.</figcaption>
-        </figure>
-
-        <figure class="video-card">
-          <video controls playsinline preload="metadata">
-            <source src="assets/videos/video3.mp4" type="video/mp4">
-          </video>
-          <figcaption>Élégance en mouvement ✨</figcaption>
-        </figure>
-
-        <figure class="video-card offset">
-          <video controls playsinline preload="metadata">
-            <source src="assets/videos/video4.mp4" type="video/mp4">
-          </video>
-          <figcaption>Douceur & éclat au naturel 🌸</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- SECTION LA LETTRE D'AMOUR (PAPIER PARCHEMIN) -->
-    <section class="love-letter section-rule">
-      <div class="letter-paper">
-        <div class="letter-top">
-          <span>à ma personne préférée</span>
-          <span class="letter-heart">♥</span>
-        </div>
-
-        <h2>Une lettre pour toi</h2>
-
-        <div class="letter-body">
-          <p>Chère Yaye Boy, ❤️🥹🎂</p>
-          <p>Aujourd’hui, je voulais prendre un moment pour te rappeler à quel point tu comptes pour moi.</p>
-          <p>Depuis ces deux mois qu’on apprend à se connaître, tu as apporté tellement de douceur, de sourires et de belles discussions dans mon quotidien. Tu es une personne rare, forte, drôle, intelligente et tellement inspirante.</p>
-          <p>Merci d’être cette lumière qui rend tout plus doux et plus simple dès qu’on se parle.</p>
-          <p>Je ne te souhaite pas seulement un joyeux anniversaire : je prie Allah de t’accorder une longue vie, une santé de fer, la réussite dans tous tes projets et tout le bonheur immense que ton cœur mérite.</p>
-          <p>Qu’Il te protège et facilite chacun de tes rêves.</p>
-          <p>Sache que je tiens énormément à toi.</p>
-          <p>Merci pour ces deux mois, pour ta présence et pour tout ce qu’on partage déjà.</p>
-          <p>Cette nouvelle année est à toi, tu le mérites vraiment. ❤️🥹</p>
-        </div>
-
-        <div class="signature">
-          À toi de tout cœur,<br>
-          <span>Mactar <span class="sig-heart">♥</span></span>
-        </div>
-
-        <div class="letter-doodle">de tout mon cœur</div>
-      </div>
-    </section>
-
-    <!-- SECTION ANNIVERSAIRE / DÉBUT -->
-    <section class="anniversary section-rule">
-      <div class="hearts-container" aria-hidden="true">
-        <span style="--i:0">♥</span><span style="--i:1">♥</span><span style="--i:2">♥</span>
-        <span style="--i:3">♥</span><span style="--i:4">♥</span><span style="--i:5">♥</span>
-      </div>
-      <span class="eyebrow">et ce n&apos;est que le début</span>
-      <h2><span>2 MOIS</span><i>&</i><span>L'INFINI</span></h2>
-      <p>Tant de rires, de partages,<br>et encore tellement de beaux moments à vivre.</p>
-    </section>
-
-    <!-- FINALE & BISOU INTERACTIF -->
-    <section class="finale">
-      <div class="hearts-container" aria-hidden="true">
-        <span style="--i:0">♥</span><span style="--i:1">♥</span><span style="--i:2">♥</span>
-        <span style="--i:3">♥</span><span style="--i:4">♥</span><span style="--i:5">♥</span>
-      </div>
-
-      <span class="sparkle sparkle-one">✨</span>
-      <span class="sparkle sparkle-two">✨</span>
-
-      <span class="eyebrow">une dernière chose</span>
-      <h2>Et si je devais choisir encore,<br><em>je te choisirais toujours.</em></h2>
-      <p class="final-love">Joyeux anniversaire, Yaye Boy. <span class="final-heart">♥</span></p>
-
-      <button class="kiss-button" id="kissButton" onclick="triggerKiss()">
-        <span>Un dernier bisou ?</span> <span>💋</span>
       </button>
 
-      <div id="kissReveal" class="kiss-reveal" style="display: none;">
-        <div class="kiss-hearts">♥ ♥ ♥</div>
-        <strong>JE TIENS ÉNORMÉMENT À TOI</strong>
-        <span>toujours, toujours, toujours ♡</span>
-      </div>
+      <button class="open-cta" onclick="openLetter()">
+        <span>Ouvrir ma lettre</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </button>
+
+      <button class="skip" onclick="openLetter()">
+        <span>passer l’introduction</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
     </section>
 
-    <footer>
-      fait avec amour, rien que pour toi Yaye Boy <span class="footer-heart">♥</span>
-    </footer>
+    <!-- 2. LE SITE PRINCIPAL RÉVÉLÉ -->
+    <div class="site" id="siteContent">
 
-  </div>
+      <!-- SECTION HERO -->
+      <section id="birthday" class="hero section-rule">
+        <div class="hearts" aria-hidden="true">
+          <span style="--i:0">♥</span><span style="--i:1">♥</span><span style="--i:2">♥</span>
+          <span style="--i:3">♥</span><span style="--i:4">♥</span><span style="--i:5">♥</span>
+        </div>
 
-  <!-- LIGHTBOX PLEIN ÉCRAN -->
+        <div class="hero-kicker">pour celle qui fait chanter mon cœur</div>
+
+        <div class="hero-title">
+          <span class="slide-left">JOYEUX</span>
+          <span class="outline slide-right">ANNIVERSAIRE,</span>
+          <span class="script slide-up">Yaye Boy ♡</span>
+        </div>
+
+        <div class="hero-portrait" onclick="openLightbox('assets/images/photo7_voiture.jpg', 'Yaye Boy ♡')">
+          <img src="assets/images/photo7_hero_centered.jpg" alt="Yaye Boy">
+          <span class="stamp">est. us<br><b>2 MOIS</b></span>
+        </div>
+
+        <div class="hero-note note-one">
+          mon sourire préféré <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </div>
+        <div class="hero-note note-two">pour toujours et à jamais</div>
+
+        <p class="hero-bottom">Aujourd’hui, tout est à propos de toi.</p>
+
+        <a class="scroll-cue" href="#memories">
+          <span>découvrir notre histoire</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+      </section>
+
+      <!-- SECTION NOS SOUVENIRS -->
+      <section id="memories" class="memories section-rule">
+        <div class="section-heading">
+          <span class="eyebrow">les petits détails</span>
+          <h2>Nos souvenirs</h2>
+          <p>Chaque photo raconte une histoire.</p>
+        </div>
+
+        <div class="memory-grid">
+          <figure class="polaroid" style="--rotate: -3deg;" onclick="openLightbox('assets/images/photo2_doree.png', 'notre petit monde')">
+            <div class="photo-frame"><img src="assets/images/pola1_gold_portrait.png" alt="notre petit monde"></div>
+            <figcaption>notre petit monde</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: 4deg;" onclick="openLightbox('assets/images/photo1_diplome.jpg', 'cette journée parfaite')">
+            <div class="photo-frame"><img src="assets/images/pola3_grad_portrait.jpg" alt="cette journée parfaite"></div>
+            <figcaption>cette journée parfaite</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: -2deg;" onclick="openLightbox('assets/images/photo8_rose.jpg', 'juste nous')">
+            <div class="photo-frame"><img src="assets/images/pola_rose_portrait.jpg" alt="juste nous"></div>
+            <figcaption>juste nous</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: 3deg;" onclick="openLightbox('assets/images/photo9_orange.jpg', 'mon sourire préféré')">
+            <div class="photo-frame"><img src="assets/images/photo9_orange.jpg" alt="mon sourire préféré"></div>
+            <figcaption>mon sourire préféré</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: -4deg;" onclick="openLightbox('assets/images/photo5_lilas.png', 'toujours et pour toujours')">
+            <div class="photo-frame"><img src="assets/images/photo5_lilas.png" alt="toujours et pour toujours"></div>
+            <figcaption>toujours et pour toujours</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: 2deg;" onclick="openLightbox('assets/images/photo10_or_pose.jpg', 'mon chez-moi, c’est toi')">
+            <div class="photo-frame"><img src="assets/images/photo10_or_pose.jpg" alt="mon chez-moi, c’est toi"></div>
+            <figcaption>mon chez-moi, c’est toi</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: -2deg;" onclick="openLightbox('assets/images/photo4_casual.jpg', 'encore des souvenirs bientôt')">
+            <div class="photo-frame"><img src="assets/images/photo4_casual.jpg" alt="encore des souvenirs bientôt"></div>
+            <figcaption>encore des souvenirs bientôt</figcaption>
+          </figure>
+
+          <figure class="polaroid" style="--rotate: 4deg;" onclick="openLightbox('assets/images/photo3_bleu.jpg', 'ma personne')">
+            <div class="photo-frame"><img src="assets/images/pola2_blue_portrait.jpg" alt="ma personne"></div>
+            <figcaption>ma personne</figcaption>
+          </figure>
+
+          <p class="between-note">Mes souvenirs préférés<br>sont avec toi.</p>
+          <p class="memory-counter">08 / ∞</p>
+        </div>
+
+        <p class="duration">2 mois de nous, de rires et de belles discussions.</p>
+      </section>
+
+      <!-- SECTION MOMENTS (VIDÉOS) -->
+      <section class="moments section-rule">
+        <div class="section-heading">
+          <span class="eyebrow">sous les projecteurs</span>
+          <h2>Ton moment, <em>ta passion</em> ✨</h2>
+        </div>
+
+        <div class="video-grid">
+          <figure class="video-card">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/video1.mp4" type="video/mp4">
+            </video>
+            <figcaption>Continue de poursuivre tes rêves.</figcaption>
+          </figure>
+
+          <figure class="video-card offset">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/video2.mp4" type="video/mp4">
+            </video>
+            <figcaption>Je suis toujours fier de toi.</figcaption>
+          </figure>
+
+          <figure class="video-card">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/video3.mp4" type="video/mp4">
+            </video>
+            <figcaption>Élégance en mouvement ✨</figcaption>
+          </figure>
+
+          <figure class="video-card offset">
+            <video controls playsinline preload="metadata">
+              <source src="assets/videos/video4.mp4" type="video/mp4">
+            </video>
+            <figcaption>Douceur & rayonnement 🌸</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- SECTION LETTRE D'AMOUR -->
+      <section class="love-letter section-rule">
+        <div class="letter-paper">
+          <div class="letter-top">
+            <span>à ma personne préférée</span>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+          </div>
+
+          <h2>Une lettre d'amour</h2>
+
+          <div class="letter-body">
+            <p>Joyeux anniversaire mon amour ❤️🥹🎂</p>
+            <p>Aujourd’hui, je veux simplement te rappeler à quel point tu comptes pour moi.</p>
+            <p>Depuis ces deux mois qu’on partage une histoire, tu as apporté tellement de douceur, de sourires et de belles discussions dans mon quotidien. Tu es une personne rare, forte, drôle, intelligente et tellement inspirante.</p>
+            <p>Merci pour ta présence dans mes journées, pour ton écoute et pour cette joie communicative que tu partages.</p>
+            <p>Tu occupes déjà une place immense dans mon cœur.</p>
+            <p>Je ne te souhaite pas seulement un joyeux anniversaire, je prie surtout Allah de t’accorder une longue vie, une bonne santé, la réussite et tout le bonheur que ton cœur mérite.</p>
+            <p>Qu’Il te protège et facilite tous tes projets.</p>
+            <p>Sache que je tiens énormément à toi.</p>
+            <p>Merci pour ces deux mois, pour ta présence et pour tout ce qu’on partage.</p>
+            <p>Je t'adore, et j’espère qu’on aura encore beaucoup de beaux moments à vivre ensemble. ❤️🥹</p>
+          </div>
+
+          <div class="signature">
+            À toi pour toujours,<br>
+            <span>Mactar <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></span>
+          </div>
+
+          <div class="letter-doodle">de tout mon cœur</div>
+        </div>
+      </section>
+
+      <!-- SECTION ANNIVERSAIRE -->
+      <section class="anniversary section-rule">
+        <div class="hearts" aria-hidden="true">
+          <span style="--i:0">♥</span><span style="--i:1">♥</span><span style="--i:2">♥</span>
+          <span style="--i:3">♥</span><span style="--i:4">♥</span><span style="--i:5">♥</span>
+        </div>
+        <span class="eyebrow">et ce n'est que le début</span>
+        <h2><span>2 MOIS</span><i>&</i><span>POUR TOUJOURS</span></h2>
+        <p>Tant de souvenirs, tant d'histoires,<br>et encore tellement de choses à vivre.</p>
+      </section>
+
+      <!-- SECTION FINALE & BISOU INTERACTIF -->
+      <section class="finale">
+        <div class="hearts" aria-hidden="true">
+          <span style="--i:0">♥</span><span style="--i:1">♥</span><span style="--i:2">♥</span>
+          <span style="--i:3">♥</span><span style="--i:4">♥</span><span style="--i:5">♥</span>
+          <span style="--i:6">♥</span><span style="--i:7">♥</span>
+        </div>
+
+        <span class="sparkle sparkle-one">✦</span>
+        <span class="sparkle sparkle-two">✦</span>
+
+        <span class="eyebrow">une dernière chose</span>
+        <h2>Et si je devais choisir encore,<br><em>je te choisirais toujours.</em></h2>
+        <p class="final-love">
+          <span>Joyeux anniversaire, mon amour.</span>
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        </p>
+
+        <button class="kiss-button" id="kissButton" onclick="triggerKiss()">
+          <span>Un dernier bisou ?</span> <span>💋</span>
+        </button>
+
+        <div class="kiss-reveal" id="kissReveal" style="display: none;" role="status">
+          <div class="kiss-hearts">♥ ♥ ♥</div>
+          <strong>JE TIENS À TOI</strong>
+          <span>toujours, toujours, toujours</span>
+        </div>
+      </section>
+
+      <footer>
+        <span>fait avec amour, rien que pour toi</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- LIGHTBOX PLEIN ÉCRAN POUR PHOTOS -->
   <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
     <div class="lightbox-modal">
       <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Fermer">✕</button>
@@ -311,6 +286,6 @@
     </div>
   </div>
 
-  <script src="script.js?v=25"></script>
+  <script src="script.js?v=30"></script>
 </body>
 </html>
