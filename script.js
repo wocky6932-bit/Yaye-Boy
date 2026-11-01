@@ -14,12 +14,7 @@ const btnPrevSlide = document.getElementById('btnPrevSlide');
 const btnPrev = document.getElementById('btnPrev');
 const btnNext = document.getElementById('btnNext');
 
-const bgmAudio = document.getElementById('bgmAudio');
-const audioToggleBtn = document.getElementById('audioToggleBtn');
-
 let currentSlide = 0;
-let isAudioPlaying = false;
-let audioContext = null;
 
 // --- 1. Navigation entre les Slides ---
 function goToSlide(index) {
@@ -121,100 +116,6 @@ function handleSwipe() {
     }
   }
 }
-
-// --- 3. Musique : Daniel Caesar - Get You ---
-function playWarmAmbientChords() {
-  try {
-    const AudioCtx = window.AudioContext || window.webkitAudioContext;
-    if (!AudioCtx) return;
-    if (!audioContext) audioContext = new AudioCtx();
-    if (audioContext.state === 'suspended') audioContext.resume();
-
-    // Accords emblématiques Neo-Soul de "Get You" - Daniel Caesar
-    const chords = [
-      [82.41, 196.00, 246.94, 293.66, 369.99],  // Em9
-      [110.00, 196.00, 277.18, 329.63, 369.99], // A13
-      [65.41, 196.00, 246.94, 293.66, 329.63],  // Cmaj9
-      [123.47, 220.00, 311.13, 392.00]          // B7(b13)
-    ];
-    let chordIdx = 0;
-
-    function nextChord() {
-      if (!isAudioPlaying) return;
-      const now = audioContext.currentTime;
-      const notes = chords[chordIdx % chords.length];
-      chordIdx++;
-
-      notes.forEach((freq, idx) => {
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        osc.type = idx === 0 ? 'sine' : 'triangle'; // Basse ronde au fond, Rhodes chaud au-dessus
-        osc.frequency.setValueAtTime(freq, now + idx * 0.08);
-
-        const volume = idx === 0 ? 0.06 : 0.03;
-        gain.gain.setValueAtTime(0.0001, now + idx * 0.08);
-        gain.gain.exponentialRampToValueAtTime(volume, now + idx * 0.08 + 0.4);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 4.2);
-
-        osc.connect(gain);
-        gain.connect(audioContext.destination);
-
-        osc.start(now + idx * 0.08);
-        osc.stop(now + 4.5);
-      });
-
-      if (isAudioPlaying) {
-        setTimeout(nextChord, 4000);
-      }
-    }
-    nextChord();
-  } catch (e) {
-    console.log("Audio non disponible", e);
-  }
-}
-
-function playAudio() {
-  isAudioPlaying = true;
-  audioToggleBtn.classList.add('playing');
-
-  // Si une source audio valide existe et fonctionne
-  if (bgmAudio && bgmAudio.currentSrc) {
-    const promise = bgmAudio.play();
-    if (promise !== undefined) {
-      promise.then(() => {}).catch(() => {
-        playWarmAmbientChords();
-      });
-    }
-  } else {
-    // Si aucun fichier MP3 n'est déposé, jouer le synthé Neo-Soul Get You
-    playWarmAmbientChords();
-  }
-}
-
-function pauseAudio() {
-  isAudioPlaying = false;
-  audioToggleBtn.classList.remove('playing');
-  bgmAudio.pause();
-  if (audioContext && audioContext.state === 'running') {
-    audioContext.suspend();
-  }
-}
-
-audioToggleBtn.addEventListener('click', () => {
-  if (isAudioPlaying) {
-    pauseAudio();
-  } else {
-    playAudio();
-  }
-});
-
-// Démarre la musique dès la première interaction utilisateur
-document.addEventListener('click', function startOnTouch() {
-  if (!isAudioPlaying) {
-    playAudio();
-  }
-  document.removeEventListener('click', startOnTouch);
-}, { once: true });
 
 // --- 4. Pluie de Cœurs & Confettis Dorés + Carte Finale ---
 const btnCelebration = document.getElementById('btnCelebration');
