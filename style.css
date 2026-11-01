@@ -151,33 +151,33 @@ main { overflow: hidden; background: var(--cream); }
   flex-direction: column; 
   position: relative; 
   z-index: 2; 
-  margin: 2rem auto -1.5rem; 
-  line-height: .78; 
-  font-size: clamp(3.4rem, 17vw, 10rem); 
+  margin: 1.5rem auto 1rem; 
+  line-height: .85; 
+  font-size: clamp(2.5rem, 11vw, 6.5rem); 
   font-weight: 400; 
-  letter-spacing: -.07em; 
+  letter-spacing: -.05em; 
 }
 .hero-title .outline { 
   color: transparent; 
-  -webkit-text-stroke: 1px var(--cherry); 
-  margin-left: .7em; 
+  -webkit-text-stroke: 1.5px var(--cherry); 
+  margin-left: 0; 
 }
 .hero-title .script { 
   font-family: 'Caveat', cursive; 
-  font-size: .4em; 
+  font-size: .65em; 
   color: var(--cherry); 
   letter-spacing: 0; 
-  margin: .7rem 0 0 2em; 
-  transform: rotate(-7deg); 
+  margin: .4rem 0 0 0; 
+  transform: rotate(-4deg); 
 }
 .hero-portrait { 
-  width: min(68vw, 330px); 
-  aspect-ratio: .77; 
+  width: min(78vw, 300px); 
+  aspect-ratio: .78; 
   margin: 0 auto; 
   background: var(--blush); 
-  transform: rotate(3deg); 
+  transform: rotate(2deg); 
   position: relative; 
-  border: .75rem solid var(--paper); 
+  border: .6rem solid var(--paper); 
   box-shadow: 0 16px 28px rgba(72,36,33,.15); 
   cursor: pointer;
 }
@@ -202,25 +202,27 @@ main { overflow: hidden; background: var(--cream); }
 }
 .stamp { 
   position: absolute; 
-  right: -2rem; 
-  bottom: 1.5rem; 
+  right: -0.8rem; 
+  bottom: -0.8rem; 
   color: var(--cherry); 
   border: 1px solid currentColor; 
   border-radius: 50%; 
-  padding: .6rem; 
+  padding: .5rem; 
   font-size: .55rem; 
-  transform: rotate(-18deg); 
+  transform: rotate(-12deg); 
   background: var(--paper);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 .stamp b { font-size: .85rem; }
 .hero-note { 
-  position: absolute; 
+  position: static; 
   color: var(--cherry); 
   font-family: 'Caveat', cursive; 
   font-size: 1.15rem; 
+  margin: 6px auto;
 }
-.note-one { top: 42%; left: 5%; transform: rotate(-12deg); }
-.note-two { top: 60%; right: 5%; transform: rotate(8deg); }
+.note-one { transform: rotate(-2deg); margin-top: 18px; }
+.note-two { color: var(--muted); transform: rotate(2deg); }
 .hero-bottom { 
   margin: 3rem 0 0; 
   font-size: .9rem; 
@@ -415,11 +417,11 @@ main { overflow: hidden; background: var(--cream); }
 .anniversary h2 { 
   display: flex; 
   flex-direction: column; 
-  font-size: clamp(3.5rem, 16vw, 9rem); 
-  line-height: .77; 
+  font-size: clamp(2.5rem, 11vw, 5.5rem); 
+  line-height: .9; 
   font-weight: 400; 
-  letter-spacing: -.08em; 
-  margin: 2rem 0; 
+  letter-spacing: -.05em; 
+  margin: 1.5rem 0; 
 }
 .anniversary h2 i { 
   font-family: 'Caveat', cursive; 
@@ -555,30 +557,52 @@ footer {
 
 /* MEDIA QUERIES MOBILE EXACTES */
 @media (max-width: 650px) { 
+  .hero {
+    padding: 6rem 1rem 2rem;
+  }
+  .section-heading {
+    padding: 4.5rem 1rem 2rem;
+  }
+  .section-heading h2 {
+    font-size: clamp(2.2rem, 9vw, 3.4rem);
+  }
   .memory-grid { 
     grid-template-columns: repeat(2, 1fr); 
-    gap: 1rem; 
-    padding: 1rem 8%; 
+    gap: 0.85rem; 
+    padding: 0.5rem 4%; 
   }
   .memory-grid .between-note { 
     grid-column: 1 / -1; 
+    font-size: 1.25rem;
   }
   .video-grid { 
     grid-template-columns: 1fr; 
-    padding: 1rem 10%; 
+    padding: 0.5rem 4%; 
+    gap: 1.5rem;
   }
   .video-card.offset { 
-    margin-top: 1.5rem; 
+    margin-top: 0; 
+  }
+  .love-letter {
+    padding: 4.5rem 0.8rem;
+  }
+  .letter-paper {
+    padding: 24px 18px 20px;
+  }
+  .letter-paper h2 {
+    font-size: 2.2rem;
+    margin: 1rem 0 1.2rem;
   }
   .letter-body p { 
-    font-size: .92rem; 
-    line-height: 1.85; 
-  }
-  .hero-note { 
     font-size: .95rem; 
+    line-height: 1.75; 
   }
-  .note-one { top: 48%; }
-  .note-two { top: 66%; } 
+  .anniversary {
+    padding: 4.5rem 1rem;
+  }
+  .finale {
+    padding: 4.5rem 1rem;
+  }
 }
 
 /* LIGHTBOX PLEIN ÉCRAN */
