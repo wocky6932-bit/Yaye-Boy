@@ -1592,3 +1592,571 @@ html, body {
 .btn-close-celebration:active {
   transform: scale(0.96);
 }
+
+/* ========================================================
+   INTRODUCTION INTERACTIVE : TIKTOK STYLE ENVELOPE REVEAL
+   ======================================================== */
+.envelope-intro-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: #F7EFE7;
+  background: radial-gradient(circle at 50% 20%, #FFFDF9 0%, #F5ECE3 60%, #EBDDCF 100%);
+  z-index: 99999;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+}
+
+.envelope-intro-overlay.dismissed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Pétales & cœurs flottants d'ambiance */
+.floating-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-petals span {
+  position: absolute;
+  display: block;
+  font-size: 1.4rem;
+  opacity: 0.45;
+  animation: floatDown 10s infinite linear;
+}
+
+.floating-petals span:nth-child(1) { top: -20px; left: 10%; animation-duration: 8s; font-size: 1.6rem; }
+.floating-petals span:nth-child(2) { top: -20px; left: 30%; animation-duration: 11s; animation-delay: 2s; }
+.floating-petals span:nth-child(3) { top: -20px; left: 70%; animation-duration: 9s; animation-delay: 1s; }
+.floating-petals span:nth-child(4) { top: -20px; left: 85%; animation-duration: 12s; animation-delay: 3s; font-size: 1.5rem; }
+.floating-petals span:nth-child(5) { top: -20px; left: 50%; animation-duration: 10s; animation-delay: 4s; }
+
+@keyframes floatDown {
+  0% { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- Scène 1 : "You got mail!" & Enveloppe --- */
+.intro-envelope-stage {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 20px;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.intro-envelope-stage.opened {
+  opacity: 0;
+  transform: scale(0.9) translateY(-20px);
+  pointer-events: none;
+  display: none;
+}
+
+/* Titre "You got mail!" qui descend du haut */
+.intro-headline {
+  text-align: center;
+  margin-bottom: 28px;
+  animation: slideDownIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mail-kicker {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: #B8324F;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.mail-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #2E181D;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+}
+
+@keyframes slideDownIn {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Enveloppe 3D Pastel qui descend du haut jusqu'au milieu et flotte doucement */
+.vintage-envelope-wrap {
+  width: 270px;
+  height: 180px;
+  background: #FEE8EC;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 
+    0 16px 40px rgba(184, 50, 79, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #F3CFD6;
+  animation: 
+    dropFromTop 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
+    gentleFloat 3.5s infinite ease-in-out 1.3s;
+  cursor: pointer;
+  transform-origin: center center;
+}
+
+@keyframes dropFromTop {
+  0% { opacity: 0; transform: translateY(-120px) scale(0.85); }
+  60% { transform: translateY(12px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+
+/* Rabats de l'enveloppe */
+.env-back-plate {
+  position: absolute;
+  inset: 0;
+  background: #F9DCE2;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* Papier qui dépasse légèrement de l'enveloppe */
+.env-letter-peek {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  height: 80px;
+  background: #FFFDF9;
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #EFE4D6;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.04);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vintage-envelope-wrap.is-opening .env-letter-peek {
+  transform: translateY(-55px);
+}
+
+/* Branche de lavande / fleur séchée sur le côté comme dans le TikTok */
+.env-lavender-branch {
+  position: absolute;
+  top: -14px;
+  right: 18px;
+  font-size: 2rem;
+  z-index: 6;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+/* Pli avant (triangles) */
+.env-front-creases {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 4;
+  border-bottom: 90px solid #FEDBE2;
+  border-left: 135px solid #FCD2DA;
+  border-right: 135px solid #FCD2DA;
+  border-top: 90px solid transparent;
+}
+
+/* Rabat supérieur pliable */
+.env-top-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 135px solid transparent;
+  border-right: 135px solid transparent;
+  border-top: 100px solid #F5C7D0;
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
+}
+
+.vintage-envelope-wrap.is-opening .env-top-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+/* Sceau coeur rouge/rose au centre */
+.env-heart-seal {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 8;
+  box-shadow: 0 4px 12px rgba(184, 34, 62, 0.4);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.seal-heart {
+  color: #FFF;
+  font-size: 1.4rem;
+  line-height: 1;
+  animation: sealPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.vintage-envelope-wrap.is-opening .env-heart-seal {
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 0;
+}
+
+/* Indication "Touche l'enveloppe pour l'ouvrir" */
+.tap-to-open-hint {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: fadeInHint 1.2s ease 1s both;
+}
+
+.finger-tap-icon {
+  font-size: 1.6rem;
+  animation: bounceTap 1.4s infinite ease-in-out;
+}
+
+@keyframes bounceTap {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.hint-text-script {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #7A555E;
+}
+
+@keyframes fadeInHint {
+  0% { opacity: 0; }
+  100% { opacity: 0.9; }
+}
+
+/* --- Scène 2 : REVEAL CINEMATIC & LOVE LETTER (Comme TikTok) --- */
+.intro-reveal-stage {
+  display: none;
+  width: 100%;
+  max-width: 460px;
+  padding: 24px 16px 50px;
+  animation: fadeInReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-reveal-stage.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@keyframes fadeInReveal {
+  0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 1. Header Photo Cinematic avec les phrases "HAPPY BIRTHDAY" qui sortent de nulle part */
+.cinematic-hero-card {
+  width: 100%;
+  height: 240px;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(45, 10, 18, 0.35);
+  margin-bottom: 22px;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+}
+
+.hero-photo-cinematic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transform: scale(1.04);
+  animation: slowHeroZoom 12s infinite alternate ease-in-out;
+}
+
+@keyframes slowHeroZoom {
+  0% { transform: scale(1.04); }
+  100% { transform: scale(1.12); }
+}
+
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30, 8, 14, 0.25) 0%, rgba(20, 4, 8, 0.75) 100%);
+  pointer-events: none;
+}
+
+/* Phrases animées Happy Birthday qui jaillissent */
+.flying-text-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.fly-line {
+  color: #FFF;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 57, 86, 0.6);
+  line-height: 1.1;
+  opacity: 0;
+}
+
+.fly-1 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: flyInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.fly-2 {
+  font-family: var(--font-hand);
+  font-size: 2.9rem;
+  font-weight: 700;
+  color: #FFB3C2;
+  margin-top: -2px;
+  animation: flyInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+}
+
+.fly-3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: #FFF;
+  animation: popInBounce 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both;
+}
+
+@keyframes flyInLeft {
+  0% { opacity: 0; transform: translateX(-80px) rotate(-4deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes flyInRight {
+  0% { opacity: 0; transform: translateX(80px) rotate(4deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes popInBounce {
+  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* 2. Feuille Scrapbook "A Love Letter - only for Yaye Boy" avec le filmstrip 4 photos */
+.scrapbook-letter-sheet {
+  background: #FFFDF9;
+  border: 1px solid #E8DDD0;
+  border-radius: 14px;
+  padding: 24px 18px 22px;
+  width: 100%;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.12),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.letter-top-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #F0E3D8;
+  padding-bottom: 10px;
+  margin-bottom: 18px;
+}
+
+.love-letter-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: #A71D31;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.only-for-tag {
+  font-family: var(--font-hand);
+  font-size: 1.2rem;
+  color: #8C757B;
+}
+
+.letter-body-flex {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+/* Filmstrip vertical 4 photos style photomaton */
+.filmstrip-box {
+  width: 90px;
+  flex-shrink: 0;
+  background: #FFF;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(45, 10, 18, 0.15);
+  border: 1px solid #E5D9CE;
+  transform: rotate(-1.5deg);
+}
+
+.filmstrip-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
+}
+
+/* Texte de la lettre */
+.letter-text-column {
+  flex: 1;
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #38292D;
+}
+
+.salutation-line {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #A71D31;
+  margin-bottom: 6px;
+}
+
+.letter-text-column p {
+  margin-bottom: 10px;
+}
+
+.letter-signature-block {
+  margin-top: 14px;
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #5C4349;
+  line-height: 1.2;
+}
+
+.author-name {
+  color: #A71D31;
+  font-size: 1.65rem;
+}
+
+/* Petit Morpion Tic-Tac-Toe "You win my heart" comme dans la vidéo */
+.doodle-tic-tac-toe {
+  background: #FFF5F7;
+  border: 1px dashed #E8CCD4;
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.ttt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 24px);
+  grid-template-rows: repeat(3, 24px);
+  gap: 4px;
+}
+
+.ttt-grid .cell {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #F0C4D0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  color: #665055;
+  font-weight: 700;
+}
+
+.ttt-grid .cell.heart-win {
+  color: #E63956;
+  font-size: 1.1rem;
+  animation: pulseWin 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseWin {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
+
+.ttt-caption {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #B8253B;
+}
+
+/* Bouton entrer dans le carnet */
+.btn-enter-carnet {
+  width: 100%;
+  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
+  color: #FFF;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 15px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-enter-carnet:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(230, 57, 86, 0.55);
+}
+
+.btn-enter-carnet:active {
+  transform: scale(0.97);
+}

@@ -232,5 +232,38 @@ function closeLightbox(e) {
   }
 }
 
+// --- 0. Introduction Interactive : Enveloppe "You got mail!" Style TikTok ---
+let isEnvelopeOpened = false;
+
+function openInteractiveEnvelope() {
+  if (isEnvelopeOpened) return;
+  isEnvelopeOpened = true;
+
+  const envelopeBox = document.getElementById('envelopeBox');
+  const envelopeStage = document.getElementById('envelopeStage');
+  const revealStage = document.getElementById('revealStage');
+
+  if (envelopeBox) {
+    envelopeBox.classList.add('is-opening');
+  }
+
+  // Après l'animation d'ouverture de l'enveloppe, transition vers la scène cinématique
+  setTimeout(() => {
+    if (envelopeStage) {
+      envelopeStage.classList.add('opened');
+    }
+    if (revealStage) {
+      revealStage.classList.add('active');
+    }
+  }, 750);
+}
+
+function closeIntroAndEnterCarnet() {
+  const introOverlay = document.getElementById('envelopeIntroOverlay');
+  if (introOverlay) {
+    introOverlay.classList.add('dismissed');
+  }
+}
+
 // Initialisation au chargement
 goToSlide(0);

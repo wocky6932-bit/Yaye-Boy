@@ -16,9 +16,111 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=13">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body>
+
+  <!-- ============================================== -->
+  <!-- INTRODUCTION INTERACTIVE STYLE TIKTOK ENVELOPE -->
+  <!-- ============================================== -->
+  <div id="envelopeIntroOverlay" class="envelope-intro-overlay">
+    <div class="intro-bg-glow"></div>
+    <div class="floating-petals">
+      <span>🌸</span><span>🤍</span><span>✨</span><span>🌸</span><span>✨</span>
+    </div>
+
+    <!-- Scène 1 : "You got mail!" et Enveloppe qui descend -->
+    <div class="intro-envelope-stage" id="envelopeStage" onclick="openInteractiveEnvelope()">
+      <div class="intro-headline">
+        <span class="mail-kicker">Une attention pour toi ♡</span>
+        <h1 class="mail-title">You got mail!</h1>
+      </div>
+
+      <!-- L'Enveloppe Pastel avec son cœur -->
+      <div class="vintage-envelope-wrap" id="envelopeBox">
+        <div class="env-back-plate"></div>
+        <div class="env-letter-peek"></div>
+        <div class="env-lavender-branch">🌿🌸</div>
+        <div class="env-top-flap" id="envTopFlap"></div>
+        <div class="env-front-creases"></div>
+        <div class="env-heart-seal" id="envHeartSeal">
+          <span class="seal-heart">♥</span>
+        </div>
+      </div>
+
+      <div class="tap-to-open-hint">
+        <span class="finger-tap-icon">👆</span>
+        <span class="hint-text-script">Touche l'enveloppe pour l'ouvrir</span>
+      </div>
+    </div>
+
+    <!-- Scène 2 : Reveal du Header Photo Cinematic & Titres Happy Birthday qui volent -->
+    <div class="intro-reveal-stage" id="revealStage">
+      <!-- Image Hero avec le grand titre cinematic -->
+      <div class="cinematic-hero-card">
+        <img src="assets/images/photo7_hero_centered.jpg" alt="Yaye Boy" class="hero-photo-cinematic">
+        <div class="hero-gradient-overlay"></div>
+        
+        <!-- Textes animés style TikTok qui jaillissent -->
+        <div class="flying-text-container">
+          <div class="fly-line fly-1">HAPPY BIRTHDAY,</div>
+          <div class="fly-line fly-2">MY LOVE ♡</div>
+          <div class="fly-line fly-3">YAYE BOY ✨</div>
+        </div>
+      </div>
+
+      <!-- Section "A Love Letter - only for Yaye Boy" avec le filmstrip de 4 photos -->
+      <div class="scrapbook-letter-sheet">
+        <div class="letter-top-row">
+          <h2 class="love-letter-title">A Love Letter</h2>
+          <span class="only-for-tag">only for Yaye Boy ♡</span>
+        </div>
+
+        <div class="letter-body-flex">
+          <!-- Bandeau 4 photos style photomaton / filmstrip -->
+          <div class="filmstrip-box">
+            <img src="assets/images/photostrip_yayeboy.jpg" alt="Souvenirs Yaye Boy" class="filmstrip-img">
+          </div>
+
+          <!-- Texte de la lettre -->
+          <div class="letter-text-column">
+            <p class="salutation-line">Chère Yaye Boy,</p>
+            <p>
+              Je voulais prendre un moment rien que pour toi. En deux mois, tu as apporté une douceur et une énergie incroyables dans ma vie.
+            </p>
+            <p>
+              Ton sourire, ta bienveillance et ta spontanéité rendent chaque discussion spéciale.
+            </p>
+            <p class="letter-signature-block">
+              <span>Forever yours,</span><br>
+              <strong class="author-name">Mactar ♡</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- Petit jeu Tic-Tac-Toe romantique dessiné à la main comme dans le TikTok -->
+        <div class="doodle-tic-tac-toe">
+          <div class="ttt-grid">
+            <div class="cell">✕</div>
+            <div class="cell heart-win">♥</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell heart-win">♥</div>
+            <div class="cell">✕</div>
+            <div class="cell"></div>
+            <div class="cell heart-win">♥</div>
+            <div class="cell"></div>
+          </div>
+          <span class="ttt-caption">You win my heart ♡</span>
+        </div>
+
+        <!-- Bouton pour continuer vers le reste des souvenirs -->
+        <button class="btn-enter-carnet" onclick="closeIntroAndEnterCarnet()">
+          <span>Feuilleter tout mon carnet pour toi →</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ============================================== -->
   <!-- BARRE SUPÉRIEURE COMMUNE (STORY APP)          -->
