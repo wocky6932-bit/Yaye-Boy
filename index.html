@@ -5,38 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Pour Yaye Boy ♡ Spécial Anniversaire</title>
   
-  <meta name="description" content="Joyeux anniversaire Yaye Boy ♡">
+  <meta name="description" content="Une attention spéciale pour l'anniversaire de Yaye Boy ♡">
   <meta property="og:title" content="Yaye Boy ♡ Joyeux Anniversaire">
   <meta property="og:description" content="Une surprise préparée spécialement pour toi...">
-  <meta property="og:image" content="assets/images/photo7_voiture.jpg">
-  <meta name="theme-color" content="#120e0e">
+  <meta property="og:image" content="assets/images/photo7_hero_centered.jpg">
+  <meta name="theme-color" content="#F7EFE7">
 
-  <!-- Google Fonts : Caveat (écriture manuscrite fidèle), Cormorant Garamond & Plus Jakarta Sans -->
+  <!-- Google Fonts : Caveat (manuscrit), Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="style.css?v=20">
 </head>
 <body>
 
   <!-- ============================================== -->
-  <!-- INTRODUCTION INTERACTIVE STYLE TIKTOK ENVELOPE -->
+  <!-- ÉTAPE 1 : L'ENVELOPPE INTERACTIVE INITIALE     -->
   <!-- ============================================== -->
-  <div id="envelopeIntroOverlay" class="envelope-intro-overlay">
-    <div class="intro-bg-glow"></div>
+  <div id="envelopeScreen" class="envelope-screen-hero">
     <div class="floating-petals">
       <span>🌸</span><span>🤍</span><span>✨</span><span>🌸</span><span>✨</span>
     </div>
 
-    <!-- Scène 1 : "Tu as reçu un message !" et Enveloppe qui descend -->
-    <div class="intro-envelope-stage" id="envelopeStage" onclick="openInteractiveEnvelope()">
-      <div class="intro-headline">
-        <span class="mail-kicker">Une attention pour toi ♡</span>
-        <h1 class="mail-title">Tu as reçu un mot !</h1>
+    <div class="envelope-box-container" onclick="openLetterExperience()">
+      <div class="intro-heading">
+        <span class="sub-greeting">Une attention pour toi ♡</span>
+        <h1 class="main-mail-title">Tu as reçu un mot !</h1>
       </div>
 
-      <!-- L'Enveloppe Pastel avec son cœur -->
+      <!-- L'Enveloppe Pastel avec son cœur et sa branche de lavande -->
       <div class="vintage-envelope-wrap" id="envelopeBox">
         <div class="env-back-plate"></div>
         <div class="env-letter-peek"></div>
@@ -48,639 +46,348 @@
         </div>
       </div>
 
-      <div class="tap-to-open-hint">
-        <span class="finger-tap-icon">👆</span>
-        <span class="hint-text-script">Touche l'enveloppe pour l'ouvrir</span>
-      </div>
-    </div>
-
-    <!-- Scène 2 : Reveal du Header Photo Cinematic & Titres Joyeux Anniversaire qui volent -->
-    <div class="intro-reveal-stage" id="revealStage">
-      <!-- Image Hero avec le grand titre cinematic -->
-      <div class="cinematic-hero-card">
-        <img src="assets/images/photo7_hero_centered.jpg" alt="Yaye Boy" class="hero-photo-cinematic">
-        <div class="hero-gradient-overlay"></div>
-        
-        <!-- Textes animés qui jaillissent -->
-        <div class="flying-text-container">
-          <div class="fly-line fly-1">JOYEUX ANNIVERSAIRE,</div>
-          <div class="fly-line fly-2">À MA LUMIÈRE ♡</div>
-          <div class="fly-line fly-3">YAYE BOY ✨</div>
-        </div>
-      </div>
-
-      <!-- Section "Une lettre pour toi - rien que pour Yaye Boy" avec le filmstrip de 4 photos -->
-      <div class="scrapbook-letter-sheet">
-        <div class="letter-top-row">
-          <h2 class="love-letter-title">Une lettre pour toi</h2>
-          <span class="only-for-tag">rien que pour Yaye Boy ♡</span>
-        </div>
-
-        <div class="letter-body-flex">
-          <!-- Bandeau 4 photos style photomaton / filmstrip -->
-          <div class="filmstrip-box">
-            <img src="assets/images/photostrip_yayeboy.jpg" alt="Souvenirs Yaye Boy" class="filmstrip-img">
-          </div>
-
-          <!-- Texte de la lettre -->
-          <div class="letter-text-column">
-            <p class="salutation-line">Chère Yaye Boy,</p>
-            <p>
-              Je voulais prendre un moment rien que pour toi. En deux mois, tu as apporté une douceur et une énergie incroyables dans ma vie.
-            </p>
-            <p>
-              Ton sourire, ta bienveillance et ta spontanéité rendent chaque discussion spéciale.
-            </p>
-            <p class="letter-signature-block">
-              <span>Avec tout mon cœur,</span><br>
-              <strong class="author-name">Mactar ♡</strong>
-            </p>
-          </div>
-        </div>
-
-        <!-- Petit jeu Tic-Tac-Toe romantique dessiné à la main -->
-        <div class="doodle-tic-tac-toe">
-          <div class="ttt-grid">
-            <div class="cell">✕</div>
-            <div class="cell heart-win">♥</div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell heart-win">♥</div>
-            <div class="cell">✕</div>
-            <div class="cell"></div>
-            <div class="cell heart-win">♥</div>
-            <div class="cell"></div>
-          </div>
-          <span class="ttt-caption">Tu as conquis mon cœur ♡</span>
-        </div>
-
-        <!-- Bouton pour continuer vers le reste des souvenirs -->
-        <button class="btn-enter-carnet" onclick="closeIntroAndEnterCarnet()">
-          <span>Feuilleter tout mon carnet pour toi →</span>
-        </button>
+      <div class="tap-hint-wrapper">
+        <span class="tap-finger">👆</span>
+        <span class="tap-label">Touche l'enveloppe pour l'ouvrir</span>
       </div>
     </div>
   </div>
 
   <!-- ============================================== -->
-  <!-- BARRE SUPÉRIEURE COMMUNE (STORY APP)          -->
+  <!-- ÉTAPE 2 : LE CARNET CONTINU SCRAPBOOK TIKTOK   -->
+  <!-- (Page défilante unique, esthétique ivoire/rose)-->
   <!-- ============================================== -->
-  <nav class="story-top-bar" id="storyTopBar">
-    <button class="story-back-btn" id="btnPrevSlide" aria-label="Slide précédente">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-    </button>
-    <div class="story-title-center" id="storyTitle">POUR YAYE BOY ♡</div>
-    <div class="story-top-right">
-      <span class="story-counter" id="storyCounter">1/12</span>
-    </div>
-  </nav>
+  <main id="mainExperience" class="main-scrapbook-stream">
 
-  <!-- ============================================== -->
-  <!-- CONTENEUR DES 12 SLIDES (STORY SWIPER)         -->
-  <!-- ============================================== -->
-  <main class="story-wrapper" id="storyWrapper">
+    <!-- 1. En-tête Hero Cinématique avec texte volant -->
+    <header class="tiktok-hero-section">
+      <div class="hero-photo-frame">
+        <img src="assets/images/photo7_hero_centered.jpg" alt="Yaye Boy" class="hero-photo">
+        <div class="hero-gradient"></div>
+        
+        <div class="flying-text-group">
+          <span class="fly-text line-1">JOYEUX ANNIVERSAIRE,</span>
+          <span class="fly-text line-2">À MA LUMIÈRE ♡</span>
+          <span class="fly-text line-3">YAYE BOY ✨</span>
+        </div>
+      </div>
+    </header>
 
-    <!-- SLIDE 1 : INTRO DU CARNET -->
-    <section class="slide-screen slide-1" data-title="Pour toi ♡">
-      <div class="slide-inner hero-exact-layout">
-        <div class="s1-portrait-box" onclick="openLightbox('assets/images/photo7_voiture.jpg', 'Yaye Boy ♡')">
-          <img src="assets/images/hero_car_panoramic.jpg" alt="Yaye Boy" class="s1-img">
+    <div class="stream-content-wrapper">
+
+      <!-- 2. La lettre "A Love Letter / Une lettre pour toi" avec Photomaton & Morpion -->
+      <section class="scrap-card love-letter-card">
+        <div class="washi-tape tape-center"></div>
+
+        <div class="letter-header-row">
+          <h2 class="letter-main-title">Une lettre pour toi</h2>
+          <span class="for-tag">rien que pour Yaye Boy ♡</span>
         </div>
 
-        <div class="s1-text-card">
-          <div class="s1-titles-group">
-            <span class="title-joyeux">Mon petit carnet</span>
-            <span class="title-anniversaire">pour ton jour</span>
-            <div class="title-name-row">
-              <span class="s1-highlight">Yaye Boy</span>
-              <span class="s1-hollow-heart">♡</span>
+        <div class="letter-content-flex">
+          <!-- Filmstrip photomaton vertical de 4 photos d'elle -->
+          <div class="filmstrip-column">
+            <img src="assets/images/photostrip_yayeboy.jpg" alt="Souvenirs Yaye Boy" class="photostrip-img">
+          </div>
+
+          <!-- Texte de la lettre -->
+          <div class="letter-prose-column">
+            <h3 class="salutation-name">Chère Yaye Boy,</h3>
+            <p>
+              Même avec un tout petit temps de retard, je tenais absolument à te faire cette attention spéciale pour continuer de célébrer ton anniversaire comme il se doit.
+            </p>
+            <p>
+              Depuis deux mois qu'on apprend à se connaître, tu as apporté tellement de douceur et de sourires dans mes journées. Tu es une personne rare, forte, drôle, intelligente et tellement inspirante.
+            </p>
+            <p>
+              Tu mérites tout le bonheur du monde et une année remplie de grandes réussites, de santé et d'amour.
+            </p>
+            <div class="letter-valediction">
+              <span>Avec tout mon cœur,</span>
+              <strong class="author-sign">Mactar ♡</strong>
             </div>
           </div>
-
-          <div class="pink-heart-divider">
-            <span class="divider-line"></span>
-            <span class="divider-heart">♥</span>
-            <span class="divider-line"></span>
-          </div>
-          
-          <div class="s1-message-block">
-            <p class="s1-lead-line">Installe-toi confortablement... <span class="inline-heart">🌸</span></p>
-            <p>J'ai rassemblé ici quelques-uns de tes plus beaux éclats, nos souvenirs et tout ce qui rend ta présence si précieuse.</p>
-            <p>Fais glisser vers la droite pour découvrir la suite ♡</p>
-          </div>
-
-          <button class="btn-pill-primary btn-pink-curved" onclick="goToSlide(1)">
-            <span>Commencer le carnet →</span>
-          </button>
-
-          <div class="s1-bottom-heart">♡</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 2 : MA LETTRE (PAPIER PARCHEMIN VINTAGE) -->
-    <section class="slide-screen slide-2" data-title="Ma lettre">
-      <div class="slide-inner parchment-bg">
-        <div class="tape-strip tape-top-center"></div>
-        <div class="dried-flower-corner">🌸</div>
-
-        <div class="letter-content-box">
-          <h2 class="hand-salutation">Chère Yaye Boy,</h2>
-          
-          <p>
-            Même avec un tout petit temps de retard, je tenais absolument à te faire cette attention spéciale pour continuer de célébrer ton anniversaire comme il se doit.
-          </p>
-          <p>
-            Depuis deux mois qu'on apprend à se connaître, tu as apporté tellement de douceur et de sourires dans mes journées. Tu es une personne rare, forte, drôle, intelligente et tellement inspirante. Tu mérites tout le bonheur du monde.
-          </p>
-          <p>
-            Je te souhaite une année remplie de grandes réussites, de santé, d'amour, et surtout de moments qui te rendent profondément heureuse...
-          </p>
-          <p>
-            Cette nouvelle année est à toi, tu le mérites vraiment. ♡
-          </p>
-
-          <div class="letter-sign-mactar">
-            <span>— Mactar</span>
-          </div>
-
-          <div class="letter-bottom-red-heart">♡</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 3 : NOS SOUVENIRS (3 POLAROÏDS) -->
-    <section class="slide-screen slide-3" data-title="Nos souvenirs">
-      <div class="slide-inner dark-wood-bg">
-        <div class="section-badge-title">
-          <h2>Ces 2 mois <br>de messages, de rires <br>et de belles discussions ♡</h2>
         </div>
 
-        <div class="pola-stack-vertical">
+        <!-- Tic-Tac-Toe "Tu as conquis mon cœur" -->
+        <div class="tictactoe-widget">
+          <div class="ttt-grid">
+            <div class="cell">✕</div>
+            <div class="cell win-heart">♥</div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell win-heart">♥</div>
+            <div class="cell">✕</div>
+            <div class="cell"></div>
+            <div class="cell win-heart">♥</div>
+            <div class="cell"></div>
+          </div>
+          <span class="ttt-text">Tu as conquis mon cœur ♡</span>
+        </div>
+      </section>
+
+      <!-- 3. Section Souvenirs & Polaroïds -->
+      <section class="scrap-card memories-card">
+        <div class="washi-tape tape-center"></div>
+
+        <div class="card-section-title">
+          <h2>Ces 2 mois précieux ♡</h2>
+          <p class="subtitle-hand">Des rires, des messages et de si belles discussions</p>
+        </div>
+
+        <div class="polas-mosaic-grid">
           <!-- Pola 1 -->
-          <div class="story-pola pola-tilt-1" onclick="openLightbox('assets/images/photo2_doree.png', 'Toujours aussi belle ♡')">
-            <div class="tape-strip tape-pola-top"></div>
-            <div class="pola-img-wrap">
-              <img src="assets/images/pola1_gold_portrait.png" alt="Yaye Boy robe dorée">
+          <div class="pola-snap pola-tilt-left" onclick="openLightbox('assets/images/photo2_doree.png', 'Toujours aussi belle ♡')">
+            <div class="pola-tape"></div>
+            <div class="pola-frame">
+              <img src="assets/images/pola1_gold_portrait.png" alt="Yaye Boy dorée">
             </div>
-            <p class="pola-handwrite">Toujours aussi belle ♡</p>
+            <p class="pola-legend">Toujours aussi belle ♡</p>
           </div>
 
-          <!-- Pola 2 (Vidéo / Photo) -->
-          <div class="story-pola pola-tilt-2" onclick="openLightbox('assets/images/photo3_bleu.jpg', 'Ton énergie est incroyable ♡')">
-            <div class="tape-strip tape-pola-top"></div>
-            <div class="pola-img-wrap">
-              <img src="assets/images/pola2_blue_portrait.jpg" alt="Yaye Boy bleue">
-              <span class="play-badge-icon">▶ 0:20</span>
+          <!-- Pola 2 -->
+          <div class="pola-snap pola-tilt-right" onclick="openLightbox('assets/images/photo1_diplome.jpg', 'Quelle fierté ! ♡')">
+            <div class="pola-tape"></div>
+            <div class="pola-frame">
+              <img src="assets/images/pola3_grad_portrait.jpg" alt="Yaye Boy diplôme">
             </div>
-            <p class="pola-handwrite">Ton énergie est incroyable ♡</p>
+            <p class="pola-legend">Quelle fierté ! ♡</p>
           </div>
 
           <!-- Pola 3 -->
-          <div class="story-pola pola-tilt-3" onclick="openLightbox('assets/images/photo1_diplome.jpg', 'Quelle fierté ! ♡')">
-            <div class="tape-strip tape-pola-top"></div>
-            <div class="pola-img-wrap">
-              <img src="assets/images/pola3_grad_portrait.jpg" alt="Yaye Boy diplôme">
+          <div class="pola-snap pola-tilt-left" onclick="openLightbox('assets/images/photo8_rose.jpg', 'Douceur & rayonnement ♡')">
+            <div class="pola-tape"></div>
+            <div class="pola-frame">
+              <img src="assets/images/pola_rose_portrait.jpg" alt="Yaye Boy rose">
             </div>
-            <p class="pola-handwrite">Quelle fierté ! ♡</p>
+            <p class="pola-legend">Douceur & rayonnement ♡</p>
+          </div>
+
+          <!-- Pola 4 -->
+          <div class="pola-snap pola-tilt-right" onclick="openLightbox('assets/images/photo5_lilas.png', 'Tu es unique ♡')">
+            <div class="pola-tape"></div>
+            <div class="pola-frame">
+              <img src="assets/images/photo5_lilas.png" alt="Yaye Boy lilas">
+            </div>
+            <p class="pola-legend">Tu es unique ♡</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SLIDE 4 : CE QUE J'AIME CHEZ TOI (5 PAPIERS SCRAPBOOK) -->
-    <section class="slide-screen slide-4" data-title="Ce que j'aime chez toi">
-      <div class="slide-inner scrap-reasons-layout">
-        <div class="section-badge-title">
-          <h2 class="reasons-heading">5 raisons <br>de t'aimer ♡</h2>
+      <!-- 4. Section : 5 Raisons de t'aimer (Petits Mémos Papier Délicats) -->
+      <section class="scrap-card reasons-card">
+        <div class="washi-tape tape-center"></div>
+
+        <div class="card-section-title">
+          <h2>5 raisons qui font que tu es unique ♡</h2>
         </div>
 
-        <div class="scrap-paper-notes-list">
-          <!-- Item 1 -->
-          <div class="scrap-note-item note-tilt-1">
-            <div class="tape-strip tape-note-top"></div>
-            <div class="note-num-icon">
-              <span class="note-digit">01</span>
-              <span class="note-emoji">☀️</span>
-            </div>
-            <div class="note-text-body">
-              <h3 class="note-heading">Ton sourire</h3>
+        <div class="memos-vertical-stack">
+          <!-- Memo 1 -->
+          <div class="memo-sticky-note tilt-1">
+            <div class="mini-tape"></div>
+            <div class="memo-icon">☀️</div>
+            <div class="memo-info">
+              <h4>Ton sourire</h4>
               <p>Il illumine mes journées même à distance.</p>
             </div>
           </div>
 
-          <!-- Item 2 -->
-          <div class="scrap-note-item note-tilt-2">
-            <div class="tape-strip tape-note-top"></div>
-            <div class="note-num-icon">
-              <span class="note-digit">02</span>
-              <span class="note-emoji">👑</span>
-            </div>
-            <div class="note-text-body">
-              <h3 class="note-heading">Ta détermination</h3>
-              <p>Tu rêves grand et tu te donnes les moyens.</p>
+          <!-- Memo 2 -->
+          <div class="memo-sticky-note tilt-2">
+            <div class="mini-tape"></div>
+            <div class="memo-icon">👑</div>
+            <div class="memo-info">
+              <h4>Ta détermination</h4>
+              <p>Tu rêves grand et tu te donnes les moyens d'y arriver.</p>
             </div>
           </div>
 
-          <!-- Item 3 -->
-          <div class="scrap-note-item note-tilt-1">
-            <div class="tape-strip tape-note-top"></div>
-            <div class="note-num-icon">
-              <span class="note-digit">03</span>
-              <span class="note-emoji">♡</span>
-            </div>
-            <div class="note-text-body">
-              <h3 class="note-heading">Ta bienveillance</h3>
+          <!-- Memo 3 -->
+          <div class="memo-sticky-note tilt-1">
+            <div class="mini-tape"></div>
+            <div class="memo-icon">♡</div>
+            <div class="memo-info">
+              <h4>Ta bienveillance</h4>
               <p>Tu penses toujours aux autres, tu as un cœur énorme.</p>
             </div>
           </div>
 
-          <!-- Item 4 -->
-          <div class="scrap-note-item note-tilt-3">
-            <div class="tape-strip tape-note-top"></div>
-            <div class="note-num-icon">
-              <span class="note-digit">04</span>
-              <span class="note-emoji">💬</span>
-            </div>
-            <div class="note-text-body">
-              <h3 class="note-heading">Ta façon de me parler</h3>
+          <!-- Memo 4 -->
+          <div class="memo-sticky-note tilt-3">
+            <div class="mini-tape"></div>
+            <div class="memo-icon">💬</div>
+            <div class="memo-info">
+              <h4>Ta façon de me parler</h4>
               <p>Tu rends tout plus simple, plus doux, plus vrai.</p>
             </div>
           </div>
 
-          <!-- Item 5 -->
-          <div class="scrap-note-item note-tilt-2">
-            <div class="tape-strip tape-note-top"></div>
-            <div class="note-num-icon">
-              <span class="note-digit">05</span>
-              <span class="note-emoji">🌸</span>
-            </div>
-            <div class="note-text-body">
-              <h3 class="note-heading">Ta beauté</h3>
+          <!-- Memo 5 -->
+          <div class="memo-sticky-note tilt-2">
+            <div class="mini-tape"></div>
+            <div class="memo-icon">🌸</div>
+            <div class="memo-info">
+              <h4>Ta beauté</h4>
               <p>À l'intérieur comme à l'extérieur.</p>
             </div>
           </div>
         </div>
 
-        <div class="reasons-hand-footer">
+        <div class="reasons-bottom-note">
           Et il y en a tellement d'autres... ♡
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SLIDE 5 : TES VIDÉOS -->
-    <section class="slide-screen slide-5" data-title="Tes vidéos">
-      <div class="slide-inner dark-bg">
-        <div class="section-badge-title">
-          <h2>Ta voix, ton sourire, <br>ta présence... ♡</h2>
-          <p class="sub-lead">
-            Ces petits extraits, c'est toi, tout simplement. Des moments qui me rendent heureux et qui me rappellent pourquoi je suis si chanceux de t'avoir dans ma vie.
-          </p>
+      <!-- 5. Section : Tes Vidéos Souvenirs -->
+      <section class="scrap-card videos-card">
+        <div class="washi-tape tape-center"></div>
+
+        <div class="card-section-title">
+          <h2>Ta voix, ton énergie, tes rires... ♡</h2>
+          <p class="subtitle-hand">Ces petits extraits, c'est toi, tout simplement.</p>
         </div>
 
-        <div class="videos-stack-vertical">
-          <!-- Vidéo 1 -->
-          <div class="story-video-card">
-            <div class="video-box-media">
+        <div class="videos-vertical-list">
+          <div class="video-polaroid">
+            <div class="video-media-wrap">
               <video preload="metadata" playsinline controls>
                 <source src="assets/videos/video1.mp4" type="video/mp4">
               </video>
             </div>
-            <p class="video-caption-hand">Ton énergie & ta spontanéité ♡</p>
+            <p class="video-caption">Ton énergie & ta spontanéité ♡</p>
           </div>
 
-          <!-- Vidéo 2 -->
-          <div class="story-video-card">
-            <div class="video-box-media">
+          <div class="video-polaroid">
+            <div class="video-media-wrap">
               <video preload="metadata" playsinline controls>
                 <source src="assets/videos/video2.mp4" type="video/mp4">
               </video>
             </div>
-            <p class="video-caption-hand">Ce sourire qui fait chavirer ♡</p>
+            <p class="video-caption">Ce sourire qui fait chavirer ♡</p>
           </div>
 
-          <!-- Vidéo 3 -->
-          <div class="story-video-card">
-            <div class="video-box-media">
+          <div class="video-polaroid">
+            <div class="video-media-wrap">
               <video preload="metadata" playsinline controls>
                 <source src="assets/videos/video3.mp4" type="video/mp4">
               </video>
             </div>
-            <p class="video-caption-hand">Élégance en mouvement ✨</p>
+            <p class="video-caption">Élégance en mouvement ✨</p>
           </div>
 
-          <!-- Vidéo 4 -->
-          <div class="story-video-card">
-            <div class="video-box-media">
+          <div class="video-polaroid">
+            <div class="video-media-wrap">
               <video preload="metadata" playsinline controls>
                 <source src="assets/videos/video4.mp4" type="video/mp4">
               </video>
             </div>
-            <p class="video-caption-hand">Douceur & rayonnement 🌸</p>
+            <p class="video-caption">Douceur & rayonnement 🌸</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SLIDE 6 : NOS MOMENTS (INSTANTS PRÉCIEUX) -->
-    <section class="slide-screen slide-6" data-title="Nos moments">
-      <div class="slide-inner dark-bg">
-        <div class="section-badge-title">
-          <h2>Des instants précieux ♡</h2>
+      <!-- 6. Section : Mes Vœux pour ton année à venir -->
+      <section class="scrap-card wishes-card">
+        <div class="washi-tape tape-center"></div>
+
+        <div class="card-section-title">
+          <h2>Pour ton année à venir ♡</h2>
         </div>
 
-        <div class="scrap-collage-layout">
-          <!-- Item A -->
-          <div class="collage-item col-left" onclick="openLightbox('assets/images/photo4_casual.jpg', 'Toujours la même énergie ♡')">
-            <div class="tape-strip tape-pola-top"></div>
-            <img src="assets/images/photo4_casual.jpg" alt="Photo Yaye Boy">
-            <p class="col-note">Toujours la même énergie ♡</p>
-          </div>
-
-          <!-- Item B (Notes) -->
-          <div class="collage-memo-box">
-            <p>Chaque photo, chaque message et ces discussions qui embellissent mes journées ♡</p>
-            <span class="sparkle-doodle">✦</span>
-          </div>
-
-          <!-- Item C (Vidéo 4 / Photo) -->
-          <div class="collage-item col-right" onclick="openLightbox('assets/images/photo5_lilas.png', 'Tu es unique ♡')">
-            <div class="tape-strip tape-pola-top"></div>
-            <img src="assets/images/photo5_lilas.png" alt="Photo Yaye Boy lilas">
-            <p class="col-note">Tu es unique ♡</p>
-          </div>
-
-          <div class="collage-flowers">🌼 🌸</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 7 : MA LETTRE (SUITE) -->
-    <section class="slide-screen slide-7" data-title="Ma lettre (suite)">
-      <div class="slide-inner parchment-bg-2">
-        <div class="tape-strip tape-top-center"></div>
-
-        <div class="letter-sheet-card">
-          <p>
-            Je te souhaite une année remplie de réussite, de santé, d'amour, et de tout ce qui te rend heureuse. Que tes rêves prennent vie, un par un, et que tu restes toujours cette lumière qui rend tout plus beau autour d'elle.
-          </p>
-          <p>
-            Merci d'exister, vraiment.
-          </p>
-
-          <div class="suite-valediction">
-            <span>Joyeux anniversaire</span>
-            <strong>Yaye Boy ♡</strong>
-          </div>
-
-          <div class="signature-mactar-line">
-            — Mactar
-          </div>
-
-          <div class="letter-bottom-bouquet">
-            <div class="dried-bouquet">💐 🌸 🌿</div>
-            <span class="sparkle-sign">✧ ♡</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 8 : MES VŒUX (PAPIERS D'INTENTION SCRAPBOOK) -->
-    <section class="slide-screen slide-8" data-title="Mes vœux">
-      <div class="slide-inner scrap-wishes-layout">
-        <div class="section-badge-title">
-          <h2 class="wishes-heading">Pour ton année à venir ♡</h2>
-        </div>
-
-        <div class="wishes-scrap-notes-list">
-          <!-- Vœu 1 -->
-          <div class="wish-scrap-card wish-tilt-1">
-            <div class="tape-strip tape-wish-top"></div>
-            <div class="wish-symbol-col">
-              <span class="wish-badge-icon">🤍</span>
-            </div>
-            <div class="wish-detail-col">
-              <h3 class="wish-title-text">Du bonheur</h3>
-              <p class="wish-sub-text">Chaque jour, un peu plus. Dans chaque petit instant.</p>
+        <div class="wishes-list-container">
+          <div class="wish-item">
+            <span class="wish-icon">🤍</span>
+            <div class="wish-text">
+              <strong>Du bonheur</strong>
+              <p>Chaque jour un peu plus, dans chaque petit instant.</p>
             </div>
           </div>
 
-          <!-- Vœu 2 -->
-          <div class="wish-scrap-card wish-tilt-2">
-            <div class="tape-strip tape-wish-top"></div>
-            <div class="wish-symbol-col">
-              <span class="wish-badge-icon">🎓</span>
-            </div>
-            <div class="wish-detail-col">
-              <h3 class="wish-title-text">De la réussite</h3>
-              <p class="wish-sub-text">Que chacun de tes projets et tes ambitions fleurissent.</p>
+          <div class="wish-item">
+            <span class="wish-icon">🎓</span>
+            <div class="wish-text">
+              <strong>De la réussite</strong>
+              <p>Que chacun de tes projets et tes ambitions fleurissent.</p>
             </div>
           </div>
 
-          <!-- Vœu 3 -->
-          <div class="wish-scrap-card wish-tilt-1">
-            <div class="tape-strip tape-wish-top"></div>
-            <div class="wish-symbol-col">
-              <span class="wish-badge-icon">✨</span>
-            </div>
-            <div class="wish-detail-col">
-              <h3 class="wish-title-text">La paix & la santé</h3>
-              <p class="wish-sub-text">Qu'Allah t'accorde une sérénité et une énergie infinies.</p>
+          <div class="wish-item">
+            <span class="wish-icon">✨</span>
+            <div class="wish-text">
+              <strong>La paix & la santé</strong>
+              <p>Qu'Allah t'accorde une sérénité et une énergie infinies.</p>
             </div>
           </div>
 
-          <!-- Vœu 4 -->
-          <div class="wish-scrap-card wish-tilt-3">
-            <div class="tape-strip tape-wish-top"></div>
-            <div class="wish-symbol-col">
-              <span class="wish-badge-icon">🌸</span>
-            </div>
-            <div class="wish-detail-col">
-              <h3 class="wish-title-text">De la douceur</h3>
-              <p class="wish-sub-text">Des personnes qui prennent soin de ton cœur et de ton sourire.</p>
+          <div class="wish-item">
+            <span class="wish-icon">🌸</span>
+            <div class="wish-text">
+              <strong>De la douceur</strong>
+              <p>Des personnes qui prennent soin de ton cœur et de ton sourire.</p>
             </div>
           </div>
 
-          <!-- Vœu 5 -->
-          <div class="wish-scrap-card wish-tilt-2">
-            <div class="tape-strip tape-wish-top"></div>
-            <div class="wish-symbol-col">
-              <span class="wish-badge-icon">👑</span>
-            </div>
-            <div class="wish-detail-col">
-              <h3 class="wish-title-text">Et surtout...</h3>
-              <p class="wish-sub-text">Reste toujours toi-même, c'est ta plus belle lumière.</p>
+          <div class="wish-item">
+            <span class="wish-icon">👑</span>
+            <div class="wish-text">
+              <strong>Et surtout...</strong>
+              <p>Reste toujours toi-même, c'est ta plus belle force.</p>
             </div>
           </div>
         </div>
 
-        <div class="wishes-hand-signature">
+        <div class="wishes-sign-row">
           Tout le meilleur pour toi ♡
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SLIDE 9 : UN PETIT MOT POUR TOI -->
-    <section class="slide-screen slide-9" data-title="Un petit mot pour toi">
-      <div class="slide-inner craft-paper-bg">
-        <div class="taped-parchment-sheet">
-          <div class="tape-strip tape-top-center"></div>
-          <p class="big-handwrite-text">
-            Tu es une fille incroyable, et je suis vraiment heureux de t'avoir dans ma vie.
-          </p>
-          <p class="merci-toi-script">
-            Merci d'être <u>toi</u>.
-          </p>
-          <div class="sketch-heart-smile">♡ ☺</div>
-        </div>
+      <!-- 7. Section Finale : Célébration & Mot du Cœur -->
+      <section class="scrap-card celebration-finale-card">
+        <div class="washi-tape tape-center"></div>
 
-        <div class="story-pola pola-tilt-2 bottom-pola" onclick="openLightbox('assets/images/photo8_rose.jpg', 'Toujours plus de belles choses ♡')">
-          <div class="tape-strip tape-pola-top"></div>
-          <div class="pola-img-wrap">
-            <img src="assets/images/pola_rose_portrait.jpg" alt="Yaye Boy robe rose">
+        <div class="celebrate-sparkle">✨ 🎂 ✨</div>
+        <h2 class="finale-title">Une nouvelle année de bonheur t'attend !</h2>
+
+        <p class="finale-prose">
+          Profite de chaque instant, vis, rêve, souris... <br>
+          Tu es une fille incroyable, et je suis vraiment heureux de t'avoir dans ma vie.
+        </p>
+
+        <!-- Bouton interactif pluie de cœurs et d'or -->
+        <button class="btn-celebrate-now" id="btnCelebration">
+          <span class="sparkle-star">✨</span>
+          <span>Touche ici pour ta surprise ♡</span>
+        </button>
+
+        <!-- Signature Mactar dessinée avec panache -->
+        <div class="finale-signature-area">
+          <span class="finale-subtext">Avec toute mon affection,</span>
+          <div class="autograph-block">
+            <span class="mactar-name">Mactar</span>
+            <svg class="autograph-underline" viewBox="0 0 220 30" width="180">
+              <path d="M 10 22 Q 110 4 210 20" stroke="#B8324F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
           </div>
-          <p class="pola-handwrite">Toujours plus de belles choses ♡</p>
+          <div class="bouquet-emojis">🌹 🌸 💐</div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SLIDE 10 : DERNIÈRE SURPRISE (CARTE SCRAPBOOK AVEC POLAROÏD & CÉLÉBRATION) -->
-    <section class="slide-screen slide-10" data-title="Dernière surprise">
-      <div class="slide-inner bordeaux-night-bg">
-        <div class="s10-scrap-card">
-          <div class="tape-strip tape-top-center"></div>
+      <footer class="stream-footer-note">
+        Fait avec tout mon cœur pour Yaye Boy ♡
+      </footer>
 
-          <div class="s10-celebrate-sparkle">✨ 🎂 ✨</div>
-          
-          <h2 class="s10-title">
-            Une nouvelle année remplie de bonheur t'attend !
-          </h2>
-
-          <!-- Mini Polaroïd souvenir joyeux -->
-          <div class="s10-mini-pola" onclick="openLightbox('assets/images/photo10_or_pose.jpg', 'Rayonnante & pleine de vie ♡')">
-            <div class="pola-img-wrap">
-              <img src="assets/images/photo10_or_pose.jpg" alt="Yaye Boy fête">
-            </div>
-            <p class="s10-pola-caption">Rayonnante & pleine de vie ♡</p>
-          </div>
-
-          <div class="s10-heart-divider">
-            <span class="line"></span>
-            <span class="heart">♥</span>
-            <span class="line"></span>
-          </div>
-
-          <p class="s10-p">
-            Profite de chaque instant, <br>
-            vis, rêve, souris... <br>
-            Tu mérites tout le meilleur de cette vie.
-          </p>
-
-          <button class="btn-wine-anniv" id="btnCelebration">
-            <span class="btn-sparkle-icon">✨</span>
-            <span>Touche ici pour ta surprise ♡</span>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 11 : MERCI -->
-    <section class="slide-screen slide-11" data-title="Merci">
-      <div class="slide-inner warm-sheet-bg">
-        <div class="merci-sheet-box">
-          <p class="merci-top-text">
-            Merci d'avoir pris le temps de lire tout ça.
-          </p>
-          <p class="merci-special-text">
-            Tu es vraiment spéciale.
-          </p>
-          <div class="merci-heart">♡</div>
-          <div class="merci-sign">— Mactar</div>
-
-          <div class="merci-polaroid-bottom" onclick="openLightbox('assets/images/photo9_orange.jpg', 'Un sourire lumineux ♡')">
-            <img src="assets/images/photo9_orange.jpg" alt="Yaye Boy sourire">
-          </div>
-
-          <div class="daisy-flower-deco">🌼</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SLIDE 12 : FINALE ÉLÉGANTE SCRAPBOOK & SIGNATURE MACTAR -->
-    <section class="slide-screen slide-12" data-title="Pour toujours">
-      <div class="slide-inner deep-black-bg">
-        <div class="s12-center-container">
-
-          <div class="s12-envelope-card">
-            <div class="tape-strip tape-top-center"></div>
-            
-            <div class="s12-floating-hearts">
-              <span>🌸</span>
-              <span class="heart-pulse-icon">♥</span>
-              <span>✨</span>
-            </div>
-            
-            <div class="s12-joyeux-lead">Joyeux anniversaire</div>
-            <h2 class="s12-name-title">Yaye Boy ♡</h2>
-
-            <div class="s12-ornament-line">
-              <span class="line"></span>
-              <span class="dot">✦</span>
-              <span class="line"></span>
-            </div>
-
-            <p class="s12-wish-sub">
-              Que cette journée marque le début d'une année encore plus lumineuse, remplie de paix, d'amour et de toutes les réussites que ton cœur désire.
-            </p>
-
-            <p class="s12-note-sweet">
-              Prends soin de toi et de ton magnifique sourire.
-            </p>
-
-            <!-- Signature Mactar chaleureuse & élégante -->
-            <div class="s12-signature-box">
-              <span class="sig-prefix">Avec toute mon affection,</span>
-              <div class="mactar-autograph">
-                <span class="mactar-script">Mactar</span>
-                <svg class="mactar-stroke" viewBox="0 0 220 30" width="190">
-                  <path d="M 10 22 Q 110 4 210 20" stroke="#B8324F" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-                </svg>
-              </div>
-            </div>
-
-            <div class="s12-card-flowers">🌹 🌸 💐</div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
+    </div>
   </main>
 
-  <!-- ============================================== -->
-  <!-- BARRE DE PROGRESSION & CONTRÔLE BAS           -->
-  <!-- ============================================== -->
-  <footer class="story-bottom-nav">
-    <div class="progress-track" id="progressTrack">
-      <div class="progress-bar-fill" id="progressBarFill"></div>
-    </div>
-    <div class="story-nav-buttons">
-      <button class="nav-arrow-btn" id="btnPrev" aria-label="Précédent">‹</button>
-      <div class="tap-hint-text" id="tapHintText">Touche l'écran pour avancer</div>
-      <button class="nav-arrow-btn" id="btnNext" aria-label="Suivant">›</button>
-    </div>
-  </footer>
-
-  <!-- MODAL FINAL : CARTE DE CÉLÉBRATION -->
+  <!-- MODAL DE CÉLÉBRATION (PLUIE DE CŒURS ET CARTE POPUP) -->
   <div id="celebrationModal" class="celebration-modal" onclick="closeCelebrationModal(event)">
     <div class="celebration-card">
-      <div class="tape-strip tape-top-center"></div>
+      <div class="washi-tape tape-center"></div>
       <div class="celebration-sparkles">✨ ♡ ✨</div>
       <h3 class="celebration-title">Joyeux Anniversaire <br><span class="highlight-name">Yaye Boy ✨</span></h3>
       <p class="celebration-body">Profite à fond de ta journée !</p>
-      <div class="celebration-signature">— Mactar</div>
+      <div class="celebration-signature">— Mactar ♡</div>
       <button class="btn-close-celebration" onclick="closeCelebrationModal(event)">Fermer ♡</button>
     </div>
   </div>
@@ -694,6 +401,6 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20"></script>
 </body>
 </html>

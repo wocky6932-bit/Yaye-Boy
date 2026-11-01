@@ -1,36 +1,25 @@
 /* ========================================================
-   FEUILLE DE STYLE STORY MOBILE-FIRST FIDÈLE AUX 12 ÉCRANS
-   Pour Yaye Boy ♡ • 31 Octobre
+   FEUILLE DE STYLE SCRAPBOOK TIKTOK FLUIDE • YAYE BOY ♡
+   Esthétique ivoire, papier vergé, rose poudré et rouge bordeaux
    ======================================================== */
 
 :root {
-  --color-dark-bg: #140C0E;
-  --color-bordeaux: #3E0F17;
-  --color-bordeaux-card: #561622;
-  --color-bordeaux-btn: #B8253B;
-  --color-bordeaux-btn-hover: #D4314D;
-  --color-wine-text: #E6455E;
-
-  --color-rose-soft: #FDEEF1;
-  --color-rose-blush: #F4A4B4;
-  --color-rose-accent: #E86A82;
-  --color-red-deep: #A71D31;
+  --color-page-bg: #F9F3EC;
+  --color-card-bg: #FFFDF9;
+  --color-border-card: #EDE4D8;
+  --color-text-main: #2A181C;
+  --color-text-muted: #6B555B;
+  --color-bordeaux: #380711;
+  --color-red-cherry: #B8253B;
   --color-red-bright: #E63956;
-
-  --color-cream-bg: #F8F1F3;
-  --color-parchment: #FCF6F7;
-  --color-paper-card: #FFFFFF;
-
-  --color-text-dark: #1E1918;
-  --color-text-muted: #7A6569;
-  --color-text-light: #FDF4F6;
+  --color-rose-poudre: #FCE8ED;
+  --color-tape: rgba(253, 232, 238, 0.94);
+  --shadow-soft: 0 14px 38px rgba(56, 7, 17, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-pola: 0 8px 24px rgba(45, 10, 18, 0.12);
 
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-hand: 'Caveat', cursive;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-
-  --tape-color: rgba(252, 230, 235, 0.88);
-  --shadow-pola: 0 4px 15px rgba(60, 15, 25, 0.12);
 }
 
 *, *::before, *::after {
@@ -42,1026 +31,631 @@
 
 html, body {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-color: #25060C;
-  color: var(--color-text-dark);
+  min-height: 100%;
+  background: var(--color-page-bg);
+  background-image: 
+    radial-gradient(ellipse at 85% 10%, rgba(230, 57, 86, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 50%, rgba(244, 164, 180, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 85% 90%, rgba(184, 37, 59, 0.06) 0%, transparent 60%);
+  color: var(--color-text-main);
   font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ========================================================
-   BARRE SUPÉRIEURE STORY APP
+   1. ÉCRAN 1 : L'ENVELOPPE INTERACTIVE INITIALE
    ======================================================== */
-.story-top-bar {
+.envelope-screen-hero {
   position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background: radial-gradient(circle at 50% 25%, #FFFDF9 0%, #F5ECE3 65%, #EBDDCF 100%);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s;
+}
+
+.envelope-screen-hero.opened-dismiss {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Pétales flottants */
+.floating-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.floating-petals span {
+  position: absolute;
+  display: block;
+  font-size: 1.4rem;
+  opacity: 0.45;
+  animation: floatPetal 11s infinite linear;
+}
+
+.floating-petals span:nth-child(1) { top: -20px; left: 12%; animation-duration: 9s; font-size: 1.6rem; }
+.floating-petals span:nth-child(2) { top: -20px; left: 32%; animation-duration: 12s; animation-delay: 2s; }
+.floating-petals span:nth-child(3) { top: -20px; left: 68%; animation-duration: 10s; animation-delay: 1s; }
+.floating-petals span:nth-child(4) { top: -20px; left: 88%; animation-duration: 13s; animation-delay: 3s; font-size: 1.5rem; }
+.floating-petals span:nth-child(5) { top: -20px; left: 50%; animation-duration: 11s; animation-delay: 4s; }
+
+@keyframes floatPetal {
+  0% { transform: translateY(-30px) rotate(0deg); opacity: 0; }
+  20% { opacity: 0.65; }
+  80% { opacity: 0.65; }
+  100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+}
+
+.envelope-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+}
+
+.intro-heading {
+  text-align: center;
+  margin-bottom: 26px;
+  animation: slideDownIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.sub-greeting {
+  font-family: var(--font-hand);
+  font-size: 1.5rem;
+  color: var(--color-red-cherry);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.main-mail-title {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #2E181D;
+  line-height: 1.1;
+}
+
+@keyframes slideDownIn {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* L'enveloppe pastel 3D */
+.vintage-envelope-wrap {
+  width: 275px;
+  height: 185px;
+  background: #FEE8EC;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 
+    0 18px 45px rgba(184, 50, 79, 0.22),
+    0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1.5px solid #F3CFD6;
+  animation: 
+    dropEnvelope 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
+    envelopeFloat 3.8s infinite ease-in-out 1.3s;
+  cursor: pointer;
+}
+
+@keyframes dropEnvelope {
+  0% { opacity: 0; transform: translateY(-130px) scale(0.85); }
+  60% { transform: translateY(14px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes envelopeFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(1deg); }
+}
+
+.env-back-plate {
+  position: absolute;
+  inset: 0;
+  background: #F9DCE2;
+  border-radius: 10px;
+}
+
+.env-letter-peek {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  right: 20px;
+  height: 80px;
+  background: #FFFDF9;
+  border-radius: 6px 6px 0 0;
+  border: 1px solid #EFE4D6;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vintage-envelope-wrap.is-opening .env-letter-peek {
+  transform: translateY(-60px);
+}
+
+.env-lavender-branch {
+  position: absolute;
+  top: -14px;
+  right: 18px;
+  font-size: 2.1rem;
+  z-index: 6;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+
+.env-front-creases {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  pointer-events: none;
+  z-index: 4;
+  border-bottom: 92px solid #FEDBE2;
+  border-left: 137px solid #FCD2DA;
+  border-right: 137px solid #FCD2DA;
+  border-top: 92px solid transparent;
+}
+
+.env-top-flap {
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 52px;
-  background: rgba(38, 7, 13, 0.94);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-  border-bottom: 1px solid rgba(244, 164, 180, 0.2);
-  padding-top: env(safe-area-inset-top, 0);
+  width: 0;
+  height: 0;
+  border-left: 137px solid transparent;
+  border-right: 137px solid transparent;
+  border-top: 105px solid #F5C7D0;
+  transform-origin: top center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 5;
 }
 
-.story-back-btn {
-  background: none;
-  border: none;
-  color: #FFF;
-  cursor: pointer;
+.vintage-envelope-wrap.is-opening .env-top-flap {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+
+.env-heart-seal {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  transition: background 0.2s;
+  z-index: 8;
+  box-shadow: 0 4px 12px rgba(184, 34, 62, 0.4);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.story-back-btn:active {
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.story-title-center {
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 1px;
+.seal-heart {
   color: #FFF;
-  text-transform: uppercase;
-}
-
-.story-top-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.story-counter {
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #B3A8A3;
-}
-
-.story-audio-btn {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  color: #FFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.story-audio-btn.playing {
-  border-color: var(--color-wine-text);
-  color: var(--color-wine-text);
-}
-
-.heart-pulse {
-  display: inline-block;
+  font-size: 1.45rem;
   line-height: 1;
+  animation: sealPulse 1.8s infinite ease-in-out;
 }
 
-.story-audio-btn.playing .heart-pulse {
-  animation: heartBeat 1.2s infinite ease-in-out;
-}
-
-@keyframes heartBeat {
+@keyframes sealPulse {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.3); }
+  50% { transform: scale(1.22); }
+}
+
+.vintage-envelope-wrap.is-opening .env-heart-seal {
+  transform: translate(-50%, -50%) scale(1.4);
+  opacity: 0;
+}
+
+.tap-hint-wrapper {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  animation: fadeInHint 1.2s ease 1s both;
+}
+
+.tap-finger {
+  font-size: 1.6rem;
+  animation: tapBounce 1.4s infinite ease-in-out;
+}
+
+@keyframes tapBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.tap-label {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #7A555E;
+}
+
+@keyframes fadeInHint {
+  0% { opacity: 0; }
+  100% { opacity: 0.9; }
 }
 
 /* ========================================================
-   CONTENEUR DU SLIDER / STORY
+   2. ÉCRAN 2 : LE FLUX CONTINU SCRAPBOOK
    ======================================================== */
-.story-wrapper {
-  display: flex;
-  width: 1200%;
-  height: 100%;
-  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
-  touch-action: pan-y;
-}
-
-.slide-screen {
-  width: 100vw;
-  height: 100%;
-  flex-shrink: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding: 60px 16px 85px;
+.main-scrapbook-stream {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  scrollbar-width: none; /* Firefox */
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  padding-bottom: 70px;
 }
 
-.slide-screen::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, iOS */
+.main-scrapbook-stream.active {
+  opacity: 1;
 }
 
-.slide-inner {
-  width: 100%;
-  max-width: 440px;
-  min-height: calc(100vh - 145px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  padding-bottom: 25px;
-}
-
-/* MASKING TAPE */
-.tape-strip {
+/* Ruban Washi Tape adhésif */
+.washi-tape {
   position: absolute;
-  height: 18px;
-  background: var(--tape-color);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  height: 20px;
+  background: var(--color-tape);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
   pointer-events: none;
   z-index: 10;
-  border-left: 1.5px dashed rgba(160, 140, 110, 0.4);
-  border-right: 1.5px dashed rgba(160, 140, 110, 0.4);
+  border-left: 2px dashed rgba(184, 50, 79, 0.35);
+  border-right: 2px dashed rgba(184, 50, 79, 0.35);
 }
 
-.tape-top-center {
-  top: -9px;
+.tape-center {
+  top: -10px;
   left: 50%;
-  transform: translateX(-50%) rotate(0.5deg);
-  width: 75px;
+  transform: translateX(-50%) rotate(-0.5deg);
+  width: 85px;
 }
 
-.tape-pola-top {
-  top: -8px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-1deg);
-  width: 60px;
-}
-
-/* ========================================================
-   SLIDE 1 : ACCUEIL (FIDÈLE À LA MAQUETTE EXACTE)
-   ======================================================== */
-.slide-1 {
-  background: 
-    radial-gradient(ellipse at 85% 15%, rgba(196, 40, 70, 0.45) 0%, transparent 60%),
-    radial-gradient(ellipse at 15% 85%, rgba(170, 25, 55, 0.4) 0%, transparent 60%),
-    linear-gradient(170deg, #380711 0%, #1a0206 50%, #100104 100%);
-  color: #FFF;
-  padding: 60px 20px 80px;
-}
-
-.hero-exact-layout {
+/* Conteneur principal */
+.stream-content-wrapper {
+  width: 100%;
+  max-width: 480px;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  min-height: auto;
+  gap: 32px;
 }
 
-.s1-portrait-box {
-  width: 100%;
-  aspect-ratio: 16 / 8.5;
-  height: auto;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(230, 57, 86, 0.2);
-  border: 1px solid rgba(255, 140, 160, 0.25);
-  margin-top: 6px;
-  margin-bottom: 24px;
-  background: #181113;
-  cursor: pointer;
+/* Cartes Scrapbook */
+.scrap-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border-card);
+  border-radius: 16px;
+  padding: 28px 20px 24px;
+  box-shadow: var(--shadow-soft);
   position: relative;
+  width: 100%;
 }
 
-.s1-img {
+.card-section-title {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.card-section-title h2 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-bordeaux);
+  line-height: 1.2;
+}
+
+.card-section-title .subtitle-hand {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* --------------------------------------------------------
+   A. Header Cinématique avec photo de Yaye Boy & Titres volants
+   -------------------------------------------------------- */
+.tiktok-hero-section {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px 16px 0;
+  margin-bottom: 12px;
+}
+
+.hero-photo-frame {
+  width: 100%;
+  height: 245px;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 42px rgba(56, 7, 17, 0.28);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+}
+
+.hero-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center center;
+  object-position: center 25%;
   display: block;
+  transform: scale(1.03);
+  animation: zoomSubtle 12s infinite alternate ease-in-out;
 }
 
-.s1-text-card {
-  text-align: left;
-  width: 100%;
+@keyframes zoomSubtle {
+  0% { transform: scale(1.03); }
+  100% { transform: scale(1.1); }
 }
 
-.s1-titles-group {
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30, 8, 14, 0.2) 0%, rgba(20, 4, 8, 0.72) 100%);
+  pointer-events: none;
+}
+
+.flying-text-group {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.fly-text {
+  color: #FFF;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 57, 86, 0.6);
+  line-height: 1.1;
+  opacity: 0;
+}
+
+.line-1 {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: flyInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.line-2 {
+  font-family: var(--font-hand);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #FFB3C2;
+  margin-top: -2px;
+  animation: flyInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+}
+
+.line-3 {
+  font-family: var(--font-serif);
+  font-size: 1.55rem;
+  font-style: italic;
+  letter-spacing: 3px;
+  color: #FFF;
+  animation: popInBounce 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s both;
+}
+
+@keyframes flyInLeft {
+  0% { opacity: 0; transform: translateX(-80px) rotate(-4deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes flyInRight {
+  0% { opacity: 0; transform: translateX(80px) rotate(4deg); }
+  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
+}
+
+@keyframes popInBounce {
+  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* --------------------------------------------------------
+   B. Love Letter Card avec photomaton 4 photos
+   -------------------------------------------------------- */
+.letter-header-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1.5px solid #F0E3D8;
+  padding-bottom: 10px;
   margin-bottom: 18px;
 }
 
-.title-joyeux {
-  font-family: var(--font-sans);
-  font-size: 2.3rem;
+.letter-main-title {
+  font-family: var(--font-serif);
+  font-size: 2.1rem;
+  color: var(--color-red-cherry);
   font-weight: 700;
-  color: #FFFFFF;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
-.title-anniversaire {
-  font-family: var(--font-sans);
-  font-size: 2.3rem;
-  font-weight: 800;
-  color: #FFFFFF;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-  margin-bottom: 4px;
-}
-
-.title-name-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.s1-highlight {
+.for-tag {
   font-family: var(--font-hand);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: #F87B95;
-  letter-spacing: 0.5px;
-  line-height: 1;
+  font-size: 1.25rem;
+  color: #8C757B;
 }
 
-.s1-hollow-heart {
-  font-size: 2.4rem;
-  color: #F87B95;
-  line-height: 1;
-  display: inline-block;
-  transform: translateY(-2px);
-}
-
-/* SÉPARATEUR CŒUR ROSE */
-.pink-heart-divider {
+.letter-content-flex {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 16px 0 22px;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+}
+
+.filmstrip-column {
+  width: 95px;
+  flex-shrink: 0;
+  background: #FFF;
+  padding: 4px;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(45, 10, 18, 0.15);
+  border: 1px solid #E5D9CE;
+  transform: rotate(-1.5deg);
+}
+
+.photostrip-img {
   width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 2px;
 }
 
-.divider-line {
+.letter-prose-column {
   flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(248, 123, 149, 0.6), rgba(248, 123, 149, 0.1));
-}
-
-.pink-heart-divider .divider-line:first-child {
-  background: linear-gradient(90deg, rgba(248, 123, 149, 0.1), rgba(248, 123, 149, 0.6));
-}
-
-.divider-heart {
-  color: #F87B95;
-  font-size: 0.85rem;
-}
-
-/* PARAGRAPHES HERO */
-.s1-message-block {
-  color: #E2CFD3;
-  font-size: 0.96rem;
+  font-family: var(--font-serif);
+  font-size: 1.08rem;
   line-height: 1.6;
-  margin-bottom: 26px;
+  color: #38292D;
 }
 
-.s1-lead-line {
-  color: #FFFFFF;
-  font-weight: 600;
+.salutation-name {
+  font-family: var(--font-hand);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-red-cherry);
   margin-bottom: 8px;
 }
 
-.inline-heart {
-  font-size: 0.95rem;
-  margin-left: 2px;
+.letter-prose-column p {
+  margin-bottom: 10px;
 }
 
-.s1-message-block p {
-  margin-bottom: 6px;
-}
-
-/* BOUTON ROSE ÉDITORIAL */
-.btn-pink-curved {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #FBB4C4;
-  color: #1A0409;
-  font-family: var(--font-sans);
-  font-size: 0.98rem;
-  font-weight: 700;
-  padding: 14px 34px;
-  border-radius: 50px;
-  box-shadow: 0 8px 24px rgba(251, 180, 196, 0.35);
-  transition: transform 0.2s ease, background-color 0.2s ease;
-  margin: 10px 0 16px;
-  width: auto;
-  align-self: flex-start;
-}
-
-.btn-pink-curved:active {
-  transform: scale(0.97);
-  background-color: #F89EB3;
-}
-
-.s1-bottom-heart {
+.letter-valediction {
+  margin-top: 14px;
+  font-family: var(--font-hand);
   font-size: 1.4rem;
-  color: #F87B95;
-  opacity: 0.7;
-  margin-top: 8px;
-}
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
-  transition: transform 0.2s;
+  color: #5C4349;
+  line-height: 1.25;
 }
 
-.btn-pill-primary:active {
-  transform: scale(0.97);
+.author-sign {
+  color: var(--color-red-cherry);
+  font-size: 1.75rem;
 }
 
-.s1-bottom-heart {
-  font-size: 1.3rem;
-  margin-top: 18px;
-  color: #B3A8A3;
-}
-
-/* ========================================================
-   SLIDE 2 : MA LETTRE
-   ======================================================== */
-.parchment-bg {
+/* Morpion Tic-Tac-Toe */
+.tictactoe-widget {
   background: #FFF5F7;
-  color: #24080D;
-  border: 1px solid #F3CFD6;
-  border-radius: 8px;
-  padding: 35px 22px;
-  box-shadow: 0 10px 30px rgba(45, 6, 12, 0.4);
-}
-
-.dried-flower-corner {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 1.5rem;
-}
-
-.letter-content-box {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  line-height: 1.7;
-}
-
-.hand-salutation {
-  font-family: var(--font-hand);
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--color-red-deep);
-  margin-bottom: 14px;
-}
-
-.letter-content-box p {
-  margin-bottom: 14px;
-}
-
-.letter-sign-mactar {
-  font-family: var(--font-hand);
-  font-size: 1.9rem;
-  font-weight: 700;
-  color: var(--color-red-bright);
-  margin-top: 18px;
-}
-
-.letter-bottom-red-heart {
-  font-size: 1.6rem;
-  color: #E63956;
-  text-align: right;
-  margin-top: -10px;
-}
-
-/* ========================================================
-   SLIDE 3 : NOS SOUVENIRS (3 POLAROÏDS)
-   ======================================================== */
-.dark-wood-bg {
-  background: radial-gradient(circle at center, #4A0E1A 0%, #220409 100%);
-  color: #FFF;
-}
-
-.section-badge-title h2 {
-  font-family: var(--font-hand);
-  font-size: 1.85rem;
-  font-weight: 700;
-  text-align: center;
-  line-height: 1.15;
-  margin-bottom: 12px;
-  color: #FFF;
-}
-
-.pola-stack-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
-}
-
-.story-pola {
-  background: #FFF;
-  color: var(--color-text-dark);
-  padding: 6px 6px 8px;
-  border-radius: 3px;
-  box-shadow: var(--shadow-pola);
-  width: 100%;
-  max-width: 240px;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.2s;
-}
-
-.story-pola:active {
-  transform: scale(0.98);
-}
-
-.pola-tilt-1 { transform: rotate(-1.5deg); }
-.pola-tilt-2 { transform: rotate(1deg); }
-.pola-tilt-3 { transform: rotate(-1deg); }
-
-.pola-img-wrap {
-  width: 100%;
-  height: 120px;
-  overflow: hidden;
-  border-radius: 2px;
-  position: relative;
-  background: #FAF8F5;
+  border: 1px dashed #E8CCD4;
+  border-radius: 10px;
+  padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.pola-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  display: block;
-}
-
-.pola-handwrite {
-  font-family: var(--font-hand);
-  font-size: 1.15rem;
-  text-align: center;
-  margin-top: 4px;
-  line-height: 1.1;
-}
-
-.play-badge-icon {
-  position: absolute;
-  bottom: 8px;
-  left: 8px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #FFF;
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
-.pola-handwrite {
-  font-family: var(--font-hand);
-  font-size: 1.25rem;
-  text-align: center;
+  gap: 18px;
   margin-top: 8px;
-  line-height: 1.15;
 }
 
-/* ========================================================
-   SLIDE 4 : CE QUE J'AIME CHEZ TOI (PAPIERS SCRAPBOOK CHAUDS)
-   ======================================================== */
-.scrap-reasons-layout {
-  background: 
-    radial-gradient(ellipse at 85% 20%, rgba(214, 52, 85, 0.35) 0%, transparent 60%),
-    linear-gradient(175deg, #380712 0%, #1c0207 60%, #120104 100%);
-  color: #FFF;
-  border-radius: 16px;
-  padding: 10px 4px;
+.ttt-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 25px);
+  grid-template-rows: repeat(3, 25px);
+  gap: 4px;
 }
 
-.reasons-heading {
-  font-family: var(--font-hand);
-  font-size: 2.6rem;
-  font-weight: 700;
-  text-align: center;
-  color: #FFF;
-  line-height: 1.1;
-  margin-bottom: 22px;
-}
-
-.scrap-paper-notes-list {
+.ttt-grid .cell {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #F0C4D0;
+  border-radius: 3px;
   display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 0 4px;
-}
-
-.scrap-note-item {
-  background: #FFFDF9;
-  color: #1E1918;
-  border-radius: 6px;
-  padding: 14px 16px 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #EDE5D8;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: transform 0.2s ease;
-}
-
-.note-tilt-1 { transform: rotate(-1.2deg); }
-.note-tilt-2 { transform: rotate(1deg); }
-.note-tilt-3 { transform: rotate(-0.5deg); }
-
-.scrap-note-item:hover {
-  transform: scale(1.02) rotate(0deg);
-}
-
-.tape-note-top {
-  top: -8px;
-  left: 20px;
-  width: 55px;
-  height: 16px;
-  background: rgba(250, 235, 238, 0.88);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  border-left: 1px dashed rgba(190, 140, 150, 0.4);
-  border-right: 1px dashed rgba(190, 140, 150, 0.4);
-}
-
-.note-num-icon {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 38px;
-  flex-shrink: 0;
-  border-right: 1px dashed #E2D5C5;
-  padding-right: 10px;
+  font-size: 0.9rem;
+  color: #665055;
+  font-weight: 700;
 }
 
-.note-digit {
-  font-family: var(--font-serif);
+.ttt-grid .cell.win-heart {
+  color: var(--color-red-bright);
   font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--color-red-deep);
-  line-height: 1;
+  animation: pulseWin 1.5s infinite ease-in-out;
 }
 
-.note-emoji {
-  font-size: 1.1rem;
-  margin-top: 4px;
+@keyframes pulseWin {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
 }
 
-.note-text-body {
-  flex: 1;
-}
-
-.note-heading {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1A0408;
-  margin-bottom: 2px;
-  line-height: 1.2;
-}
-
-.note-text-body p {
-  font-size: 0.85rem;
-  color: #5C524F;
-  line-height: 1.35;
-  margin: 0;
-}
-
-.reasons-hand-footer {
+.ttt-text {
   font-family: var(--font-hand);
   font-size: 1.45rem;
-  color: #F8B4C2;
-  text-align: right;
-  margin-top: 18px;
-  margin-right: 12px;
+  font-weight: 700;
+  color: var(--color-red-cherry);
 }
 
-/* ========================================================
-   SLIDE 5 : TES VIDÉOS
-   ======================================================== */
-.dark-bg {
-  background: radial-gradient(circle at center, #440C16 0%, #1F0307 100%);
-  color: #FFF;
+/* --------------------------------------------------------
+   C. Polaroïds Souvenirs
+   -------------------------------------------------------- */
+.polas-mosaic-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
 }
 
-.sub-lead {
-  font-size: 0.88rem;
-  color: #B3A8A3;
-  line-height: 1.5;
-  text-align: center;
-  margin-top: -12px;
-  margin-bottom: 20px;
-}
-
-.videos-stack-vertical {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  align-items: center;
-}
-
-.story-video-card {
+.pola-snap {
   background: #FFF;
-  color: var(--color-text-dark);
   padding: 8px 8px 12px;
   border-radius: 4px;
   box-shadow: var(--shadow-pola);
-  width: 100%;
-  max-width: 300px;
-}
-
-.video-box-media {
-  width: 100%;
-  height: auto;
-  background: #000;
-  border-radius: 2px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.video-box-media video {
-  width: 100%;
-  height: auto;
-  max-height: 480px;
-  object-fit: contain;
-  display: block;
-}
-
-.video-caption-hand {
-  font-family: var(--font-hand);
-  font-size: 1.25rem;
-  text-align: center;
-  margin-top: 8px;
-}
-
-/* ========================================================
-   SLIDE 6 : NOS MOMENTS
-   ======================================================== */
-.scrap-collage-layout {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  align-items: center;
-}
-
-.collage-item {
-  background: #FFF;
-  color: var(--color-text-dark);
-  padding: 7px 7px 12px;
-  border-radius: 3px;
-  box-shadow: var(--shadow-pola);
-  width: 240px;
+  border: 1px solid #EBE2D5;
   position: relative;
   cursor: pointer;
-}
-
-.collage-item img {
-  width: 100%;
-  height: 250px;
-  object-fit: contain;
-  display: block;
-  border-radius: 2px;
-  background: #FAF8F5;
-}
-
-.col-note {
-  font-family: var(--font-hand);
-  font-size: 1.25rem;
-  text-align: center;
-  margin-top: 6px;
-}
-
-.col-left { transform: rotate(-2deg); align-self: flex-start; }
-.col-right { transform: rotate(2deg); align-self: flex-end; }
-
-.collage-memo-box {
-  background: #FAF6ED;
-  color: var(--color-text-dark);
-  padding: 12px 18px;
-  border-radius: 4px;
-  font-family: var(--font-hand);
-  font-size: 1.3rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  max-width: 260px;
-  text-align: center;
-  transform: rotate(1deg);
-}
-
-.collage-flowers {
-  font-size: 1.4rem;
-  margin-top: 8px;
-}
-
-/* ========================================================
-   SLIDE 7 : MA LETTRE (SUITE)
-   ======================================================== */
-.parchment-bg-2 {
-  background: #FFF5F7;
-  color: #24080D;
-  border: 1px solid #F3CFD6;
-  border-radius: 8px;
-  padding: 35px 22px;
-  box-shadow: 0 10px 30px rgba(45, 6, 12, 0.4);
-}
-
-.letter-sheet-card {
-  font-family: var(--font-serif);
-  font-size: 1.18rem;
-  line-height: 1.7;
-}
-
-.letter-sheet-card p {
-  margin-bottom: 14px;
-}
-
-.suite-valediction {
-  font-family: var(--font-hand);
-  font-size: 1.8rem;
-  margin-top: 20px;
-}
-
-.suite-valediction strong {
-  display: block;
-  color: var(--color-red-bright);
-  font-size: 2.1rem;
-}
-
-.signature-mactar-line {
-  font-family: var(--font-hand);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color-red-deep);
-  margin-top: 8px;
-}
-
-.letter-bottom-bouquet {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 18px;
-  font-size: 1.4rem;
-}
-
-/* ========================================================
-   SLIDE 8 : MES VŒUX (PAPIERS D'INTENTION SCRAPBOOK ROMANTIQUE)
-   ======================================================== */
-.scrap-wishes-layout {
-  background: 
-    radial-gradient(ellipse at 85% 15%, rgba(220, 50, 85, 0.3) 0%, transparent 60%),
-    linear-gradient(175deg, #350711 0%, #1b0207 60%, #100104 100%);
-  color: #FFF;
-  border-radius: 18px;
-  padding: 18px 8px 24px;
-}
-
-.wishes-heading {
-  font-family: var(--font-hand);
-  font-size: 2.7rem;
-  font-weight: 700;
-  text-align: center;
-  color: #FFF;
-  line-height: 1.1;
-  margin-bottom: 22px;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-}
-
-.wishes-scrap-notes-list {
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  padding: 0 4px;
-}
-
-.wish-scrap-card {
-  background: #FFFDF9;
-  color: #1E1918;
-  border-radius: 8px;
-  padding: 13px 15px;
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #EDE4D8;
-  position: relative;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  transition: transform 0.2s ease;
-}
-
-.wish-tilt-1 { transform: rotate(-1deg); }
-.wish-tilt-2 { transform: rotate(0.9deg); }
-.wish-tilt-3 { transform: rotate(-0.6deg); }
-
-.wish-scrap-card:hover {
-  transform: scale(1.015) rotate(0deg);
-}
-
-.tape-wish-top {
-  top: -8px;
-  left: 22px;
-  width: 52px;
-  height: 15px;
-  background: rgba(253, 232, 238, 0.92);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
-  border-left: 1px dashed rgba(190, 140, 150, 0.45);
-  border-right: 1px dashed rgba(190, 140, 150, 0.45);
-}
-
-.wish-symbol-col {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: #FFF0F4;
-  border: 1px solid #F5CCD6;
-  flex-shrink: 0;
-}
-
-.wish-badge-icon {
-  font-size: 1.3rem;
-  line-height: 1;
-}
-
-.wish-detail-col {
-  flex: 1;
-}
-
-.wish-title-text {
-  font-family: var(--font-serif);
-  font-size: 1.18rem;
-  font-weight: 700;
-  color: #8C1D35;
-  margin-bottom: 2px;
-  line-height: 1.2;
-}
-
-.wish-sub-text {
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
-  color: #524749;
-  line-height: 1.35;
-  margin: 0;
-}
-
-.wishes-hand-signature {
-  font-family: var(--font-hand);
-  font-size: 1.6rem;
-  color: #F8B4C2;
-  text-align: right;
-  margin-top: 18px;
-  margin-right: 12px;
-  letter-spacing: 0.5px;
-}
-
-/* ========================================================
-   SLIDE 9 : UN PETIT MOT POUR TOI
-   ======================================================== */
-.craft-paper-bg {
-  background: radial-gradient(circle at center, #4A0E1A 0%, #200408 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-.taped-parchment-sheet {
-  background: #FFF5F7;
-  color: #24080D;
-  border: 1px solid #F3CFD6;
-  border-radius: 6px;
-  padding: 30px 22px;
-  box-shadow: 0 8px 24px rgba(40, 5, 11, 0.4);
-  position: relative;
-  text-align: center;
-  width: 100%;
-}
-
-.big-handwrite-text {
-  font-family: var(--font-hand);
-  font-size: 1.85rem;
-  line-height: 1.35;
-  margin-bottom: 14px;
-}
-
-.merci-toi-script {
-  font-family: var(--font-hand);
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--color-wine-text);
-}
-
-.sketch-heart-smile {
-  font-size: 1.4rem;
-  margin-top: 8px;
-}
-
-.bottom-pola {
-  width: 240px;
-}
-
-.bottom-pola .pola-img-wrap {
-  height: 160px;
-}
-
-/* ========================================================
-   SLIDE 10 : DERNIÈRE SURPRISE (CARTE SCRAPBOOK & CÉLÉBRATION)
-   ======================================================== */
-.bordeaux-night-bg {
-  background: 
-    radial-gradient(ellipse at 50% 15%, rgba(214, 52, 85, 0.35) 0%, transparent 65%),
-    linear-gradient(175deg, #380712 0%, #1c0207 60%, #120104 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 4px;
-}
-
-.s10-scrap-card {
-  background: #FFFDF9;
-  color: #1E1918;
-  border: 1px solid #EDE4D8;
-  border-radius: 14px;
-  padding: 28px 18px 22px;
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  box-shadow: 
-    0 20px 45px rgba(0, 0, 0, 0.5),
-    0 2px 8px rgba(0, 0, 0, 0.12),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.s10-celebrate-sparkle {
-  font-size: 1.35rem;
-  color: #B8324F;
-  margin-bottom: 6px;
-  letter-spacing: 2px;
-}
-
-.s10-title {
-  font-family: var(--font-serif);
-  font-size: 1.55rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: #8C1D35;
-  margin-bottom: 14px;
-}
-
-/* Polaroïd au sein de la carte */
-.s10-mini-pola {
-  background: #FFF;
-  padding: 6px 6px 10px;
-  border-radius: 4px;
-  box-shadow: 0 6px 18px rgba(45, 6, 12, 0.18);
-  border: 1px solid #F0E6D8;
-  width: 190px;
-  margin-bottom: 14px;
-  cursor: pointer;
-  transform: rotate(-1.5deg);
   transition: transform 0.25s ease;
 }
 
-.s10-mini-pola:hover {
-  transform: rotate(0deg) scale(1.03);
+.pola-snap:hover {
+  transform: scale(1.03) rotate(0deg) !important;
+  z-index: 5;
 }
 
-.s10-mini-pola .pola-img-wrap {
+.pola-tilt-left { transform: rotate(-1.5deg); }
+.pola-tilt-right { transform: rotate(1.5deg); }
+
+.pola-tape {
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%) rotate(1deg);
+  width: 50px;
+  height: 14px;
+  background: var(--color-tape);
+  border-left: 1px dashed rgba(184, 50, 79, 0.3);
+  border-right: 1px dashed rgba(184, 50, 79, 0.3);
+}
+
+.pola-frame {
   width: 100%;
-  height: 170px;
+  height: 175px;
   overflow: hidden;
   border-radius: 2px;
-  background: #F5EFEB;
+  background: #FAF6F2;
 }
 
-.s10-mini-pola .pola-img-wrap img {
+.pola-frame img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1069,368 +663,386 @@ html, body {
   display: block;
 }
 
-.s10-pola-caption {
+.pola-legend {
   font-family: var(--font-hand);
-  font-size: 1.15rem;
-  color: #2D0811;
-  margin-top: 5px;
-  line-height: 1.1;
+  font-size: 1.25rem;
+  text-align: center;
+  color: var(--color-text-main);
+  margin-top: 8px;
+  line-height: 1.15;
 }
 
-.s10-heart-divider {
+/* --------------------------------------------------------
+   D. 5 Raisons (Notes mémo)
+   -------------------------------------------------------- */
+.memos-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.memo-sticky-note {
+  background: #FFF;
+  border-radius: 8px;
+  padding: 13px 15px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border: 1px solid #ECE2D5;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.tilt-1 { transform: rotate(-0.8deg); }
+.tilt-2 { transform: rotate(0.8deg); }
+.tilt-3 { transform: rotate(-0.5deg); }
+
+.memo-sticky-note:hover {
+  transform: scale(1.02) rotate(0deg);
+}
+
+.mini-tape {
+  position: absolute;
+  top: -6px;
+  left: 20px;
+  width: 45px;
+  height: 12px;
+  background: var(--color-tape);
+  border-left: 1px dashed rgba(184, 50, 79, 0.3);
+  border-right: 1px dashed rgba(184, 50, 79, 0.3);
+}
+
+.memo-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-rose-poudre);
+  border: 1px solid #F5CCD6;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  width: 100%;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
 
-.s10-heart-divider .line {
-  width: 35px;
-  height: 1px;
-  background: #E8D5DC;
-}
-
-.s10-heart-divider .heart {
-  color: #E63956;
-  font-size: 0.85rem;
-}
-
-.s10-p {
+.memo-info h4 {
   font-family: var(--font-serif);
-  font-size: 1.05rem;
-  color: #4D3F43;
-  line-height: 1.45;
-  margin-bottom: 18px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-bordeaux);
+  margin-bottom: 2px;
+  line-height: 1.2;
 }
 
-.btn-wine-anniv {
+.memo-info p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+.reasons-bottom-note {
+  font-family: var(--font-hand);
+  font-size: 1.55rem;
+  color: var(--color-red-cherry);
+  text-align: right;
+  margin-top: 14px;
+  margin-right: 8px;
+}
+
+/* --------------------------------------------------------
+   E. Vidéos Souvenirs
+   -------------------------------------------------------- */
+.videos-vertical-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.video-polaroid {
+  background: #FFF;
+  padding: 8px 8px 12px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-pola);
+  border: 1px solid #EBE2D5;
+  width: 100%;
+}
+
+.video-media-wrap {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000;
+}
+
+.video-media-wrap video {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+  display: block;
+}
+
+.video-caption {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  text-align: center;
+  color: var(--color-text-main);
+  margin-top: 8px;
+}
+
+/* --------------------------------------------------------
+   F. Vœux pour ton année à venir
+   -------------------------------------------------------- */
+.wishes-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.wish-item {
+  background: #FFF;
+  border-radius: 8px;
+  padding: 12px 14px;
+  border: 1px solid #ECE2D5;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wish-icon {
+  font-size: 1.4rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-rose-poudre);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wish-text strong {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-bordeaux);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.wish-text p {
+  font-size: 0.88rem;
+  color: var(--color-text-muted);
+  line-height: 1.35;
+}
+
+.wishes-sign-row {
+  font-family: var(--font-hand);
+  font-size: 1.6rem;
+  color: var(--color-red-cherry);
+  text-align: right;
+  margin-top: 14px;
+  margin-right: 8px;
+}
+
+/* --------------------------------------------------------
+   G. Célébration Finale & Autographe Mactar
+   -------------------------------------------------------- */
+.celebration-finale-card {
+  text-align: center;
+}
+
+.celebrate-sparkle {
+  font-size: 1.45rem;
+  color: var(--color-red-cherry);
+  margin-bottom: 8px;
+  letter-spacing: 3px;
+}
+
+.finale-title {
+  font-family: var(--font-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--color-bordeaux);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.finale-prose {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.btn-celebrate-now {
   background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
   color: #FFF;
   border: none;
   font-family: var(--font-sans);
-  font-size: 0.92rem;
+  font-size: 0.98rem;
   font-weight: 700;
-  padding: 13px 24px;
+  padding: 14px 28px;
   border-radius: 50px;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.45);
+  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4);
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  animation: pulseCelebrate 2.2s infinite ease-in-out;
   transition: transform 0.2s, box-shadow 0.2s;
-  animation: pulseButton 2.2s infinite ease-in-out;
 }
 
-@keyframes pulseButton {
-  0%, 100% {
-    transform: scale(1);
-    box-shadow: 0 8px 24px rgba(230, 57, 86, 0.45);
-  }
-  50% {
-    transform: scale(1.04);
-    box-shadow: 0 12px 28px rgba(230, 57, 86, 0.65);
-  }
+@keyframes pulseCelebrate {
+  0%, 100% { transform: scale(1); box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4); }
+  50% { transform: scale(1.04); box-shadow: 0 12px 28px rgba(230, 57, 86, 0.6); }
 }
 
-.btn-wine-anniv:active {
+.btn-celebrate-now:active {
   transform: scale(0.96);
 }
 
-.btn-sparkle-icon {
-  font-size: 1.1rem;
-}
-
-/* ========================================================
-   SLIDE 11 : MERCI
-   ======================================================== */
-.warm-sheet-bg {
-  background: #FFF3F5;
-  color: #24080D;
-  border: 1px solid #F3CFD6;
-  border-radius: 8px;
-  padding: 30px 20px;
-  box-shadow: 0 10px 30px rgba(40, 5, 11, 0.35);
-}
-
-.merci-sheet-box {
-  text-align: center;
-}
-
-.merci-top-text {
-  font-family: var(--font-hand);
-  font-size: 1.7rem;
-  line-height: 1.3;
-  margin-bottom: 8px;
-}
-
-.merci-special-text {
-  font-family: var(--font-hand);
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--color-red-bright);
-}
-
-.merci-heart {
-  font-size: 1.5rem;
-  color: var(--color-red-bright);
-  margin: 6px 0;
-}
-
-.merci-sign {
-  font-family: var(--font-hand);
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-}
-
-.merci-polaroid-bottom {
-  width: 220px;
-  margin: 0 auto;
-  background: #FFF;
-  padding: 6px 6px 12px;
-  border-radius: 3px;
-  box-shadow: var(--shadow-pola);
-  transform: rotate(1deg);
-  cursor: pointer;
-}
-
-.merci-polaroid-bottom img {
-  width: 100%;
-  height: 240px;
-  object-fit: contain;
-  display: block;
-  background: #FAF8F5;
-}
-
-.daisy-flower-deco {
-  font-size: 1.4rem;
-  margin-top: 14px;
-}
-
-/* ========================================================
-   SLIDE 12 : FINALE ÉLÉGANTE SCRAPBOOK & SIGNATURE
-   ======================================================== */
-.deep-black-bg {
-  background: 
-    radial-gradient(ellipse at 50% 10%, rgba(214, 52, 85, 0.35) 0%, transparent 65%),
-    radial-gradient(circle at center, #350811 0%, #150205 100%);
-  color: #FFF;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 6px;
-}
-
-.s12-center-container {
+.finale-signature-area {
+  border-top: 1px dashed #E2D2D7;
+  padding-top: 20px;
+  margin-top: 26px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 100%;
 }
 
-.s12-envelope-card {
-  background: #FFFDF9;
-  color: #1E1918;
-  border: 1px solid #EDE4D8;
-  border-radius: 14px;
-  padding: 34px 22px 28px;
-  position: relative;
-  width: 100%;
-  max-width: 360px;
-  box-shadow: 
-    0 20px 45px rgba(0, 0, 0, 0.5),
-    0 2px 8px rgba(0, 0, 0, 0.12),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-  text-align: center;
-}
-
-.s12-floating-hearts {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  font-size: 1.35rem;
-  margin-bottom: 12px;
-}
-
-.s12-floating-hearts .heart-pulse-icon {
-  color: #E63956;
-  font-size: 1.5rem;
-  animation: heartPulse 1.8s infinite ease-in-out;
-}
-
-@keyframes heartPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.22); }
-}
-
-.s12-joyeux-lead {
+.finale-subtext {
   font-family: var(--font-serif);
-  font-size: 1.45rem;
   font-style: italic;
-  color: #4D3F43;
-  line-height: 1.2;
+  font-size: 1.05rem;
+  color: #7A6F72;
+  margin-bottom: 6px;
 }
 
-.s12-name-title {
+.autograph-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mactar-name {
   font-family: var(--font-hand);
   font-size: 3.4rem;
   font-weight: 700;
-  color: #A31D38;
-  line-height: 1.05;
-  margin: 4px 0 12px;
-  letter-spacing: 0.5px;
-  text-shadow: 0 1px 2px rgba(163, 29, 56, 0.15);
-}
-
-.s12-ornament-line {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.s12-ornament-line .line {
-  width: 45px;
-  height: 1px;
-  background: #E8D5DC;
-}
-
-.s12-ornament-line .dot {
-  color: #C73B58;
-  font-size: 0.9rem;
-}
-
-.s12-wish-sub {
-  font-family: var(--font-serif);
-  font-size: 1.15rem;
-  color: #382D30;
-  line-height: 1.6;
-  margin-bottom: 14px;
-}
-
-.s12-note-sweet {
-  font-family: var(--font-hand);
-  font-size: 1.35rem;
-  color: #7A283B;
-  line-height: 1.4;
-  margin-bottom: 22px;
-}
-
-.s12-signature-box {
-  border-top: 1px dashed #E2D2D7;
-  padding-top: 16px;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sig-prefix {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 0.95rem;
-  color: #7A6F72;
-  margin-bottom: 4px;
-}
-
-.mactar-autograph {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.mactar-script {
-  font-family: var(--font-hand);
-  font-size: 3.2rem;
-  font-weight: 700;
-  color: #8C1D35;
+  color: var(--color-red-cherry);
   line-height: 1;
   letter-spacing: 1px;
 }
 
-.mactar-stroke {
+.autograph-underline {
   margin-top: -10px;
 }
 
-.s12-card-flowers {
-  font-size: 1.3rem;
+.bouquet-emojis {
+  font-size: 1.4rem;
   margin-top: 16px;
   letter-spacing: 4px;
 }
 
+.stream-footer-note {
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: #9E888E;
+  margin-top: 8px;
+}
+
 /* ========================================================
-   BARRE DE PROGRESSION & CONTRÔLE BAS
+   MODAL DE CÉLÉBRATION POPUP
    ======================================================== */
-.story-bottom-nav {
+.celebration-modal {
   position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 52px;
-  background: rgba(18, 14, 14, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 0 16px env(safe-area-inset-bottom, 8px);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.progress-track {
-  width: 100%;
-  height: 2.5px;
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 2px;
-  overflow: hidden;
-  margin-top: 6px;
-}
-
-.progress-bar-fill {
-  width: 8.33%;
-  height: 100%;
-  background: var(--color-wine-text);
-  transition: width 0.35s ease;
-}
-
-.story-nav-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  padding-bottom: 2px;
-}
-
-.nav-arrow-btn {
-  background: none;
-  border: none;
-  color: #FFF;
-  font-size: 1.8rem;
-  font-weight: 300;
-  cursor: pointer;
-  width: 38px;
-  height: 38px;
+  inset: 0;
+  background: rgba(30, 15, 20, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10010;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-.nav-arrow-btn:active {
-  background: rgba(255, 255, 255, 0.1);
+.celebration-modal.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.tap-hint-text {
-  font-size: 0.75rem;
-  color: #8C827E;
-  font-weight: 500;
+.celebration-card {
+  background: #FFFDF9;
+  color: var(--color-text-main);
+  border: 1px solid #E8DFD3;
+  border-radius: 14px;
+  padding: 36px 24px 26px;
+  max-width: 340px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.celebration-modal.active .celebration-card {
+  transform: scale(1);
+}
+
+.celebration-sparkles {
+  font-size: 1.5rem;
+  color: var(--color-red-cherry);
+  margin-bottom: 10px;
+}
+
+.celebration-title {
+  font-family: var(--font-hand);
+  font-size: 2.3rem;
+  font-weight: 700;
+  color: var(--color-bordeaux);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.celebration-title .highlight-name {
+  color: var(--color-red-cherry);
+  font-size: 2.5rem;
+}
+
+.celebration-body {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+.celebration-signature {
+  font-family: var(--font-hand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-red-cherry);
+  margin-bottom: 22px;
+}
+
+.btn-close-celebration {
+  background: var(--color-bordeaux);
+  color: #FFF;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 50px;
+  cursor: pointer;
 }
 
 /* ========================================================
@@ -1439,7 +1051,7 @@ html, body {
 .lightbox {
   position: fixed;
   inset: 0;
-  background: rgba(10, 8, 8, 0.94);
+  background: rgba(20, 10, 14, 0.94);
   backdrop-filter: blur(12px);
   z-index: 10002;
   display: flex;
@@ -1479,7 +1091,7 @@ html, body {
 .lightbox-caption {
   font-family: var(--font-hand);
   font-size: 1.35rem;
-  color: var(--color-text-dark);
+  color: var(--color-text-main);
   margin-top: 8px;
   text-align: center;
 }
@@ -1494,669 +1106,4 @@ html, body {
   font-size: 1.8rem;
   cursor: pointer;
   padding: 4px;
-}
-
-/* ========================================================
-   MODAL DE CÉLÉBRATION FINALE (PLUIE DE CŒURS & OR)
-   ======================================================== */
-.celebration-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(14, 10, 11, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  z-index: 10010;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.celebration-modal.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.celebration-card {
-  background: #FAF7F0;
-  color: var(--color-text-dark);
-  border: 1px solid #E5DFD4;
-  border-radius: 12px;
-  padding: 38px 26px 28px;
-  max-width: 340px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(196, 85, 97, 0.2);
-  position: relative;
-  transform: scale(0.9);
-  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.celebration-modal.active .celebration-card {
-  transform: scale(1);
-}
-
-.celebration-sparkles {
-  font-size: 1.6rem;
-  color: var(--color-wine-text);
-  margin-bottom: 12px;
-}
-
-.celebration-title {
-  font-family: var(--font-hand);
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--color-text-dark);
-  line-height: 1.15;
-  margin-bottom: 12px;
-}
-
-.celebration-title .highlight-name {
-  color: var(--color-wine-text);
-  font-size: 2.4rem;
-}
-
-.celebration-body {
-  font-family: var(--font-serif);
-  font-size: 1.35rem;
-  font-style: italic;
-  color: #5C524E;
-  margin-bottom: 18px;
-  line-height: 1.4;
-}
-
-.celebration-signature {
-  font-family: var(--font-hand);
-  font-size: 2.1rem;
-  font-weight: 700;
-  color: var(--color-wine-text);
-  margin-bottom: 24px;
-}
-
-.btn-close-celebration {
-  background-color: var(--color-bordeaux-btn);
-  color: #FFF;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 10px 24px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btn-close-celebration:active {
-  transform: scale(0.96);
-}
-
-/* ========================================================
-   INTRODUCTION INTERACTIVE : TIKTOK STYLE ENVELOPE REVEAL
-   ======================================================== */
-.envelope-intro-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  background: #F7EFE7;
-  background: radial-gradient(circle at 50% 20%, #FFFDF9 0%, #F5ECE3 60%, #EBDDCF 100%);
-  z-index: 99999;
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
-}
-
-.envelope-intro-overlay.dismissed {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Pétales & cœurs flottants d'ambiance */
-.floating-petals {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.floating-petals span {
-  position: absolute;
-  display: block;
-  font-size: 1.4rem;
-  opacity: 0.45;
-  animation: floatDown 10s infinite linear;
-}
-
-.floating-petals span:nth-child(1) { top: -20px; left: 10%; animation-duration: 8s; font-size: 1.6rem; }
-.floating-petals span:nth-child(2) { top: -20px; left: 30%; animation-duration: 11s; animation-delay: 2s; }
-.floating-petals span:nth-child(3) { top: -20px; left: 70%; animation-duration: 9s; animation-delay: 1s; }
-.floating-petals span:nth-child(4) { top: -20px; left: 85%; animation-duration: 12s; animation-delay: 3s; font-size: 1.5rem; }
-.floating-petals span:nth-child(5) { top: -20px; left: 50%; animation-duration: 10s; animation-delay: 4s; }
-
-@keyframes floatDown {
-  0% { transform: translateY(-30px) rotate(0deg); opacity: 0; }
-  20% { opacity: 0.6; }
-  80% { opacity: 0.6; }
-  100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
-}
-
-/* --- Scène 1 : "You got mail!" & Enveloppe --- */
-.intro-envelope-stage {
-  min-height: 100vh;
-  min-height: 100dvh;
-  width: 100%;
-  max-width: 440px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px 20px;
-  cursor: pointer;
-  position: relative;
-  z-index: 10;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.intro-envelope-stage.opened {
-  opacity: 0;
-  transform: scale(0.9) translateY(-20px);
-  pointer-events: none;
-  display: none;
-}
-
-/* Titre "You got mail!" qui descend du haut */
-.intro-headline {
-  text-align: center;
-  margin-bottom: 28px;
-  animation: slideDownIn 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.mail-kicker {
-  font-family: var(--font-hand);
-  font-size: 1.4rem;
-  color: #B8324F;
-  display: block;
-  margin-bottom: 2px;
-}
-
-.mail-title {
-  font-family: var(--font-serif);
-  font-size: 2.8rem;
-  font-weight: 500;
-  font-style: italic;
-  color: #2E181D;
-  letter-spacing: 0.5px;
-  line-height: 1.1;
-}
-
-@keyframes slideDownIn {
-  0% { opacity: 0; transform: translateY(-40px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Enveloppe 3D Pastel qui descend du haut jusqu'au milieu et flotte doucement */
-.vintage-envelope-wrap {
-  width: 270px;
-  height: 180px;
-  background: #FEE8EC;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 
-    0 16px 40px rgba(184, 50, 79, 0.22),
-    0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1.5px solid #F3CFD6;
-  animation: 
-    dropFromTop 1.2s cubic-bezier(0.16, 1, 0.3, 1) both,
-    gentleFloat 3.5s infinite ease-in-out 1.3s;
-  cursor: pointer;
-  transform-origin: center center;
-}
-
-@keyframes dropFromTop {
-  0% { opacity: 0; transform: translateY(-120px) scale(0.85); }
-  60% { transform: translateY(12px) scale(1.02); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1deg); }
-}
-
-/* Rabats de l'enveloppe */
-.env-back-plate {
-  position: absolute;
-  inset: 0;
-  background: #F9DCE2;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-/* Papier qui dépasse légèrement de l'enveloppe */
-.env-letter-peek {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  right: 20px;
-  height: 80px;
-  background: #FFFDF9;
-  border-radius: 6px 6px 0 0;
-  border: 1px solid #EFE4D6;
-  box-shadow: 0 -2px 6px rgba(0,0,0,0.04);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.vintage-envelope-wrap.is-opening .env-letter-peek {
-  transform: translateY(-55px);
-}
-
-/* Branche de lavande / fleur séchée sur le côté comme dans le TikTok */
-.env-lavender-branch {
-  position: absolute;
-  top: -14px;
-  right: 18px;
-  font-size: 2rem;
-  z-index: 6;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
-  transform: rotate(18deg);
-  pointer-events: none;
-}
-
-/* Pli avant (triangles) */
-.env-front-creases {
-  position: absolute;
-  inset: 0;
-  border-radius: 10px;
-  pointer-events: none;
-  z-index: 4;
-  border-bottom: 90px solid #FEDBE2;
-  border-left: 135px solid #FCD2DA;
-  border-right: 135px solid #FCD2DA;
-  border-top: 90px solid transparent;
-}
-
-/* Rabat supérieur pliable */
-.env-top-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 135px solid transparent;
-  border-right: 135px solid transparent;
-  border-top: 100px solid #F5C7D0;
-  transform-origin: top center;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 5;
-}
-
-.vintage-envelope-wrap.is-opening .env-top-flap {
-  transform: rotateX(180deg);
-  z-index: 2;
-}
-
-/* Sceau coeur rouge/rose au centre */
-.env-heart-seal {
-  position: absolute;
-  top: 52%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 44px;
-  height: 44px;
-  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 8;
-  box-shadow: 0 4px 12px rgba(184, 34, 62, 0.4);
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.seal-heart {
-  color: #FFF;
-  font-size: 1.4rem;
-  line-height: 1;
-  animation: sealPulse 1.8s infinite ease-in-out;
-}
-
-@keyframes sealPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
-
-.vintage-envelope-wrap.is-opening .env-heart-seal {
-  transform: translate(-50%, -50%) scale(1.4);
-  opacity: 0;
-}
-
-/* Indication "Touche l'enveloppe pour l'ouvrir" */
-.tap-to-open-hint {
-  margin-top: 32px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  animation: fadeInHint 1.2s ease 1s both;
-}
-
-.finger-tap-icon {
-  font-size: 1.6rem;
-  animation: bounceTap 1.4s infinite ease-in-out;
-}
-
-@keyframes bounceTap {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-.hint-text-script {
-  font-family: var(--font-hand);
-  font-size: 1.35rem;
-  color: #7A555E;
-}
-
-@keyframes fadeInHint {
-  0% { opacity: 0; }
-  100% { opacity: 0.9; }
-}
-
-/* --- Scène 2 : REVEAL CINEMATIC & LOVE LETTER (Comme TikTok) --- */
-.intro-reveal-stage {
-  display: none;
-  width: 100%;
-  max-width: 460px;
-  padding: 24px 16px 50px;
-  animation: fadeInReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.intro-reveal-stage.active {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@keyframes fadeInReveal {
-  0% { opacity: 0; transform: translateY(30px) scale(0.96); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* 1. Header Photo Cinematic avec les phrases "HAPPY BIRTHDAY" qui sortent de nulle part */
-.cinematic-hero-card {
-  width: 100%;
-  height: 240px;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 16px 36px rgba(45, 10, 18, 0.35);
-  margin-bottom: 22px;
-  border: 1.5px solid rgba(255, 255, 255, 0.8);
-}
-
-.hero-photo-cinematic {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 25%;
-  display: block;
-  transform: scale(1.04);
-  animation: slowHeroZoom 12s infinite alternate ease-in-out;
-}
-
-@keyframes slowHeroZoom {
-  0% { transform: scale(1.04); }
-  100% { transform: scale(1.12); }
-}
-
-.hero-gradient-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(30, 8, 14, 0.25) 0%, rgba(20, 4, 8, 0.75) 100%);
-  pointer-events: none;
-}
-
-/* Phrases animées Happy Birthday qui jaillissent */
-.flying-text-container {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 15px;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.fly-line {
-  color: #FFF;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.8), 0 0 25px rgba(230, 57, 86, 0.6);
-  line-height: 1.1;
-  opacity: 0;
-}
-
-.fly-1 {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  animation: flyInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
-}
-
-.fly-2 {
-  font-family: var(--font-hand);
-  font-size: 2.9rem;
-  font-weight: 700;
-  color: #FFB3C2;
-  margin-top: -2px;
-  animation: flyInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
-}
-
-.fly-3 {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  font-style: italic;
-  letter-spacing: 3px;
-  color: #FFF;
-  animation: popInBounce 0.9s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.8s both;
-}
-
-@keyframes flyInLeft {
-  0% { opacity: 0; transform: translateX(-80px) rotate(-4deg); }
-  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
-}
-
-@keyframes flyInRight {
-  0% { opacity: 0; transform: translateX(80px) rotate(4deg); }
-  100% { opacity: 1; transform: translateX(0) rotate(0deg); }
-}
-
-@keyframes popInBounce {
-  0% { opacity: 0; transform: scale(0.5) translateY(20px); }
-  100% { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-/* 2. Feuille Scrapbook "A Love Letter - only for Yaye Boy" avec le filmstrip 4 photos */
-.scrapbook-letter-sheet {
-  background: #FFFDF9;
-  border: 1px solid #E8DDD0;
-  border-radius: 14px;
-  padding: 24px 18px 22px;
-  width: 100%;
-  box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.12),
-    0 2px 6px rgba(0, 0, 0, 0.05);
-  position: relative;
-}
-
-.letter-top-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  border-bottom: 1.5px solid #F0E3D8;
-  padding-bottom: 10px;
-  margin-bottom: 18px;
-}
-
-.love-letter-title {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  color: #A71D31;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.only-for-tag {
-  font-family: var(--font-hand);
-  font-size: 1.2rem;
-  color: #8C757B;
-}
-
-.letter-body-flex {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 18px;
-}
-
-/* Filmstrip vertical 4 photos style photomaton */
-.filmstrip-box {
-  width: 90px;
-  flex-shrink: 0;
-  background: #FFF;
-  padding: 4px;
-  border-radius: 4px;
-  box-shadow: 0 4px 14px rgba(45, 10, 18, 0.15);
-  border: 1px solid #E5D9CE;
-  transform: rotate(-1.5deg);
-}
-
-.filmstrip-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 2px;
-}
-
-/* Texte de la lettre */
-.letter-text-column {
-  flex: 1;
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  line-height: 1.55;
-  color: #38292D;
-}
-
-.salutation-line {
-  font-family: var(--font-hand);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #A71D31;
-  margin-bottom: 6px;
-}
-
-.letter-text-column p {
-  margin-bottom: 10px;
-}
-
-.letter-signature-block {
-  margin-top: 14px;
-  font-family: var(--font-hand);
-  font-size: 1.35rem;
-  color: #5C4349;
-  line-height: 1.2;
-}
-
-.author-name {
-  color: #A71D31;
-  font-size: 1.65rem;
-}
-
-/* Petit Morpion Tic-Tac-Toe "You win my heart" comme dans la vidéo */
-.doodle-tic-tac-toe {
-  background: #FFF5F7;
-  border: 1px dashed #E8CCD4;
-  border-radius: 10px;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 22px;
-}
-
-.ttt-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 24px);
-  grid-template-rows: repeat(3, 24px);
-  gap: 4px;
-}
-
-.ttt-grid .cell {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid #F0C4D0;
-  border-radius: 3px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  color: #665055;
-  font-weight: 700;
-}
-
-.ttt-grid .cell.heart-win {
-  color: #E63956;
-  font-size: 1.1rem;
-  animation: pulseWin 1.5s infinite ease-in-out;
-}
-
-@keyframes pulseWin {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.25); }
-}
-
-.ttt-caption {
-  font-family: var(--font-hand);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #B8253B;
-}
-
-/* Bouton entrer dans le carnet */
-.btn-enter-carnet {
-  width: 100%;
-  background: linear-gradient(135deg, #E63956 0%, #B8223E 100%);
-  color: #FFF;
-  border: none;
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 15px 22px;
-  border-radius: 50px;
-  cursor: pointer;
-  box-shadow: 0 8px 24px rgba(230, 57, 86, 0.4);
-  transition: transform 0.2s, box-shadow 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.btn-enter-carnet:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(230, 57, 86, 0.55);
-}
-
-.btn-enter-carnet:active {
-  transform: scale(0.97);
 }
