@@ -1117,12 +1117,18 @@ html, body {
 }
 
 /* ========================================================
-   SLIDE 12 : FINALE MINIMALISTE & SIGNATURE
+   SLIDE 12 : FINALE ÉLÉGANTE SCRAPBOOK & SIGNATURE
    ======================================================== */
 .deep-black-bg {
-  background: radial-gradient(ellipse at bottom, #420B15 0%, #160205 90%);
+  background: 
+    radial-gradient(ellipse at 50% 10%, rgba(214, 52, 85, 0.35) 0%, transparent 65%),
+    radial-gradient(circle at center, #350811 0%, #150205 100%);
   color: #FFF;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 6px;
 }
 
 .s12-center-container {
@@ -1130,59 +1136,139 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex: 1;
+  width: 100%;
 }
 
-.s12-heart-top, .s12-heart-mid {
-  font-size: 1.8rem;
-  color: #FFF;
-  opacity: 0.8;
-  margin-bottom: 15px;
+.s12-envelope-card {
+  background: #FFFDF9;
+  color: #1E1918;
+  border: 1px solid #EDE4D8;
+  border-radius: 14px;
+  padding: 34px 22px 28px;
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  box-shadow: 
+    0 20px 45px rgba(0, 0, 0, 0.5),
+    0 2px 8px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  text-align: center;
 }
 
-.s12-main-text {
+.s12-floating-hearts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1.35rem;
+  margin-bottom: 12px;
+}
+
+.s12-floating-hearts .heart-pulse-icon {
+  color: #E63956;
+  font-size: 1.5rem;
+  animation: heartPulse 1.8s infinite ease-in-out;
+}
+
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
+}
+
+.s12-joyeux-lead {
   font-family: var(--font-serif);
-  font-size: 2.3rem;
-  font-weight: 600;
-  line-height: 1.25;
+  font-size: 1.45rem;
+  font-style: italic;
+  color: #4D3F43;
+  line-height: 1.2;
+}
+
+.s12-name-title {
+  font-family: var(--font-hand);
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: #A31D38;
+  line-height: 1.05;
+  margin: 4px 0 12px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(163, 29, 56, 0.15);
+}
+
+.s12-ornament-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   margin-bottom: 18px;
 }
 
-.s12-name {
-  color: var(--color-red-bright);
-  background: linear-gradient(135deg, #FF758C 0%, #E63956 60%, #B8253B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-style: italic;
-  display: inline-block;
+.s12-ornament-line .line {
+  width: 45px;
+  height: 1px;
+  background: #E8D5DC;
+}
+
+.s12-ornament-line .dot {
+  color: #C73B58;
+  font-size: 0.9rem;
 }
 
 .s12-wish-sub {
-  font-size: 0.95rem;
-  color: #B3A8A3;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: #382D30;
   line-height: 1.6;
-  max-width: 320px;
-  margin-bottom: 25px;
+  margin-bottom: 14px;
+}
+
+.s12-note-sweet {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  color: #7A283B;
+  line-height: 1.4;
+  margin-bottom: 22px;
+}
+
+.s12-signature-box {
+  border-top: 1px dashed #E2D2D7;
+  padding-top: 16px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sig-prefix {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #7A6F72;
+  margin-bottom: 4px;
 }
 
 .mactar-autograph {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
 }
 
 .mactar-script {
   font-family: var(--font-hand);
-  font-size: 3.8rem;
+  font-size: 3.2rem;
   font-weight: 700;
-  color: #FFF;
+  color: #8C1D35;
   line-height: 1;
   letter-spacing: 1px;
 }
 
 .mactar-stroke {
-  margin-top: -12px;
+  margin-top: -10px;
+}
+
+.s12-card-flowers {
+  font-size: 1.3rem;
+  margin-top: 16px;
+  letter-spacing: 4px;
 }
 
 /* ========================================================
